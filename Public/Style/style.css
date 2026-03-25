@@ -1,0 +1,13 @@
+#NavImage
+{
+    object-fit: contain;
+    height: 8vh;
+}
+
+@media screen and (min-width: 768px)
+{
+  #NavImage
+    {
+    width: auto;
+    }
+}
