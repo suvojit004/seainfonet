@@ -11,3 +11,10 @@
     width: auto;
     }
 }
+
+.cardImage
+{
+    object-fit: contain;
+    height: 25vh;
+    width: 25vw;
+}
