@@ -18,3 +18,24 @@
     height: 25vh;
     width: 25vw;
 }
+
+#SEAherocrousel
+{
+    height: 70vh;
+}
+#SEAherocrousel * {
+    height: 100%;
+}
+#SEAherocrousel img{
+   height: 100%;
+   object-fit: cover;  
+}
+
+
+
+#HomePageProduct img {
+    object-fit: cover;
+    width: auto;
+    height: 200px;
+    
+}
