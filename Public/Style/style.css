@@ -39,3 +39,16 @@
     height: 200px;
     
 }
+#CompanyUsp{
+    margin: 25px;
+    padding: 25px;
+}
+#CompanyUsp img {
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+}
+
+.usp {
+    background-color: aqua;
+}
