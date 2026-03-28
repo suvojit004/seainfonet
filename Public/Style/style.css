@@ -1,0 +1,80 @@
+#NavImage
+{
+    object-fit: contain;
+    height: 8vh;
+}
+
+@media screen and (min-width: 768px)
+{
+  #NavImage
+    {
+    width: auto;
+    }
+}
+
+.cardImage
+{
+    object-fit: contain;
+    height: 25vh;
+    width: 25vw;
+}
+
+#SEAherocrousel
+{
+    height: 70vh;
+}
+#SEAherocrousel * {
+    height: 100%;
+}
+#SEAherocrousel img{
+   height: 100%;
+   object-fit: cover;  
+}
+
+
+
+#HomePageProduct img {
+    object-fit: cover;
+    width: auto;
+    height: 200px;
+    
+}
+#CompanyUsp{
+    margin: 25px;
+    padding: 25px;
+}
+#CompanyUsp img {
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+}
+
+.usp {
+    background-color: aqua;
+}
+
+
+.productSenario div.card-header
+{
+    border-radius: 20px;
+}
+
+.productSenario img {
+    object-fit: cover;
+    width: 100%;
+    height: 350px;
+}
+
+@media screen and (max-width: 992px)
+{
+    .productSenario img {
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+    
+}
+}
+
+.mainNavButton:hover {
+    background-color: green;
+}
