@@ -53,7 +53,9 @@
     background-color: aqua;
 }
 
-
+.awards {
+    background-color: green;
+}
 .productSenario div.card-header
 {
     border-radius: 20px;
