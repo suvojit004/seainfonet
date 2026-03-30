@@ -19,6 +19,10 @@ app.get('/contact', (req,res)=>{
   res.render('contact')
 })
 
+app.post('/submit', (req,res)=>{
+res.redirect('/contact')
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
