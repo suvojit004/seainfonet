@@ -1,8 +1,16 @@
 #NavImage
 {
     object-fit: contain;
-    height: 8vh;
+    height: 5vh;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
 }
+#NavImage:hover
+{
+transform: scale(1.06) translateY(-0.5px);
+  box-shadow: 0 15px 15px rgba(0,0,0,0.3);
+}
+
 
 @media screen and (min-width: 768px)
 {
@@ -31,6 +39,15 @@
    object-fit: cover;  
 }
 
+.SEAnav li:hover a {
+    color: whitesmoke;
+    transition: color 0.3s ease;
+}
+.SEAnav li:hover {
+    background-color: green;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
 
 
 #HomePageProduct img {
@@ -77,6 +94,3 @@
 }
 }
 
-.mainNavButton:hover {
-    background-color: green;
-}
