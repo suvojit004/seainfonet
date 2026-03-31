@@ -1,12 +1,11 @@
 
-
-        <div class="card mb-2" style="width: 26rem;">
+        <div class="card mb-2" style="width: 24rem;">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card’s content.</p>
-                 <a href="#" class="mb-1 text-decoration-none ">📧 sales@seainfonet.com</a>
-                <a href="#" class="mb-2 text-decoration-none">📞 +91 98765 43210</a>
+                <h5 class="card-title"><%= location.office %></h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary"><%= location.city %></h6>
+                <p class="card-text"><%= location.location %></p>
+                 <p class="mb-1 text-decoration-none ">📧 <%= location.email %></p>
+                <p href="#" class="mb-2 text-decoration-none">📞 <%= location.phone %></p>
             </div>
         </div>
    

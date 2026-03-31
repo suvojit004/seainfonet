@@ -3,16 +3,35 @@
         <h2 class="col text-decoration-underline">Our Office</h2>
         <hr class="border-light">
     </div>
-    <div class="row justify-content-between"">
-     <div class=" col-auto">
-        <%- include('officeLocation') %>
-    </div>
+    <div class="row justify-content-start align-items-center">
+     
 
     <div class="col-auto">
-        <%- include('officeLocation') %>
+        <%- include('officeLocation', {location : {
+        office : "Corporate Office",
+        city : "Delhi",
+        location : "1107, 11th Floor, Hemkunt Chambers 89, Nehru Place, New Delhi, 110019 ",
+        phone : "+91 11 41652608",
+        email : "info@seainfonet.com"
+        }}) %>
     </div>
     <div class="col-auto">
-        <%- include('officeLocation') %>
+        <%- include('officeLocation', {location : {
+        office : "Head Office",
+        city : "Kolkata",
+        location : "P17, G.C Avenue, Missin Row Extension,Chandni Chowk, Esplanade, Bow Barracks, Kolkata, West Bengal 700013",
+        phone : "Mob/Fax: +91 33 4005 4044",
+        email : "info@seainfonet.com"
+    }}) %>
+    </div>
+    <div class="col-auto">
+        <%- include('officeLocation', {location : {
+        office : "Support Centre",
+        city : "Kolkata",
+        location : "312, DLF Galleria, Major Arterial Road, Action Area-1, New Town, Kolkata- 700156 ",
+        phone : "1800 258 6800",
+        email : "info@seainfonet.com"
+        }}) %>
     </div>
 
 </div>
