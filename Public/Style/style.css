@@ -142,7 +142,8 @@ body {
 
 
 .contact-title,
-.engage-title {
+.engage-title,
+.demo-text {
     display: inline-block;
     padding: 8px 16px;
     border-radius: 6px;

@@ -1,0 +1,79 @@
+<div class="container vision mb-4">
+  <div class="card text-center">
+    <div class="card-body align-items-center row gy-2">
+
+      <!-- Image -->
+      <div class="col order-lg-1">
+        <h5 class="card-title fw-semibold">See Our Product in action. </h5>
+    <p class="card-text">Discover how we can safeguard your company’s data through a personalized demo of our software.</p>
+    <p class="demo-text">Book your personalized product demo </p>
+        <img class="card-img-top img-fluid" src="../Images/Icons/Demo.jpeg" alt="icon">
+        
+      </div>
+
+      <!-- Spacer -->
+      <div class="col-lg-1 order-lg-2"></div>
+
+      <!-- Form -->
+      <div class="col order-lg-3">
+
+      <form class="text-start" action="/submit" method="post">
+
+  <!-- Name -->
+  <div class="mb-3">
+    <label class="form-label">Full Name :</label>
+    <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+  </div>
+
+  <!-- Phone -->
+  <div class="mb-3">
+    <label class="form-label">Phone Number :</label>
+    <input type="tel" name="phone" class="form-control" placeholder="Enter your number" required>
+  </div>
+
+  <!-- Email -->
+  <div class="mb-3">
+    <label class="form-label">Email :</label>
+    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+  </div>
+
+  <!-- Choose Product (NEW) -->
+  <div class="mb-3">
+    <label class="form-label">Choose Product :</label>
+    <select name="product" class="form-select" required>
+      <option value="">Select a product</option>
+      <option value="Kaspersky">Kaspersky</option>
+      <option value="Bytescreen">Bytescreen</option>
+      <option value="Acronis">Acronis</option>
+      <option value="Safetica">Safetica</option>
+      <option value="Teramind">Teramind</option>
+      <option value="GoDMARC">GoDMARC</option>
+      <option value="Tacitine">Tacitine</option>
+      <option value="Quantum">Quantum</option>
+      <option value="Cybernexa">Cybernexa</option>
+      <option value="EverestIMS">EverestIMS</option>
+    </select>
+  </div>
+
+  <!-- Subject -->
+  <div class="mb-3">
+    <label class="form-label">Subject :</label>
+    <input type="text" name="subject" class="form-control" placeholder="Enter subject" required>
+  </div>
+
+  <!-- Description -->
+  <div class="mb-3">
+    <label class="form-label">Description :</label>
+    <textarea name="message" class="form-control" rows="3" placeholder="Write your message..." required></textarea>
+  </div>
+
+  <!-- Button -->
+  <button type="submit" class="btn btn-success w-100">Submit</button>
+
+</form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
