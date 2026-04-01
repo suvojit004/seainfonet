@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
+const multer = require("multer");
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.set('view engine', 'ejs')
 app.set('views', './views')
-
+const upload = multer();
 app.use(express.static('public'))
 
 
@@ -12,21 +15,26 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
-app.get('/about', (req,res)=>{
+app.get('/about', (req, res) => {
   res.render('about')
 })
-app.get('/contact', (req,res)=>{
+app.get('/contact', (req, res) => {
   res.render('contact')
 })
 
-app.post('/submit', (req,res)=>{
-res.redirect('/contact')
+app.post('/submit', upload.none(), (req, res) => {
+  console.log("Form Data Received:");
+  console.log(req.body);
+  res.status(200).json({ message: "Form submitted successfully" });
 })
 
-app.get('/demo', (req,res)=>{
+app.get('/demo', (req, res) => {
   res.render('demo')
 })
 
+app.get('/test', (req, res) => {
+  res.render('modals')
+})
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
