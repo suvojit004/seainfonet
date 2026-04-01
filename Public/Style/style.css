@@ -54,12 +54,12 @@ body {
     background: #ffffff;
 }
 
-.card:hover {
+.custom-hover:hover {
     transform: scale(1.02) translateY(-1px);
     box-shadow: 0 5px 5px #faca12;
 }
 
-.card {
+.custom-hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -170,6 +170,26 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    #SEAherocrousel {
+        height: auto;
+        padding: 10px;
+    }
+
+    #SEAherocrousel .carousel-inner {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    #SEAherocrousel .carousel-item {
+        height: 220px; /* card height */
+    }
+
+    #SEAherocrousel img {
+        border-radius: 10px;
+    }
+}
 
 
 /*
