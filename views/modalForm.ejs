@@ -1,0 +1,74 @@
+<div class="toast-container position-fixed top-0 end-0 p-3">
+
+  <div id="successToast" class="toast align-items-center text-bg-success border-0" role="alert">
+
+    <div class="d-flex">
+      <div class="toast-body">
+        Your request has been submitted successfully! We’ll contact you soon.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="talkToExpert" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Modal Title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <form class="text-start" id="contactForm" action="/submit" method="post">
+
+          <!-- Name -->
+          <div class="mb-3">
+            <label class="form-label">Full Name :</label>
+            <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+          </div>
+
+          <!-- Phone -->
+          <div class="mb-3">
+            <label class="form-label">Phone Number :</label>
+            <input type="tel" name="phone" class="form-control" placeholder="Enter your number" required>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label class="form-label">Email :</label>
+            <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+          </div>
+
+          <!-- Subject -->
+          <div class="mb-3">
+            <label class="form-label">Subject :</label>
+            <input type="text" name="subject" class="form-control" placeholder="Enter subject" required>
+          </div>
+
+          <!-- Description -->
+          <div class="mb-3">
+            <label class="form-label">Description :</label>
+            <textarea class="form-control" name="description" rows="3" required></textarea>
+          </div>
+
+          <!-- Button -->
+          <button type="submit" class="btn btn-success w-100">Submit</button>
+
+        </form>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
