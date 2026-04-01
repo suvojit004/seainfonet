@@ -17,7 +17,7 @@ buttons.forEach(button => {
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
   const formData = new FormData(form);
-  const modalElement = document.getElementById("exampleModal");
+  const modalElement = document.getElementById("talkToExpert");
   const toastElement = document.getElementById("successToast");
   const modal = bootstrap.Modal.getInstance(modalElement);
   const toast = new bootstrap.Toast(toastElement);
