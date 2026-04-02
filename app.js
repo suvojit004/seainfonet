@@ -9,7 +9,9 @@ const upload = multer();
 app.use(express.static('public'));
 app.disable('x-powered-by');
 const helmet = require('helmet');
-app.use(helmet());
+app.use(helmet({
+    strictTransportSecurity: false,
+  }));
 
 
 const port = 3000;
