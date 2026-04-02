@@ -8,7 +8,8 @@ app.set('views', './views');
 const upload = multer();
 app.use(express.static('public'));
 app.disable('x-powered-by');
-
+const helmet = require('helmet');
+app.use(helmet());
 
 
 const port = 3000;
