@@ -3,9 +3,6 @@ const talkToExpertForm = document.getElementById("talkToExpertForm");
 const demoForm = document.getElementById("demoForm");
 const contactForm = document.getElementById('contactForm');
 const container = document.getElementById("formContainer");
-let test = null
-
-console.log(typeof test === 'string')
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
@@ -47,7 +44,6 @@ async function FormSubMition(event, form, submitUrl, tostId, modalId = null) {
     const toast = new bootstrap.Toast(toastElement);
 
     if (typeof modalId === 'string') {
-      console.log('inside modal id checking')
       bootstrap.Modal.getInstance(document.getElementById(modalId)).hide();
     }
 
