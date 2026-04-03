@@ -3,6 +3,9 @@ const talkToExpertForm = document.getElementById("talkToExpertForm");
 const demoForm = document.getElementById("demoForm");
 const contactForm = document.getElementById('contactForm');
 const container = document.getElementById("formContainer");
+let test = null
+
+console.log(typeof test === 'string')
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
@@ -15,106 +18,58 @@ buttons.forEach(button => {
 });
 
 
-if(talkToExpertForm){
+if (talkToExpertForm) {
   talkToExpertForm.addEventListener("submit", async function (e) {
-  e.preventDefault();
-  const formData = new FormData(talkToExpertForm);
-  const modalElement = document.getElementById("talkToExpert");
-  const toastElement = document.getElementById("successToast");
-  const modal = bootstrap.Modal.getInstance(modalElement);
-  const toast = new bootstrap.Toast(toastElement);
-  try {
-    const response = await fetch("/submit", {
-      method: "POST",
-      body: formData
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log("Response:", data);
-
-      if (modal) {
-        modal.hide();
-      }
-
-      setTimeout(() => {
-        toast.show();
-      }, 300);
-
-    }
-
-  } catch (error) {
-    console.error(error);
-    alert("Server error ❌");
-    talkToExpertForm.reset();
-  }
-  talkToExpertForm.reset();
-});
+    FormSubMition(e, talkToExpertForm, "/submit", "successToast","talkToExpert");
+  });
 };
 
-if(demoForm){
+if (demoForm) {
   demoForm.addEventListener('submit', async function (e) {
-
-  e.preventDefault();
-  const formData = new FormData(demoForm);
-  const toastElement = document.getElementById("successToast");
-  const toast = new bootstrap.Toast(toastElement);
-
-  try {
-    const response = await fetch("/submit", {
-      method: "POST",
-      body: formData
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log("Response:", data);
-      setTimeout(() => {
-        toast.show();
-      }, 300);
-
-    }
-
-  } catch (error) {
-    console.error(error);
-    alert("Server error ❌");
-    demoForm.reset();
-  }
-  demoForm.reset();
-
-});
+    FormSubMition(e,demoForm,'/submit',"successToast");
+  });
 };
 
-if(contactForm){
+if (contactForm) {
 
   contactForm.addEventListener('submit', async function (e) {
-
-  e.preventDefault();
-  const formData = new FormData(contactForm);
-  const toastElement = document.getElementById("successToast");
-  const toast = new bootstrap.Toast(toastElement);
-
-  try {
-    const response = await fetch("/submit", {
-      method: "POST",
-      body: formData
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log("Response:", data);
-      setTimeout(() => {
-        toast.show();
-      }, 300);
-
-    }
-
-  } catch (error) {
-    console.error(error);
-    alert("Server error ❌");
-    contactForm.reset();
-  }
-  contactForm.reset();
+    FormSubMition(e,contactForm,'/submit', "successToast")
   })
 }
 
+
+
+async function FormSubMition(event, form, submitUrl, tostId, modalId = null) {
+  if ((typeof submitUrl === 'string') && (typeof tostId === 'string')) {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const toastElement = document.getElementById(tostId);
+    const toast = new bootstrap.Toast(toastElement);
+
+    if (typeof modalId === 'string') {
+      console.log('inside modal id checking')
+      bootstrap.Modal.getInstance(document.getElementById(modalId)).hide();
+    }
+
+    try {
+      const response = await fetch(submitUrl, {
+        method: "POST",
+        body: formData
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Response:", data);
+        setTimeout(() => {
+          toast.show();
+          form.reset()
+        }, 300);
+
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Server error ❌");
+      form.reset();
+    }
+  }
+}
