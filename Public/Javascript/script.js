@@ -36,15 +36,15 @@ if (contactForm) {
 
 
 
-async function FormSubMition(event, form, submitUrl, tostId, modalId = null) {
-  if ((typeof submitUrl === 'string') && (typeof tostId === 'string')) {
+async function FormSubMition(event, form, submitUrl, tostId, modalId = null) {  // The Funtion handle the form submition logic 
+  if ((typeof submitUrl === 'string') && (typeof tostId === 'string')) {        //if the submit url and toast if not string it wont go further.
     event.preventDefault();
     const formData = new FormData(form);
     const toastElement = document.getElementById(tostId);
     const toast = new bootstrap.Toast(toastElement);
 
     if (typeof modalId === 'string') {
-      bootstrap.Modal.getInstance(document.getElementById(modalId)).hide();
+      bootstrap.Modal.getInstance(document.getElementById(modalId)).hide(); // If the modal not present it wont perform modal close
     }
 
     try {
