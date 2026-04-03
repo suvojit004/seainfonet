@@ -1,5 +1,7 @@
 const buttons = document.querySelectorAll('.senarioButton');
-const form = document.getElementById("contactForm");
+const talkToExpertForm = document.getElementById("talkToExpertForm");
+const demoForm = document.getElementById("demoForm");
+const contactForm = document.getElementById('contactForm');
 const container = document.getElementById("formContainer");
 
 buttons.forEach(button => {
@@ -13,10 +15,10 @@ buttons.forEach(button => {
 });
 
 
-
-form.addEventListener("submit", async function (e) {
+if(talkToExpertForm){
+  talkToExpertForm.addEventListener("submit", async function (e) {
   e.preventDefault();
-  const formData = new FormData(form);
+  const formData = new FormData(talkToExpertForm);
   const modalElement = document.getElementById("talkToExpert");
   const toastElement = document.getElementById("successToast");
   const modal = bootstrap.Modal.getInstance(modalElement);
@@ -44,7 +46,75 @@ form.addEventListener("submit", async function (e) {
   } catch (error) {
     console.error(error);
     alert("Server error ❌");
-    form.reset();
+    talkToExpertForm.reset();
   }
-  form.reset();
+  talkToExpertForm.reset();
 });
+};
+
+if(demoForm){
+  demoForm.addEventListener('submit', async function (e) {
+
+  e.preventDefault();
+  const formData = new FormData(demoForm);
+  const toastElement = document.getElementById("successToast");
+  const toast = new bootstrap.Toast(toastElement);
+
+  try {
+    const response = await fetch("/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Response:", data);
+      setTimeout(() => {
+        toast.show();
+      }, 300);
+
+    }
+
+  } catch (error) {
+    console.error(error);
+    alert("Server error ❌");
+    demoForm.reset();
+  }
+  demoForm.reset();
+
+});
+};
+
+if(contactForm){
+
+  contactForm.addEventListener('submit', async function (e) {
+
+  e.preventDefault();
+  const formData = new FormData(contactForm);
+  const toastElement = document.getElementById("successToast");
+  const toast = new bootstrap.Toast(toastElement);
+
+  try {
+    const response = await fetch("/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Response:", data);
+      setTimeout(() => {
+        toast.show();
+      }, 300);
+
+    }
+
+  } catch (error) {
+    console.error(error);
+    alert("Server error ❌");
+    contactForm.reset();
+  }
+  contactForm.reset();
+  })
+}
+
