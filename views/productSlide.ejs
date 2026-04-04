@@ -1,16 +1,12 @@
 <div id="carouselExampleIndicators" class="carousel slide mt-5 mb-5"  data-bs-ride="carousel" data-bs-interval="3000">
   
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <%- include('productCard',{data:data[0]}) %>
+       <% data.forEach((item, index) => { %>
+       <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+       <%- include('productCard',{data:item}) %>
     </div>
-    <div class="carousel-item">
-       <%- include('productCard',{data:data[1]}) %>
-    </div>
-    <div class="carousel-item">
-       <%- include('productCard',{data:data[2]}) %>
-    </div>
-  </div>
+    <% }); %>
+     </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
