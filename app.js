@@ -1,4 +1,4 @@
-const data = require("./Public/Javascript/data"); // Mimic Expernal database 
+const {data,heroCrouselImg} = require("./Public/Javascript/data"); // Mimic Expernal database 
 
 const express = require('express');
 const path = require("path");
@@ -27,7 +27,8 @@ const port = 3000;
 
 app.get('/', (req, res) => {
   res.render('index', {
-    productSenario: data
+    productSenario: data,
+    heroImg : heroCrouselImg
   });
 });
 

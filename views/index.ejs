@@ -2,12 +2,12 @@
 <%- include('header') %>
 <!-- <%- include('topalert') %> -->
 <%- include('navbar') %>
-<%- include('herocrousel'); %>
+<%- include('herocrousel', {data: heroImg}); %>
 <%- include('productSlide') %> 
 <%- include('usp') %>
 <%- include('productSenario', {data: productSenario}) %>
 <%- include ('customerFeedback') %>
 <%- include ('awards') %>
 <%- include ('presence') %>
-<%- include ('modalForm') %>
+<%- include ('modalForm',{title:"Talk to Expert"}) %>
 <%- include('footer') %>
