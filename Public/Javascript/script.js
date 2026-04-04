@@ -1,15 +1,20 @@
-const buttons = document.querySelectorAll('.senarioButton');
+const productSenario_Button = document.querySelectorAll('.senarioButton');
 const talkToExpertForm = document.getElementById("talkToExpertForm");
 const demoForm = document.getElementById("demoForm");
 const contactForm = document.getElementById('contactForm');
 const container = document.getElementById("formContainer");
+const productSenario_title = document.querySelector('.productSenario-title')
+const productSenario_description= document.querySelector('.productSenario-description')
+const productSenario_img= document.querySelector('.productSenario-image')
 
-buttons.forEach(button => {
+productSenario_Button.forEach(button => {
   button.addEventListener('click', () => {
-
     if (!button.classList.contains("active")) {
-      buttons.forEach(btn => btn.classList.remove('active'));
+      productSenario_Button.forEach(btn => btn.classList.remove('active'));
       button.classList.add("active")
+      productSenario_title.textContent = DATA[Number(button.dataset.index)].title;
+      productSenario_description.textContent = DATA[Number(button.dataset.index)].description;
+      productSenario_img.src = DATA[Number(button.dataset.index)].url;
     }
   });
 });

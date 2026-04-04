@@ -3,26 +3,26 @@
         <div class="card-header mx-auto">
             <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item">
-                    <button class="nav-link senarioButton active" aria-current="true" href="#">Use Case 1</button>
+                    <button class="nav-link senarioButton active" aria-current="true" data-index="0">Use Case 1</button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link senarioButton ">Use Case 2</button>
+                    <button class="nav-link senarioButton" data-index="1">Use Case 2</button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link senarioButton ">Use Case 3</button>
+                    <button class="nav-link senarioButton" data-index="2">Use Case 3</button>
                 </li>
             </ul>
         </div>
         <div class="card-body align-items-center row gy-2">
             <div class="col order-lg-3">
-                <img class="card-img-top" src=<%=data[0].url %>>
+                <img class="card-img-top productSenario-image" src=<%=data[0].url %>>
             </div>
             <div class="col-lg-1 order-lg-2"></div>
             <div class="col order-lg-1">
-                <h5 class="card-title">
+                <h5 class="card-title productSenario-title">
                     <%= data[0].title %>
                 </h5>
-                <p class="card-text">
+                <p class="card-text productSenario-description">
                     <%= data[0].description %>
                 </p>
 
@@ -33,3 +33,7 @@
         </div>
     </div>
 </div>
+
+<script>
+  const DATA = <%-JSON.stringify(data) %>;
+</script>
