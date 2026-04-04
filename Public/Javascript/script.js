@@ -6,6 +6,7 @@ const container = document.getElementById("formContainer");
 const productSenario_title = document.querySelector('.productSenario-title')
 const productSenario_description= document.querySelector('.productSenario-description')
 const productSenario_img= document.querySelector('.productSenario-image')
+const productSenario_inside_button = document.querySelector('.productSenario-btn');
 
 productSenario_Button.forEach(button => {
   button.addEventListener('click', () => {
@@ -15,6 +16,7 @@ productSenario_Button.forEach(button => {
       productSenario_title.textContent = DATA[Number(button.dataset.index)].title;
       productSenario_description.textContent = DATA[Number(button.dataset.index)].description;
       productSenario_img.src = DATA[Number(button.dataset.index)].url;
+      productSenario_inside_button.textContent =  DATA[Number(button.dataset.index)].btntxt;
     }
   });
 });

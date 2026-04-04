@@ -2,13 +2,13 @@
   
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <%- include('productCard') %>
+      <%- include('productCard',{data:data[0]}) %>
     </div>
     <div class="carousel-item">
-       <%- include('productCard') %>
+       <%- include('productCard',{data:data[1]}) %>
     </div>
     <div class="carousel-item">
-       <%- include('productCard') %>
+       <%- include('productCard',{data:data[2]}) %>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

@@ -3,35 +3,34 @@
 
       <div class="col-md-4">
       <div class="card text-center h-auto custom-hover">
-        <img src="../Images/ProductImage/product1.jpg" class="card-img-top p-3" alt="">
+        <img src=<%= data[1].url %> class="card-img-top p-3" alt="">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
-            
+          <h5 class="card-title"><%= data[1].title %></h5>
+          <p class="card-text"><%= data[2].description %>
           </p>
-          <a href="#" class="btn btn-success">Know More</a>
+          <a href="#" class="btn btn-success"><%= data[1].btntxt %></a>
         </div>
       </div>
     </div>
 
      <div class="col-md-4">
       <div class="card text-center h-auto custom-hover">
-        <img src="../Images/ProductImage/product2.jpg" class="card-img-top p-3" alt="">
+        <img src=<%= data[0].url %> class="card-img-top p-3" alt="">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-success">Know More</a>
+          <h5 class="card-title"><%= data[0].title %></h5>
+          <p class="card-text"><%= data[0].description %></p>
+          <a href="#" class="btn btn-success"><%= data[0].btntxt %></a>
         </div>
       </div>
     </div>
 
     <div class="col-md-4">
       <div class="card text-center h-auto custom-hover">
-        <img src="../Images/ProductImage/product3.jpg" class="card-img-top p-3" alt="">
+        <img src=<%= data[2].url %> class="card-img-top p-3" alt="">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-success">Know More</a>
+          <h5 class="card-title"><%= data[2].title %></h5>
+          <p class="card-text"><%= data[2].description %></p>
+          <a href="#" class="btn btn-success"><%= data[2].btntxt %></a>
         </div>
       </div>
     </div>
