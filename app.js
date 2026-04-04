@@ -1,3 +1,5 @@
+const data = require("./Public/Javascript/data"); // Mimic Expernal database 
+
 const express = require('express');
 const path = require("path");
 
@@ -15,12 +17,18 @@ const helmet = require('helmet');
 //app.use(helmet({
 //    strictTransportSecurity: false,
 //  }));
-
+/*const data = {
+  title : "Kaspersky",
+  description : "Antivirus",
+  url : "../Images/ProductImage/product1.jpg"
+}*/
 
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.render('index')
+  res.render('index', {
+    productSenario: data
+  });
 });
 
 app.get('/about', (req, res) => {

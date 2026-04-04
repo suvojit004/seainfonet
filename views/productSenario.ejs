@@ -6,25 +6,29 @@
                     <button class="nav-link senarioButton active" aria-current="true" href="#">Use Case 1</button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link senarioButton " >Use Case 2</button>
+                    <button class="nav-link senarioButton ">Use Case 2</button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link senarioButton " >Use Case 3</button>
+                    <button class="nav-link senarioButton ">Use Case 3</button>
                 </li>
             </ul>
         </div>
         <div class="card-body align-items-center row gy-2">
             <div class="col order-lg-3">
-                <img class="card-img-top" src="../Images/ProductImage/product1.jpg">
+                <img class="card-img-top" src=<%=data[0].url %>>
             </div>
             <div class="col-lg-1 order-lg-2"></div>
             <div class="col order-lg-1">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#talkToExpert">
-  Talk To Our Expert
-</button>
+                <h5 class="card-title">
+                    <%= data[0].title %>
+                </h5>
+                <p class="card-text">
+                    <%= data[0].description %>
+                </p>
+
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#talkToExpert">
+                    Talk To Our Expert
+                </button>
             </div>
         </div>
     </div>
