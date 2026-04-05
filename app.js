@@ -68,13 +68,13 @@ app.get('/resource',(req,res)=>{
 
 // custom 404
 app.use((req, res, next) => {
-  res.status(404).send("Sorry can't find that!")
+  res.status(404).render('404')
 });
 
 // custom error handler
 app.use((err, req, res, next) => {
   console.error(err.stack)
-  res.status(500).send('Something broke!')
+  res.status(500).render('5xx')
 });
 
 app.listen(port, () => {
