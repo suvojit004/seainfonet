@@ -53,6 +53,18 @@ app.get('/test', (req, res) => {
   res.render('modals')
 });
 
+app.get('/solution',(req,res)=>{
+  res.render('solution')
+
+});
+app.get('/product',(req,res)=>{
+  res.render('product')
+});
+app.get('/resource',(req,res)=>{
+  res.render('resource')
+});
+
+
 
 // custom 404
 app.use((req, res, next) => {
