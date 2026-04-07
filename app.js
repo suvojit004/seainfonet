@@ -10,7 +10,7 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', './views');
 const upload = multer();
-app.use(express.static(path.join(__dirname, "Public")));
+// app.use(express.static(path.join(__dirname, "Public")));
 app.disable('x-powered-by');
 const helmet = require('helmet');
 
