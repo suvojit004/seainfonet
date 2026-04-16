@@ -8,6 +8,7 @@ const multer = require("multer");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set('view engine', 'ejs');
+app.set("view cache", false);
 app.set('views', './views');
 const upload = multer();
 // app.use(express.static(path.join(__dirname, "Public")));
@@ -53,8 +54,8 @@ app.get('/test', (req, res) => {
   res.render('modals')
 });
 
-app.get('/solution',(req,res)=>{
-  res.render('solution')
+app.get('/msp',(req,res)=>{
+  res.render('msp ')
 
 });
 app.get('/product',(req,res)=>{

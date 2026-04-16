@@ -7,8 +7,11 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
+    volumes: 
+      - .:/app #for Development
     networks:
       - app-network
+    command: ["npm", "run", "dev"] #For development 
 
   nginx:
     image: nginx:stable-alpine

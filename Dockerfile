@@ -7,7 +7,10 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install only production dependencies
-RUN npm install --omit=dev
+# RUN npm install --omit=dev
+
+#For Development 
+RUN npm install
 
 # Copy rest of the application
 COPY . .
