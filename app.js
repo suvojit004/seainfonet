@@ -1,7 +1,10 @@
 const {data,heroCrouselImg, productCard} = require("./Public/Javascript/data"); // Mimic Expernal database 
 
 const express = require('express');
+const mongoose = require("mongoose");
+const helmet = require('helmet');
 const path = require("path");
+const {Product, Email} = require("./models/product")
 
 const app = express();
 const multer = require("multer");
@@ -13,7 +16,12 @@ app.set('views', './views');
 const upload = multer();
 // app.use(express.static(path.join(__dirname, "Public")));
 app.disable('x-powered-by');
-const helmet = require('helmet');
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.log(err));
+
+
 
 //app.use(helmet({
 //    strictTransportSecurity: false,
@@ -41,17 +49,18 @@ app.get('/contact', (req, res) => {
   res.render('contact')
 });
 
-app.post('/submit', upload.none(), (req, res) => {
+app.post('/submit', upload.none(), async (req, res) => {
   console.log("Form Data Received:");
-  console.log(req.body);
+  await new Email({email:`${req.body.email}`}).save();
   res.status(200).json({ message: "Form submitted successfully" });
 });
 
 app.get('/demo', (req, res) => {
   res.render('demo')
 });
-app.get('/test', (req, res) => {
-  res.render('modals')
+app.get('/test', async (req, res) => {
+  res.send(await Email.find());
+
 });
 
 app.get('/msp',(req,res)=>{
@@ -64,6 +73,7 @@ app.get('/product',(req,res)=>{
 app.get('/resource',(req,res)=>{
   res.render('resource')
 });
+
 
 
 
