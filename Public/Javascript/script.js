@@ -76,3 +76,40 @@ async function FormSubMition(event, form, submitUrl, tostId, modalId = null) {  
     }
   }
 }
+
+
+/*floating menu*/
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Select your popover trigger
+  const trigger = document.querySelector('[data-bs-toggle="popover"]');
+
+  // Initialize popover
+  const popover = new bootstrap.Popover(trigger, {
+    trigger: 'manual',
+    html: true,
+    
+  });
+
+  // Toggle on click
+  trigger.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    popover.toggle();
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', function (e) {
+    const pop = document.querySelector('.popover');
+
+    if (!trigger.contains(e.target) && !pop?.contains(e.target)) {
+      popover.hide();
+    }
+  });
+
+});
+
+/*End*/

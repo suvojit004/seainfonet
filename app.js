@@ -64,7 +64,7 @@ app.get('/test', async (req, res) => {
 });
 
 app.get('/msp',(req,res)=>{
-  res.render('msp ')
+  res.render('msp')
 
 });
 app.get('/product',(req,res)=>{

@@ -34,4 +34,4 @@ new Product("Acronis", "Back Up Software", "../Images/ProductImage/product2.jpg"
 new Product("Bytescreen", "Firewall and Sd Wan", "../Images/ProductImage/product3.jpg", "Talk To Our Expert")]
 ];
 
-module.exports = { data, heroCrouselImg, productCard };
+module.exports = { data, heroCrouselImg, productCard,};
