@@ -7,6 +7,12 @@ class Product {
 
     }
 }
+class ResellProduct{
+    constructor(name,url){
+        this.name = name;
+        this.url = url
+    }
+}
 
 class HeroCrousel {
     constructor(imgUrl) {
@@ -14,7 +20,7 @@ class HeroCrousel {
     }
 }
 
-
+const OfferPorduct = [new ResellProduct("Kaspersky", "/product"),new ResellProduct("Acronis", "/product"),new ResellProduct("Bytescreen", "/product")];
 
 const heroCrouselImg = [new HeroCrousel("../Images/herocrousal/image1.jpg"), new HeroCrousel("../Images/herocrousal/image2.jpg")];
 
@@ -34,4 +40,4 @@ new Product("Acronis", "Back Up Software", "../Images/ProductImage/product2.jpg"
 new Product("Bytescreen", "Firewall and Sd Wan", "../Images/ProductImage/product3.jpg", "Talk To Our Expert")]
 ];
 
-module.exports = { data, heroCrouselImg, productCard,};
+module.exports = { data, heroCrouselImg, productCard, OfferPorduct};

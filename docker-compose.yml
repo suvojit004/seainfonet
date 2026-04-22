@@ -6,21 +6,21 @@ services:
       - "3000"
     restart: unless-stopped
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development  # need to change to 'production' after modification
       - MONGO_URI=mongodb://appuser:apppassword@mongodb:27017/mydb
     volumes: 
-      - .:/app #for Development
+      - .:/app:delegated #for Development after that i have remove whole thing
     depends_on:
       - mongodb
     networks:
       - app-network
-    command: ["npm", "run", "dev"] #For development 
+    command: ["npx", "nodemon", "--legacy-watch", "app.js"] #For development 
   
   mongodb:
     image: mongo:8.2.7
     container_name: mongodb
 
-    restart: unless-stopped
+    #restart: unless-stopped      disabling this for development
 
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin

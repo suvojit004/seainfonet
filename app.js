@@ -1,4 +1,4 @@
-const {data,heroCrouselImg, productCard} = require("./Public/Javascript/data"); // Mimic Expernal database 
+const {data,heroCrouselImg, productCard,OfferPorduct } = require("./Public/Javascript/data"); // Mimic Expernal database 
 
 const express = require('express');
 const mongoose = require("mongoose");
@@ -38,15 +38,17 @@ app.get('/', (req, res) => {
   res.render('index', {
     productSenario: data,
     heroImg : heroCrouselImg,
-    productCardData : productCard
+    productCardData : productCard,
+    navData : OfferPorduct
   });
+ 
 });
 
 app.get('/about', (req, res) => {
-  res.render('about')
+  res.render('about',{navData : OfferPorduct})
 });
 app.get('/contact', (req, res) => {
-  res.render('contact')
+  res.render('contact',{navData : OfferPorduct})
 });
 
 app.post('/submit', upload.none(), async (req, res) => {
@@ -56,7 +58,7 @@ app.post('/submit', upload.none(), async (req, res) => {
 });
 
 app.get('/demo', (req, res) => {
-  res.render('demo')
+  res.render('demo',{navData : OfferPorduct})
 });
 app.get('/test', async (req, res) => {
   res.send(await Email.find());
@@ -64,14 +66,14 @@ app.get('/test', async (req, res) => {
 });
 
 app.get('/msp',(req,res)=>{
-  res.render('msp')
+  res.render('msp',{navData : OfferPorduct})
 
 });
 app.get('/product',(req,res)=>{
-  res.render('product')
+  res.render('product',{navData : OfferPorduct})
 });
 app.get('/resource',(req,res)=>{
-  res.render('resource')
+  res.render('resource',{navData : OfferPorduct})
 });
 
 
@@ -79,13 +81,13 @@ app.get('/resource',(req,res)=>{
 
 // custom 404
 app.use((req, res, next) => {
-  res.status(404).render('404')
+  res.status(404).render('404',{navData : OfferPorduct})
 });
 
 // custom error handler
 app.use((err, req, res, next) => {
   console.error(err.stack)
-  res.status(500).render('5xx')
+  res.status(500).render('5xx',{navData : OfferPorduct})
 });
 
 app.listen(port, () => {

@@ -1,9 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary SEAnav">
   <div class="container">
-
     <!-- Logo (Left) -->
     <a class="navbar-brand" href="/">
-      <img id="NavImage" src="../Images/Companylogo/SEAInfonetLogo.png" alt="" height="40">
+      <img id="NavImage" src="../Images/Companylogo/SEAInfonetLogo.png" alt="" height="40" />
     </a>
 
     <!-- Toggle Button (Mobile) -->
@@ -15,61 +14,30 @@
     <div class="collapse navbar-collapse justify-content-end" id="topNav">
       <ul class="navbar-nav ms-auto gap-lg-4">
         <li class="nav-item"><a class="nav-link" href="/msp">MSP</a></li>
-        <li class="nav-item"><a class="nav-link" href="/contact">Partners</a></li>
         <li class="nav-item">
-          <a class="nav-link " data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom"
-            data-bs-content='
-
-            <div class="container-fluid popover">
-      <div class="row">
-
-        <!-- LEFT: PRODUCTS -->
-        <div class="col-5 border-end">
-          <h6 class="mb-2">Products</h6>
-          <a href="#" class="d-block py-1 product-item active" data-product="dlp">🔐 DLP</a>
-          <a href="#" class="d-block py-1 product-item" data-product="endpoint">🛡 Endpoint</a>
-          <a href="#" class="d-block py-1 product-item" data-product="encryption">🔑 Encryption jsajdkasjdkasjdklasjdklsajdklsajdklsajdksajdksajdk kjdaskjdkasj</a>
-        </div>
-
-        <!-- RIGHT: SOLUTIONS -->
-        <div class="col-7">
-
-          <div class="solution-panel" data-product="dlp">
-            <h6>DLP Solutions</h6>
-            <a href="#" class="d-block py-1">Data Protection</a>
-            <a href="#" class="d-block py-1">Insider Threat</a>
-            <a href="#" class="d-block py-1">Compliance</a>
-          </div>
-
-          <div class="solution-panel d-none" data-product="endpoint">
-            <h6>Endpoint Solutions</h6>
-            <a href="#" class="d-block py-1">Device Control</a>
-            <a href="#" class="d-block py-1">Monitoring</a>
-            <a href="#" class="d-block py-1">Patch Mgmt</a>
-          </div>
-
-          <div class="solution-panel d-none" data-product="encryption">
-            <h6>Encryption Solutions</h6>
-            <a href="#" class="d-block py-1">Disk Encryption</a>
-            <a href="#" class="d-block py-1">Email Encryption</a>
-            <a href="#" class="d-block py-1">File Security</a>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-            ' data-bs-html="true">
-            Products
-          </a> 
+          <a class="nav-link" href="/contact">Partners</a>
         </li>
-        <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="/demo">Request Demo</a></li>
-        <li class="nav-item"><a class="nav-link" href="/resource">Resources</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </a>
+          <ul class="dropdown-menu">
+            <% data.forEach(element => { %>
+              <li><a class="dropdown-item" href="<%= element.url %>"><%= element.name %></a></li>
+            <% }); %>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/demo">Request Demo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/resource">Resources</a>
+        </li>
         <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
       </ul>
-
     </div>
   </div>
 </nav>

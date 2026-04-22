@@ -10,7 +10,7 @@ COPY package*.json ./
 # RUN npm install --omit=dev
 
 #For Development 
-RUN npm install
+RUN npm install 
 
 # Copy rest of the application
 COPY . .
@@ -19,4 +19,6 @@ COPY . .
 EXPOSE 3000
 
 # Start the app
-CMD ["node", "app.js"]
+CMD ["npm", "run", "dev"]  
+
+# ["node", "app.js"] need to change for production
