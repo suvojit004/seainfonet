@@ -1,0 +1,30 @@
+<%- include ('header') %>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3 class="fw-semibold">Pages</h3>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="/homeData" class="btn">Home</a></li>
+                    <li class="list-group-item"><a href="/productData" class="btn">Product</a></li>
+                    <li class="list-group-item"><a href="/formData" class="btn">FormData</a></li>
+                </ul>
+            </div>
+            <div class="col ">
+                <h3 class="fw-semibold">Home</h3>
+                <% data.forEach(item=> { %>
+                    <div>
+                        
+                        <p>
+                            <%= item.name %>
+                            <%= item.email %>
+                            <%= item.subject %>
+                            <%= item.description %>
+                            <%= item.product %>
+                        </p>
+                        
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+    </div>
+    <%- include ('footer') %>
