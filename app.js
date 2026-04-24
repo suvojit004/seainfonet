@@ -7,6 +7,7 @@ const path = require("path");
 const { Product, Email } = require("./models/product");
 const { HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm } = require("./models/schema");
 const routeCarousel = require("./routes/carouselRoutes");
+const routeProductScenario = require("./routes/productScenarioRoutes");
 
 const app = express();
 const multer = require("multer");
@@ -38,7 +39,7 @@ const port = 3000;
 
 app.get('/', async (req, res) => {
   res.render('index', {
-    productSenario: data,
+    productSenario: await HomeProductScenario.find(),
     heroImg: await HomeCarousel.find(),
     productCardData: productCard,
     navData: OfferPorduct
@@ -89,6 +90,7 @@ app.get('/resource', (req, res) => {
 });
 
 app.use('/carousel',routeCarousel);
+app.use('/productscenario', routeProductScenario);
 
 
 // custom 404
