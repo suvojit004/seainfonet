@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 const helmet = require('helmet');
 const path = require("path");
 const { Product, Email } = require("./models/product");
-const { ContactForm, DemoForm } = require("./models/schema");
+const { HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm } = require("./models/schema");
+const routeCarousel = require("./routes/carouselRoutes");
 
 const app = express();
 const multer = require("multer");
@@ -35,10 +36,10 @@ mongoose.connect(process.env.MONGO_URI)
 
 const port = 3000;
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   res.render('index', {
     productSenario: data,
-    heroImg: heroCrouselImg,
+    heroImg: await HomeCarousel.find(),
     productCardData: productCard,
     navData: OfferPorduct
   });
@@ -87,7 +88,7 @@ app.get('/resource', (req, res) => {
   res.render('resource', { navData: OfferPorduct })
 });
 
-
+app.use('/carousel',routeCarousel);
 
 
 // custom 404
