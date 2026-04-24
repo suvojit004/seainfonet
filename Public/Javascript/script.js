@@ -13,7 +13,7 @@ productSenario_Button.forEach(button => {
     if (!button.classList.contains("active")) {
       productSenario_Button.forEach(btn => btn.classList.remove('active'));
       button.classList.add("active")
-      productSenario_title.textContent = DATA[Number(button.dataset.index)].title; // DATA array is available in the page
+      productSenario_title.textContent = DATA[Number(button.dataset.index)].name; // DATA array is available in the page
       productSenario_description.textContent = DATA[Number(button.dataset.index)].description;
       productSenario_img.src = DATA[Number(button.dataset.index)].url;
       productSenario_inside_button.textContent =  DATA[Number(button.dataset.index)].btntxt;

@@ -1,39 +1,21 @@
 <div class="container">
-  <div id="HomePageProduct" class="row gx-3">
-
-      <div class="col-md-4">
-      <div class="card text-center h-auto custom-hover">
-        <img src=<%= data[1].url %> class="card-img-top p-3" alt="">
-        <div class="card-body">
-          <h5 class="card-title"><%= data[1].title %></h5>
-          <p class="card-text"><%= data[2].description %>
-          </p>
-          <button class="btn btn-primary productSenario-btn" data-bs-toggle="modal" data-bs-target="#talkToExpert"><%= data[1].btntxt %></button>
-        </div>
+  <div id="HomePageProduct" class="row gx-3 justify-content-center">
+    <% data.forEach((item) => { %>
+  <div class="col-md-4">
+    <div class="card text-center h-auto custom-hover">
+      <img src="<%= item.url %>" class="card-img-top p-3" alt="">
+      <div class="card-body">
+        <h5 class="card-title"><%= item.name %></h5>
+        <p class="card-text"><%= item.description %></p>
+        <button class="btn btn-primary productSenario-btn"
+          data-bs-toggle="modal"
+          data-bs-target="#talkToExpert">
+          <%= item.btntxt %>
+        </button>
       </div>
     </div>
-
-     <div class="col-md-4">
-      <div class="card text-center h-auto custom-hover">
-        <img src=<%= data[0].url %> class="card-img-top p-3" alt="">
-        <div class="card-body">
-          <h5 class="card-title"><%= data[0].title %></h5>
-          <p class="card-text"><%= data[0].description %></p>
-          <button class="btn btn-primary productSenario-btn" data-bs-toggle="modal" data-bs-target="#talkToExpert"><%= data[0].btntxt %></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card text-center h-auto custom-hover">
-        <img src=<%= data[2].url %> class="card-img-top p-3" alt="">
-        <div class="card-body">
-          <h5 class="card-title"><%= data[2].title %></h5>
-          <p class="card-text"><%= data[2].description %></p>
-          <button class="btn btn-primary productSenario-btn" data-bs-toggle="modal" data-bs-target="#talkToExpert"><%= data[2].btntxt %></button>
-        </div>
-      </div>
-    </div>
+  </div>
+<% }) %>
 
   </div>
 </div>

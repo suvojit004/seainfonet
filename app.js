@@ -8,6 +8,7 @@ const { Product, Email } = require("./models/product");
 const { HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm } = require("./models/schema");
 const routeCarousel = require("./routes/carouselRoutes");
 const routeProductScenario = require("./routes/productScenarioRoutes");
+const routeProduct = require("./routes/productRoutes");
 
 const app = express();
 const multer = require("multer");
@@ -41,7 +42,7 @@ app.get('/', async (req, res) => {
   res.render('index', {
     productSenario: await HomeProductScenario.find(),
     heroImg: await HomeCarousel.find(),
-    productCardData: productCard,
+    productCardData: chunkArray(await HomeProduct.find()),
     navData: OfferPorduct
   });
 
@@ -91,6 +92,7 @@ app.get('/resource', (req, res) => {
 
 app.use('/carousel',routeCarousel);
 app.use('/productscenario', routeProductScenario);
+app.use('/homeproduct', routeProduct);
 
 
 // custom 404
@@ -109,3 +111,12 @@ app.listen(port, () => {
 });
 
 
+function chunkArray(arr, size = 3) {
+  const result = [];
+
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+
+  return result;
+}
