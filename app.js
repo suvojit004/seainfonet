@@ -9,6 +9,8 @@ const { HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm
 const routeCarousel = require("./routes/carouselRoutes");
 const routeProductScenario = require("./routes/productScenarioRoutes");
 const routeProduct = require("./routes/productRoutes");
+const routeProductPage = require("./routes/productPageRoutes");
+const ProductPage = require("./models/productPageSchema");
 
 const app = express();
 const multer = require("multer");
@@ -42,17 +44,16 @@ app.get('/', async (req, res) => {
   res.render('index', {
     productSenario: await HomeProductScenario.find(),
     heroImg: await HomeCarousel.find(),
-    productCardData: chunkArray(await HomeProduct.find()),
-    navData: OfferPorduct
+    productCardData: chunkArray(await HomeProduct.find())
   });
 
 });
 
 app.get('/about', (req, res) => {
-  res.render('about', { navData: OfferPorduct })
+  res.render('about')
 });
 app.get('/contact', (req, res) => {
-  res.render('contact', { navData: OfferPorduct })
+  res.render('contact')
 });
 
 app.post('/submit', upload.none(), async (req, res) => {
@@ -67,12 +68,12 @@ app.post('/submit', upload.none(), async (req, res) => {
 });
 
 app.get('/demo', (req, res) => {
-  res.render('demo', { navData: OfferPorduct })
+  res.render('demo')
 });
 
 app.get('/admin', async (req, res) => {
   const formData = [await DemoForm.find(), await ContactForm.find()].flat();
-  res.render('admin', {data: formData});
+  res.render('admin');
 })
 
 app.get('/login', (req, res) => {
@@ -80,30 +81,45 @@ app.get('/login', (req, res) => {
 })
 
 app.get('/msp', (req, res) => {
-  res.render('msp', { navData: OfferPorduct })
+  res.render('msp')
 
 });
-app.get('/product', (req, res) => {
-  res.render('product', { navData: OfferPorduct })
+app.get('/product/:productKey', async (req, res, next) => {
+  try {
+    const key = req.params.productKey.toLowerCase();
+    const item = await ProductPage.findOne({ productKey: key });
+    if (!item) {
+      return res.status(404).render('404');
+    }
+    res.render('product', { data: item })
+  } catch (err) {
+    next(err);
+  }
+
 });
+
+
+
+
 app.get('/resource', (req, res) => {
-  res.render('resource', { navData: OfferPorduct })
+  res.render('resource')
 });
 
-app.use('/carousel',routeCarousel);
+app.use('/carousel', routeCarousel);
 app.use('/productscenario', routeProductScenario);
 app.use('/homeproduct', routeProduct);
+app.use('/productpage', routeProductPage)
 
 
 // custom 404
 app.use((req, res, next) => {
-  res.status(404).render('404', { navData: OfferPorduct })
+  res.status(404).render('404')
 });
 
 // custom error handler
 app.use((err, req, res, next) => {
   console.error(err.stack)
-  res.status(500).render('5xx', { navData: OfferPorduct })
+  res.status(500).render('5xx')
 });
 
 app.listen(port, () => {

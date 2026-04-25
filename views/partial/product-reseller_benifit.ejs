@@ -5,10 +5,12 @@
     <div class="row text-center pb-4 hover">
       <div class="col-md-6">
         <div >
-         <ul class="list-unstyled list-group">   
-        <li class="list-group-item">Dedicated support from SEA Infonet</li>
-        <li class="list-group-item"> Pre-sales assistance</li>
-        <li class="list-group-item"> Deal registration support</li>
+         <ul class="list-unstyled list-group">
+          <% data[0].left.forEach(element => {%>
+            <li class="list-group-item"><%= element %></li>
+         <% }); %>   
+        
+    
         </ul>
         </div>
       </div>
@@ -16,9 +18,10 @@
       <div class="col-md-6">
         <div >
             <ul class="list-unstyled list-group">
-        <li class="list-group-item"> Marketing materials</li>
-        <li class="list-group-item"> Training & certification</li>
-        <li class="list-group-item"> Fast license activation</li>
+          <% data[0].right.forEach(element => {%>
+            <li class="list-group-item"><%= element %></li>
+         <% }); %>   
+        
         </ul>
         </div>
       </div>
@@ -28,8 +31,8 @@
 
 <section class="mb-4 pb-4 pt-4 text-white text-center" style="background:#226c58;">
   <div class="container">
-    <h2>Why SEA Infonet</h2>
-    <p>Authorized distributor with PAN India support, strong vendor relationships, and fast turnaround</p>
+    <h2><%= data[1].title %></h2>
+    <p><%= data[1].description %></p>
   </div>
 </section>
 

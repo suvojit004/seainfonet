@@ -12,23 +12,14 @@
       </thead>
 
       <tbody>
-        <tr>
-          <td>Basic</td>
-          <td>Small Business</td>
-          <td>Antivirus Protection</td>
+        <% data.forEach(element => {%>
+          <tr>
+          <td><%= element.plan %></td>
+          <td><%= element.bestFor %></td>
+          <td><%= element.keyFeatures %></td>
         </tr>
-
-        <tr>
-          <td>Advanced</td>
-          <td>Growing Companies</td>
-          <td>EDR + Firewall</td>
-        </tr>
-
-        <tr>
-          <td>Premium</td>
-          <td>Enterprise</td>
-          <td>Full Cyber Protection</td>
-        </tr>
+        <% }); %>
+        
       </tbody>
     </table>
   </div>

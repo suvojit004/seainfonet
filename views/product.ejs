@@ -1,12 +1,13 @@
 <%- include('header') %>
-<%- include('navbar',{data: navData}) %>
-<%- include('./partial/product-hero') %>
-<%- include('./partial/product-why') %>
-<%- include('./partial/product-folio-product') %>
-<%- include('./partial/product-key_feature') %>
-<%- include('./partial/product-use_case') %>
-<%- include('./partial/product-plan') %>
-<%- include('./partial/product-reseller_benifit') %>
-<%- include('./partial/product-resource') %>
-<%- include('./partial/product-faq') %>
+<%- include('navbar') %>
+<%- include('./partial/product-hero',{data: data.hero}) %>
+<%- include('./partial/product-why',{data: data.whyThisProduct}) %>
+<%- include('./partial/product-folio-product',{data: data.products}) %>
+<%- include('./partial/product-key_feature',{data: data.keyFeatures}) %>
+<%- include('./partial/product-use_case',{data:data.useCases}) %>
+<%- include('./partial/product-plan',{data: data.plans}) %>
+<%- include('./partial/product-reseller_benifit',{data: [data.resellerBenefits,data.whySeaInfonet]}) %>
+<%- include('./partial/product-resource',{data: data.resources}) %>
+<%- include('./partial/product-faq',{data: data.faqs}) %>
+<%- include('./partial/product-final-cta',{data: data.finalCTA}) %>
 <%- include('footer') %>

@@ -1,28 +1,31 @@
 <section class="mb-4">
   <div class="container card">
     <div class="row align-items-center">
-        
+
       <div class="col-md-6 text-center">
-        <img src="/Images/Productimage/product1.jpg" class="img-fluid" alt="product">
+        <img src="<%= data.image %>" class="img-fluid" alt="product">
       </div>
 
       <div class="col-md-6">
-        <h1 class="text-center">Why This Product</h1>
-        <p class="lead text-center">Enterprise-grade protection your clients trust</p>
+        <h1 class="text-center">
+          <%= data.title %>
+        </h1>
+        <p class="lead text-center">
+          <%= data.subtitle %>
+        </p>
 
-        <ul >
-          <li>
-          <h5>High Renewal Rate</h5>
-          <p>Ensures recurring revenue</p>
-          </li>
-          <li>
-            <h5>Strong Market Demand</h5>
-          <p>Popular among SMEs & enterprises</p>
-          </li>
-          <li>
-             <h5>Upsell Opportunities</h5>
-          <p>Easy to expand client value</p>
-          </li>
+        <ul>
+          <% data.points.forEach(element=> {%>
+            <li>
+              <h5>
+                <%= element.title %>
+              </h5>
+              <p>
+                <%= element.description %>
+              </p>
+            </li>
+            <%}); %>
+
         </ul>
       </div>
 

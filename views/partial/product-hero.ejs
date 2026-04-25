@@ -3,22 +3,22 @@
     <div class="row align-items-center">
 
       <div class="col-md-6">
-        <h1>Kaspersky Endpoint Security</h1>
-        <p class="lead">Enterprise-grade protection your clients trust</p>
+        <h1><%= data.title %></h1>
+        <p class="lead"><%= data.subtitle %></p>
 
         <ul >
-          <li>High reseller margin</li>
-          <li>Easy deployment</li>
-          <li>Strong brand demand</li>
+          <% data.highlights.forEach(element => {%>
+            <li><%= element %></li>
+         <% }); %>
         </ul>
 
-        <a class="btn btn-primary me-2">Become a Partner</a>
-        <a class="btn btn-outline-primary me-2">Request Pricing</a>
-        <a class="btn btn-outline-secondary">Download Datasheet</a>
+        <% data.buttons.forEach(element => {%>
+          <a class="btn btn-primary me-2" href="<%= element.link %>"><%= element.text %> </a>
+       <% }); %>
       </div>
 
       <div class="col-md-6 text-center">
-        <img src="/Images/Productimage/product1.jpg" class="img-fluid" alt="product">
+        <img src="<%= data.image %>" class="img-fluid" alt="product">
       </div>
 
     </div>

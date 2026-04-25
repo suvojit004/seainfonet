@@ -2,7 +2,7 @@
   <div class="container">
     <!-- Logo (Left) -->
     <a class="navbar-brand" href="/">
-      <img id="NavImage" src="../Images/Companylogo/SEAInfonetLogo.png" alt="" height="40" />
+      <img id="NavImage" src="/Images/Companylogo/SEAInfonetLogo.png" alt="" height="40" />
     </a>
 
     <!-- Toggle Button (Mobile) -->
@@ -22,9 +22,10 @@
             Products
           </a>
           <ul class="dropdown-menu">
-            <% data.forEach(element => { %>
-              <li><a class="dropdown-item" href="<%= element.url %>"><%= element.name %></a></li>
-            <% }); %>
+           
+            <li><a class="dropdown-item" href="/product/kaspersky">Kaspersky</a></li>
+            <li><a class="dropdown-item" href="/product/bytescreen">Bytescreen</a></li>
+            <li><a class="dropdown-item" href="/product/acronis">Acronis</a></li>
           </ul>
         </li>
         <li class="nav-item">
