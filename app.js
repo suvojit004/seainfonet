@@ -10,6 +10,7 @@ const routeCarousel = require("./routes/carouselRoutes");
 const routeProductScenario = require("./routes/productScenarioRoutes");
 const routeProduct = require("./routes/productRoutes");
 const routeProductPage = require("./routes/productPageRoutes");
+const routeForms = require("./routes/formRoutes");
 const ProductPage = require("./models/productPageSchema");
 
 const app = express();
@@ -108,7 +109,8 @@ app.get('/resource', (req, res) => {
 app.use('/carousel', routeCarousel);
 app.use('/productscenario', routeProductScenario);
 app.use('/homeproduct', routeProduct);
-app.use('/productpage', routeProductPage)
+app.use('/productpage', routeProductPage);
+app.use('/form', routeForms);
 
 
 // custom 404
