@@ -47,6 +47,7 @@ app.get('/', async (req, res) => {
     productCardData: chunkArray(await HomeProduct.find())
   });
 
+
 });
 
 app.get('/about', (req, res) => {
@@ -71,9 +72,8 @@ app.get('/demo', (req, res) => {
   res.render('demo')
 });
 
-app.get('/admin', async (req, res) => {
-  const formData = [await DemoForm.find(), await ContactForm.find()].flat();
-  res.render('admin');
+app.get('/admin/show', async (req, res) => {
+  res.render('admin/show');
 })
 
 app.get('/login', (req, res) => {

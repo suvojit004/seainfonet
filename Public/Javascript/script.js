@@ -16,7 +16,7 @@ productSenario_Button.forEach(button => {
       productSenario_title.textContent = DATA[Number(button.dataset.index)].name; // DATA array is available in the page
       productSenario_description.textContent = DATA[Number(button.dataset.index)].description;
       productSenario_img.src = DATA[Number(button.dataset.index)].url;
-      productSenario_inside_button.textContent =  DATA[Number(button.dataset.index)].btntxt;
+      productSenario_inside_button.textContent = DATA[Number(button.dataset.index)].btntxt;
     }
   });
 });
