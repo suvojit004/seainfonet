@@ -61,10 +61,11 @@ app.get('/contact', (req, res) => {
 app.post('/submit', upload.none(), async (req, res) => {
   console.log("Form Data Received:");
   if (req.body.product) {
-    await new DemoForm({ name: `${req.body.name}`, number: `${req.body.phone}`, product: `${req.body.product}`, email: `${req.body.email}`, subject: `${req.body.subject}`, description: `${req.body.description}` }).save();
+    await new DemoForm({...req.body}).save();
+
   }
   else {
-    await new ContactForm({ name: `${req.body.name}`, number: `${req.body.phone}`, email: `${req.body.email}`, subject: `${req.body.subject}`, description: `${req.body.description}` }).save();
+    await new ContactForm({ name: `${req.body.name}`, number: `${req.body.number}`, email: `${req.body.email}`, subject: `${req.body.subject}`, description: `${req.body.description}` }).save();
   }
   res.status(200).json({ message: "Form submitted successfully" });
 });

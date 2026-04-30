@@ -6,6 +6,7 @@ const CarouselButton = document.querySelector(".Carousel")
 const ProductsButton = document.querySelector(".Products")
 const UseCasesButton = document.querySelector(".Use-Cases")
 const formButton = document.querySelector('[data-section="Forms"]');
+const demoFormButton = document.querySelector('[data-section="Demo-Forms"]');
 sectionButtons.forEach(button => {
   button.addEventListener("click", function () {
     sectionButtons.forEach(btn => btn.classList.remove("active"));
@@ -20,39 +21,6 @@ sectionButtons.forEach(button => {
   });
 });
 
-async function openModal(modalId, url) {
-  const modal = new bootstrap.Modal(document.getElementById(modalId));
-  modal.show();
-
-  document
-    .getElementById(modalId)
-    .addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      await createData(url, data)
-      modal.hide();
-    });
-
-}
-contentArea.addEventListener("click", async (e) => {
-  const target = e.target;
-  if (target.classList.contains("new-btn")) {
-    const url = target.dataset.url;
-    // open bootstrap modal
-    await openModal("createCarouselModal", url)
-  }
-  if (target.classList.contains("delete-btn")) {
-    const id = target.dataset.id;
-    const url = target.dataset.url
-
-    await deleteData(url, id)
-    await loadUi(url)
-  }
-
-})
 
 CarouselButton.addEventListener("click", async () => {
   await loadUi('/carousel')
@@ -66,11 +34,123 @@ UseCasesButton.addEventListener("click", async () => {
 formButton.addEventListener("click", async () => {
   await loadUi('/form/contactform')
 })
+demoFormButton.addEventListener("click", async () => {
+  await loadUi('/form/demoform')
+})
+
+
+contentArea.addEventListener("click", async (e) => {
+  const target = e.target;
+  if (target.classList.contains("new-btn")) {
+    const url = target.dataset.url;
+    // open bootstrap modal
+    if (url === "/carousel") {
+      await openModal("createCarouselModal", url)
+    }
+    else if (url === "/homeproduct" || url === "/productscenario") {
+      await openModal("createProductModal", url)
+    }
+    else if (url === "/productpage") {
+      console.log(url);
+    }
+
+  }
+  else if (target.classList.contains("edit-btn")) {
+    openEditModal(JSON.parse(target.dataset.data), target.dataset.url)
+
+  }
+
+  else if (target.classList.contains("delete-btn")) {
+    const id = target.dataset.id;
+    const url = target.dataset.url
+
+    await deleteData(url, id)
+    await loadUi(url)
+  }
+
+})
+
+
+
+
+
+async function openModal(modalId, url) {
+  const modalElement = document.getElementById(modalId);
+  const modal = new bootstrap.Modal(modalElement);
+  const form = modalElement.querySelector("form");
+
+  if (!form) return;
+
+  modal.show();
+
+  form.onsubmit = async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    await createData(url, data);
+    await loadUi(url);
+
+    modal.hide();
+    form.reset();
+  };
+}
+
+async function openEditModal(data, url) {
+  const modalElement = document.getElementById("editModal");
+  const modal = new bootstrap.Modal(modalElement);
+  const form = modalElement.querySelector("#editForm");
+  const fieldsContainer = modalElement.querySelector("#editFormFields");
+
+  if (!form || !fieldsContainer) return;
+
+  const hiddenFields = ["_id", "__v", "createdAt", "updatedAt"];
+
+  fieldsContainer.innerHTML = Object.keys(data)
+    .filter((key) => !hiddenFields.includes(key))
+    .map((key) => {
+      const value = data[key] ?? "";
+
+      return `
+        <div class="mb-3">
+          <label class="form-label text-capitalize">${key}</label>
+          <input 
+            type="text" 
+            name="${key}" 
+            class="form-control" 
+            value="${value}"
+          />
+        </div>
+      `;
+    })
+    .join("");
+
+  modal.show();
+
+  form.onsubmit = async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const updatedData = Object.fromEntries(formData.entries());
+
+    await editData(url, data._id, updatedData);
+    await loadUi(url)
+
+
+    modal.hide();
+    form.reset();
+  };
+}
+
+
+
+
 
 
 async function loadUi(url) {
   const data = await loadData(url);
-  const hiddenColumns = ["createdAt", "updatedAt", "__v"];
+  const hiddenColumns = ["_id", "createdAt", "updatedAt", "__v"];
 
   if (!data.success || data.data.length === 0) {
     contentArea.innerHTML = `<p>No data found</p>
@@ -97,7 +177,7 @@ async function loadUi(url) {
                 <tr>
                   ${headers.map(key => `<td>${row[key] ?? ""}</td>`).join("")}
                   <td>
-                  <button class="btn btn-sm btn-primary edit-btn" data-id="${row._id}" data-url="${url}">Edit</button>
+                  <button class="btn btn-sm btn-primary edit-btn" data-id="${row._id}" data-url="${url}" data-data='${JSON.stringify(row)}'>Edit</button>
                   <button class="btn btn-sm btn-danger delete-btn" data-id="${row._id}" data-url="${url}">Delete</button>
                   </td>
                 </tr>
