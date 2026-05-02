@@ -77,6 +77,20 @@ app.get('/demo', (req, res) => {
 app.get('/admin/show', async (req, res) => {
   res.render('admin/show');
 })
+app.get('/admin/product/:productKey', async (req, res, next) => {
+  try {
+    const key = req.params.productKey.toLowerCase();
+    const item = await ProductPage.findOne({ productKey: key });
+    if (!item) {
+      return res.status(404).render('404');
+    }
+    res.render('product-admin', { data: item })
+  } catch (err) {
+    next(err);
+  }
+
+});
+
 
 app.get('/login', (req, res) => {
   res.redirect('/admin')

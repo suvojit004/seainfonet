@@ -1,0 +1,46 @@
+<section class="mb-4">
+  <div class="container  bg-white">
+    <h2 class="text-center mb-4 pt-4 fw-semibold">Products</h2>
+
+    <form id="productsForm" data-productkey="<%= productKey %>" class="pb-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Products</h4>
+    <button type="button" class="btn btn-sm btn-outline-primary" onclick="addProductCard()">Add Product</button>
+  </div>
+
+  <div class="row g-3" id="productsWrapper">
+    <% (products || []).forEach((item, index) => { %>
+      <div class="col-md-3 product-card-item">
+        <div class="card custom-hover h-100">
+          <div class="card-body">
+            <div class="mb-2">
+              <label class="form-label">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                name="products[<%= index %>][title]"
+                value="<%= item.title || '' %>">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea
+                class="form-control"
+                name="products[<%= index %>][description]"
+                rows="4"><%= item.description || '' %></textarea>
+            </div>
+
+            <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeProductCard(this)">Remove</button>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <div class="text-end mt-4">
+    <button type="submit" class="btn btn-primary px-4">Save Products</button>
+  </div>
+</form>
+  </div>
+</section>

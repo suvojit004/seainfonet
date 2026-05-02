@@ -28,6 +28,7 @@ routeProduct.get("/", async (req, res, next) => {
 // UPDATE
 routeProduct.put("/:id", async (req, res, next) => {
   try {
+    
     const updated = await HomeProduct.findByIdAndUpdate(
       req.params.id,
       req.body,

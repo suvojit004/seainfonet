@@ -1,0 +1,109 @@
+<section class=" bg-white mb-4">
+  <div class="container">
+    <form id="heroForm" class="row align-items-center g-4">
+
+  <!-- Left Content -->
+  <div class="col-md-6">
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Title</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        name="title" 
+        value="<%= hero.title || '' %>">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Subtitle</label>
+      <textarea 
+        class="form-control" 
+        name="subtitle" 
+        rows="3"><%= hero.subtitle || '' %></textarea>
+    </div>
+
+    <!-- Highlights -->
+    <div class="mb-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <label class="form-label fw-semibold mb-0">Highlights</label>
+        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addHighlight()">Add Highlight</button>
+      </div>
+
+      <div id="highlightsWrapper">
+        <% (hero.highlights || []).forEach((item, index) => { %>
+          <div class="input-group mb-2 highlight-item">
+            <input 
+              type="text" 
+              class="form-control" 
+              name="highlights[<%= index %>]" 
+              value="<%= item %>">
+            <button type="button" class="btn btn-outline-danger" onclick="this.parentElement.remove()">Remove</button>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="mb-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <label class="form-label fw-semibold mb-0">Buttons</label>
+        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addHeroButton()">Add Button</button>
+      </div>
+
+      <div id="heroButtonsWrapper">
+        <% (hero.buttons || []).forEach((btn, index) => { %>
+          <div class="border rounded-3 p-3 mb-3 hero-btn-item">
+            <div class="mb-2">
+              <label class="form-label">Button Text</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                name="buttons[<%= index %>][text]" 
+                value="<%= btn.text || '' %>">
+            </div>
+            <div class="mb-2">
+              <label class="form-label">Button Link</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                name="buttons[<%= index %>][link]" 
+                value="<%= btn.link || '' %>">
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-danger" onclick="this.parentElement.remove()">Remove</button>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Content -->
+  <div class="col-md-6">
+    <div class="border rounded-4 p-3 bg-light text-center">
+      <img src="<%= hero.image %>" class="img-fluid rounded-3 mb-3" alt="product">
+
+      <!-- Hidden actual image value -->
+      <input 
+        type="hidden" 
+        name="image" 
+        value="<%= hero.image || '' %>">
+
+      <!-- Optional image selector -->
+      <div class="text-start">
+        <label class="form-label fw-semibold">Change Image</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          name="imagePreview" 
+          placeholder="Enter new image path">
+        <small class="text-muted">Current image path is preserved unless changed.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="col-12 text-end">
+    <button type="submit" class="btn btn-primary px-4">Save Hero Section</button>
+  </div>
+</form>
+
+  </div>
+</section>

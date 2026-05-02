@@ -1,0 +1,89 @@
+<section class="mb-4">
+  <div class="container card">
+    <div class="row align-items-center">
+
+     <form id="whyProductForm" data-productkey="<%= productKey %>" class="row align-items-center g-4">
+
+  <!-- Left Image -->
+  <div class="col-md-6 text-center">
+    <div class="border rounded-4 p-3 bg-light">
+      <img src="<%= whyThisProduct.image %>" class="img-fluid rounded-3 mb-3" alt="product">
+
+      <!-- Hidden actual image -->
+      <input type="hidden" name="image" value="<%= whyThisProduct.image %>">
+
+      <!-- Optional replace -->
+      <div class="text-start">
+        <label class="form-label fw-semibold">Change Image</label>
+        <input
+          type="text"
+          class="form-control"
+          name="imagePreview"
+          placeholder="Enter new image path">
+        <small class="text-muted">Current image path is preserved unless changed.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Content -->
+  <div class="col-md-6">
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        value="<%= whyThisProduct.title || '' %>">
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label fw-semibold">Subtitle</label>
+      <textarea
+        class="form-control"
+        name="subtitle"
+        rows="3"><%= whyThisProduct.subtitle || '' %></textarea>
+    </div>
+
+    <!-- Points -->
+    <div class="mb-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <label class="form-label fw-semibold mb-0">Points</label>
+        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addWhyPoint()">Add Point</button>
+      </div>
+
+      <div id="whyPointsWrapper">
+        <% (whyThisProduct.points || []).forEach((point, index) => { %>
+          <div class="border rounded-3 p-3 mb-3 why-point-item">
+            <div class="mb-2">
+              <label class="form-label">Point Title</label>
+              <input
+                type="text"
+                class="form-control"
+                name="points[<%= index %>][title]"
+                value="<%= point.title || '' %>">
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label">Point Description</label>
+              <textarea
+                class="form-control"
+                name="points[<%= index %>][description]"
+                rows="3"><%= point.description || '' %></textarea>
+            </div>
+
+            <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeWhyPoint(this)">Remove</button>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="col-12 text-end">
+    <button type="submit" class="btn btn-primary px-4">Save Section</button>
+  </div>
+</form>
+
+    </div>
+  </div>
+</section>

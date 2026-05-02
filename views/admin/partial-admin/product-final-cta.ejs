@@ -1,0 +1,8 @@
+<section class="py-5 text-center bg-success text-white">
+  <div class="container">
+    <h2><%= data.title %></h2>
+    <% data.buttons.forEach(element => {%>
+        <a class="btn m-2" href="<%= element.link %>"><%= element.text %></a>
+    <%}); %>
+  </div>
+</section>

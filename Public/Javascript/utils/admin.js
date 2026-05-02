@@ -5,6 +5,7 @@ const contentArea = document.getElementById("content-area");
 const CarouselButton = document.querySelector(".Carousel")
 const ProductsButton = document.querySelector(".Products")
 const UseCasesButton = document.querySelector(".Use-Cases")
+const porductPageButton = document.querySelector('[data-section="Products"]');
 const formButton = document.querySelector('[data-section="Forms"]');
 const demoFormButton = document.querySelector('[data-section="Demo-Forms"]');
 sectionButtons.forEach(button => {
@@ -36,6 +37,9 @@ formButton.addEventListener("click", async () => {
 })
 demoFormButton.addEventListener("click", async () => {
   await loadUi('/form/demoform')
+})
+porductPageButton.addEventListener("click",async ()=>{
+  console.log('clicked')
 })
 
 
@@ -191,6 +195,11 @@ async function loadUi(url) {
     contentArea.innerHTML = ui;
   }
 }
+
+/* Start*/
+
+/* end */
+
 
 
 async function loadData(url) {
