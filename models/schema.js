@@ -40,6 +40,24 @@ const demoFormSchema = new mongoose.Schema({
     product: { type: String, required: true, trim: true }
 }, { timestamps: true })
 
+const adminSchema = new mongoose.Schema({
+
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true
+  },
+
+  password: {
+    type: String,
+    required: true
+  }
+
+}, {
+  timestamps: true
+});
 
 const HomeCarousel = mongoose.model('HomeCarousel', homeCarouselSchema);
 const HomeProduct = mongoose.model('HomeProduct', homeProductSchema);
@@ -47,7 +65,8 @@ const HomeProductScenario = mongoose.model('HomeProductScenario', homeProductSce
 const SocialMedia = mongoose.model('SocialMedia', socialMediaSchema);
 const ContactForm = mongoose.model('ContactForm', contactFormSchema);
 const DemoForm = mongoose.model('DemoForm', demoFormSchema);
+const Admin = mongoose.model('Admin', adminSchema );
 
-module.exports = {HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm};
+module.exports = {HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm, Admin};
 
 

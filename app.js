@@ -4,17 +4,40 @@ const express = require('express');
 const mongoose = require("mongoose");
 const helmet = require('helmet');
 const path = require("path");
+const session = require("express-session");
+const bcrypt = require("bcrypt");
+
 const { Product, Email } = require("./models/product");
-const { HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm } = require("./models/schema");
+const { HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm, Admin} = require("./models/schema");
 const routeCarousel = require("./routes/carouselRoutes");
 const routeProductScenario = require("./routes/productScenarioRoutes");
 const routeProduct = require("./routes/productRoutes");
 const routeProductPage = require("./routes/productPageRoutes");
 const routeForms = require("./routes/formRoutes");
 const ProductPage = require("./models/productPageSchema");
+const routeAdmin = require("./routes/admin")
+
+const authenticate = require(
+  "./middleware/authenticate"
+);
+
 
 const app = express();
 const multer = require("multer");
+app.use(session({
+
+  secret: "seainfonet2126",
+
+  resave: false,
+
+  saveUninitialized: false,
+
+  cookie: {
+    secure: false,
+    maxAge: 1000 * 60 * 60 * 24
+  }
+
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set('view engine', 'ejs');
@@ -75,10 +98,10 @@ app.get('/demo', async (req, res) => {
   res.render('demo', {navData: await ProductPage.find({}).select("productKey -_id").lean()})
 });
 
-app.get('/admin/show', async (req, res) => {
+/*app.get('/admin/show', authenticate,async (req, res) => {
   res.render('admin/show');
 })
-
+*/
 app.get('/product/:productKey', async (req, res, next) => {
   try {
     const key = req.params.productKey.toLowerCase();
@@ -92,11 +115,6 @@ app.get('/product/:productKey', async (req, res, next) => {
   }
 
 });
-
-
-app.get('/login', async (req, res) => {
-  res.redirect('/admin')
-})
 
 app.get('/msp', async (req, res) => {
   res.render('msp',{navData: await ProductPage.find({}).select("productKey -_id").lean()})
@@ -112,6 +130,7 @@ app.use('/productscenario', routeProductScenario);
 app.use('/homeproduct', routeProduct);
 app.use('/productpage', routeProductPage);
 app.use('/form', routeForms);
+app.use('/admin',routeAdmin );
 
 
 // custom 404
@@ -139,3 +158,55 @@ function chunkArray(arr, size = 3) {
 
   return result;
 }
+
+/* Temporary Funtion*/
+
+async function createAdmin() {
+
+  try {
+
+    const exists = await Admin.findOne({
+      email: "admin@test.com"
+    });
+
+    if (exists) {
+
+      console.log("Admin already exists");
+
+      return
+
+    }
+
+    const hashedPassword =
+      await bcrypt.hash("123456", 10);
+
+    await Admin.create({
+
+      email: "admin@test.com",
+
+      password: hashedPassword
+
+    });
+
+    console.log("Admin Created");
+
+    return
+
+  }
+
+  catch (err) {
+
+    console.log(err);
+    return
+
+  }
+
+}
+
+
+
+
+
+createAdmin();
+
+/* Temporary Funtion End*/
