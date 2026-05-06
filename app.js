@@ -45,17 +45,18 @@ app.get('/', async (req, res) => {
   res.render('index', {
     productSenario: await HomeProductScenario.find(),
     heroImg: await HomeCarousel.find(),
-    productCardData: chunkArray(await HomeProduct.find())
+    productCardData: chunkArray(await HomeProduct.find()),
+    navData: await ProductPage.find({}).select("productKey -_id").lean()
   });
 
 
 });
 
-app.get('/about', (req, res) => {
-  res.render('about')
+app.get('/about', async(req, res) => {
+  res.render('about', {navData: await ProductPage.find({}).select("productKey -_id").lean()})
 });
-app.get('/contact', (req, res) => {
-  res.render('contact')
+app.get('/contact', async(req, res) => {
+  res.render('contact',{navData: await ProductPage.find({}).select("productKey -_id").lean()})
 });
 
 app.post('/submit', upload.none(), async (req, res) => {
@@ -70,36 +71,14 @@ app.post('/submit', upload.none(), async (req, res) => {
   res.status(200).json({ message: "Form submitted successfully" });
 });
 
-app.get('/demo', (req, res) => {
-  res.render('demo')
+app.get('/demo', async (req, res) => {
+  res.render('demo', {navData: await ProductPage.find({}).select("productKey -_id").lean()})
 });
 
 app.get('/admin/show', async (req, res) => {
   res.render('admin/show');
 })
-app.get('/admin/product/:productKey', async (req, res, next) => {
-  try {
-    const key = req.params.productKey.toLowerCase();
-    const item = await ProductPage.findOne({ productKey: key });
-    if (!item) {
-      return res.status(404).render('404');
-    }
-    res.render('product-admin', { data: item })
-  } catch (err) {
-    next(err);
-  }
 
-});
-
-
-app.get('/login', (req, res) => {
-  res.redirect('/admin')
-})
-
-app.get('/msp', (req, res) => {
-  res.render('msp')
-
-});
 app.get('/product/:productKey', async (req, res, next) => {
   try {
     const key = req.params.productKey.toLowerCase();
@@ -107,7 +86,7 @@ app.get('/product/:productKey', async (req, res, next) => {
     if (!item) {
       return res.status(404).render('404');
     }
-    res.render('product', { data: item })
+    res.render('product', { data: item, navData: await ProductPage.find({}).select("productKey -_id").lean() })
   } catch (err) {
     next(err);
   }
@@ -115,10 +94,17 @@ app.get('/product/:productKey', async (req, res, next) => {
 });
 
 
+app.get('/login', async (req, res) => {
+  res.redirect('/admin')
+})
 
+app.get('/msp', async (req, res) => {
+  res.render('msp',{navData: await ProductPage.find({}).select("productKey -_id").lean()})
 
-app.get('/resource', (req, res) => {
-  res.render('resource')
+});
+
+app.get('/resource', async (req, res) => {
+  res.render('resource',{navData: await ProductPage.find({}).select("productKey -_id").lean()})
 });
 
 app.use('/carousel', routeCarousel);
@@ -129,14 +115,14 @@ app.use('/form', routeForms);
 
 
 // custom 404
-app.use((req, res, next) => {
-  res.status(404).render('404')
+app.use(async (req, res, next) => {
+  res.status(404).render('404',{navData: await ProductPage.find({}).select("productKey -_id").lean()})
 });
 
 // custom error handler
-app.use((err, req, res, next) => {
+app.use(async (err, req, res, next) => {
   console.error(err.stack)
-  res.status(500).render('5xx')
+  res.status(500).render('5xx',{navData: await ProductPage.find({}).select("productKey -_id").lean()})
 });
 
 app.listen(port, () => {

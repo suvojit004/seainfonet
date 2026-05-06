@@ -22,10 +22,15 @@
             Products
           </a>
           <ul class="dropdown-menu">
-           
-            <li><a class="dropdown-item" href="/product/kaspersky">Kaspersky</a></li>
-            <li><a class="dropdown-item" href="/product/bytescreen">Bytescreen</a></li>
-            <li><a class="dropdown-item" href="/product/acronis">Acronis</a></li>
+
+            <% data.forEach(item=> { %>
+              <li>
+                <a class="dropdown-item" href="/product/<%= item.productKey %>">
+                  <%= item.productKey.split("-").map(word=> word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ") %>
+                </a>
+              </li>
+              <% }) %>
           </ul>
         </li>
         <li class="nav-item">
