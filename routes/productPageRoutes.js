@@ -61,7 +61,9 @@ routeProductPage.put("/:productKey", async (req, res, next) => {
   try {
     const updated = await ProductPage.findOneAndUpdate(
       { productKey: req.params.productKey.toLowerCase() },
-      req.body,
+       {
+        $set: req.body
+      },
       { new: true, runValidators: true }
     );
 

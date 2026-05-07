@@ -65,21 +65,22 @@ mongoose.connect(process.env.MONGO_URI)
 const port = 3000;
 
 app.get('/', async (req, res) => {
+ 
   res.render('index', {
     productSenario: await HomeProductScenario.find(),
     heroImg: await HomeCarousel.find(),
     productCardData: chunkArray(await HomeProduct.find()),
-    navData: await ProductPage.find({}).select("productKey -_id").lean()
+    navData: await ProductPage.find({status: "published"}).select("productKey -_id").lean()
   });
 
 
 });
 
 app.get('/about', async(req, res) => {
-  res.render('about', {navData: await ProductPage.find({}).select("productKey -_id").lean()})
+  res.render('about', {navData: await ProductPage.find({status: "published"}).select("productKey -_id").lean()})
 });
 app.get('/contact', async(req, res) => {
-  res.render('contact',{navData: await ProductPage.find({}).select("productKey -_id").lean()})
+  res.render('contact',{navData: await ProductPage.find({status: "published"}).select("productKey -_id").lean()})
 });
 
 app.post('/submit', upload.none(), async (req, res) => {
@@ -95,7 +96,7 @@ app.post('/submit', upload.none(), async (req, res) => {
 });
 
 app.get('/demo', async (req, res) => {
-  res.render('demo', {navData: await ProductPage.find({}).select("productKey -_id").lean()})
+  res.render('demo', {navData: await ProductPage.find({status: "published"}).select("productKey -_id").lean()})
 });
 
 /*app.get('/admin/show', authenticate,async (req, res) => {
@@ -109,7 +110,7 @@ app.get('/product/:productKey', async (req, res, next) => {
     if (!item) {
       return res.status(404).render('404');
     }
-    res.render('product', { data: item, navData: await ProductPage.find({}).select("productKey -_id").lean() })
+    res.render('product', { data: item, navData: await ProductPage.find({status: "published"}).select("productKey -_id").lean() })
   } catch (err) {
     next(err);
   }
@@ -117,12 +118,12 @@ app.get('/product/:productKey', async (req, res, next) => {
 });
 
 app.get('/msp', async (req, res) => {
-  res.render('msp',{navData: await ProductPage.find({}).select("productKey -_id").lean()})
+  res.render('msp',{navData: await ProductPage.find({status: "published"}).select("productKey -_id").lean()})
 
 });
 
 app.get('/resource', async (req, res) => {
-  res.render('resource',{navData: await ProductPage.find({}).select("productKey -_id").lean()})
+  res.render('resource',{navData: await ProductPage.find({status: "published"}).select("productKey -_id").lean()})
 });
 
 app.use('/carousel', routeCarousel);
@@ -135,13 +136,13 @@ app.use('/admin',routeAdmin );
 
 // custom 404
 app.use(async (req, res, next) => {
-  res.status(404).render('404',{navData: await ProductPage.find({}).select("productKey -_id").lean()})
+  res.status(404).render('404',{navData: await ProductPage.find({status: "published"}).select("productKey -_id").lean()})
 });
 
 // custom error handler
 app.use(async (err, req, res, next) => {
   console.error(err.stack)
-  res.status(500).render('5xx',{navData: await ProductPage.find({}).select("productKey -_id").lean()})
+  res.status(500).render('5xx',{navData: await ProductPage.find({status: "published"}).select("productKey -_id").lean()})
 });
 
 app.listen(port, () => {
