@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 const adminRoute = express.Router();
 
-const {Admin} = require("../models/schema");
+const { Admin } = require("../models/schema");
 
 const authenticate = require(
   "../middleware/authenticate"
@@ -96,7 +96,7 @@ adminRoute.post("/login", async (req, res) => {
 // PROTECTED DASHBOARD
 adminRoute.get(
   "/show",
-  authenticate,
+  /*authenticate,*/
   async (req, res) => {
 
     res.render("admin/show");
