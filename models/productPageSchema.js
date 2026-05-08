@@ -61,7 +61,7 @@ const productPageSchema = new mongoose.Schema({
         },
         buttons: {
             type: [buttonSchema],
-            default: []
+            default: () => ([{}])
         }
     },
 
@@ -71,13 +71,13 @@ const productPageSchema = new mongoose.Schema({
         image: { type: String, default: "Title", trim: true },
         points: {
             type: [featureItemSchema],
-            default: []
+            default: () => ([{}])
         }
     },
 
     products: {
         type: [productCardSchema],
-        default: []
+        default: () => ([{}])
     },
 
     keyFeatures: {
@@ -86,18 +86,18 @@ const productPageSchema = new mongoose.Schema({
         image: { type: String, default: "#", trim: true },
         features: {
             type: [featureItemSchema],
-            default: []
+            default: () => ([{}])
         }
     },
 
     useCases: {
         type: [productCardSchema],
-        default: []
+        default: () => ([{}])
     },
 
     plans: {
         type: [planSchema],
-        default: []
+        default: () => ([{}])
     },
 
     resellerBenefits: {
@@ -119,24 +119,19 @@ const productPageSchema = new mongoose.Schema({
 
     resources: {
         type: [resourceSchema],
-        default: []
+        default: () => ([{}])
     },
 
     faqs: {
         type: [faqSchema],
-        default: []
+        default: () => ([{}])
     },
 
     finalCTA: {
         title: { type: String, default: "Grow Your Business with SEA Infonet", trim: true },
         buttons: {
             type: [buttonSchema],
-           default: [
-        {
-            text: "Contact Sales",
-            link: "#"
-        }
-    ]
+           default: () => ([{}])
         }
     }
 

@@ -39,54 +39,56 @@ demoFormButton.addEventListener("click", async () => {
   await loadUi('/form/demoform')
 })
 porductPageButton.addEventListener("click", async () => {
-  await loadProductUi('/productpage/kaspersky')
-  
-
+  await loadProductUi('/productpage')
 })
 
 
 
 async function loadProductUi(url) {
-  const data = await loadData('/productpage/kaspersky')
-  const hiddenColumns = ["_id", "createdAt", "updatedAt", "__v"];
+  const data = await loadData(url)
   if (!data.success || data.data.length === 0) {
     contentArea.innerHTML = `<p>No data found</p>
     `;
     return;
   } else {
-    const dataArray = [data.data.whyThisProduct];
-    const headers = Object.keys(dataArray[0]).filter(
-      key => !hiddenColumns.includes(key)
-    )
-    const ui = `
-    <button class="btn btn-sm btn-primary new-btn" data-url="${url}">New Add ${url}</button>
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            ${headers.map(key => `<th>${key}</th>`).join("")}
-          </tr>
-        </thead>
-        <tbody>
-          ${dataArray.map(
-          row => `
-                 <tr>
-                  ${headers.map(key => `<td>${JSON.stringify(formatCell(row[key]))}</td>`).join("")}
-                 
-                  <td>
-                  <button class="btn btn-sm btn-primary edit-btn" data-id="${data.productKey}" data-url="${url}" data-data='${JSON.stringify(row)}'>Edit</button>
-                  </td>
-                </tr>
-              `
+    const dataArray = data.data;
+    contentArea.innerHTML = `
+   <div class="mb-3">
+      ${dataArray.map(data => `
+         <button
+            class="btn btn-sm btn-primary"
+            data-url="${url/data.productKey}"
+         >
+            ${data.productKey}
+         </button>
+      `).join("")}
+   </div>
 
-
-        )
-        .join("")}
-        </tbody>
-      </table>
+    ${UiJson(dataArray[0],url)}
     `;
-    contentArea.innerHTML = ui;
 
   }
+
+}
+
+function UiJson(data,url){
+
+
+  return ` 
+  <textarea
+      id="json-editor"
+      style="
+         width: 100%;
+         height: 600px;
+         font-family: monospace;
+         font-size: 14px;
+      "
+   >${JSON.stringify(data, null, 2)}</textarea>
+
+   <button class="btn btn-sm btn-primary" data-id="${data.productKey}" data-url="${url}" >Edit</button>
+   
+    <button class="btn btn-sm btn-danger delete-btn" data-id="${data.productKey}" data-url="${url}">Delete</button>
+  </textarea>`
 
 }
 
@@ -110,6 +112,9 @@ contentArea.addEventListener("click", async (e) => {
   else if (target.classList.contains("edit-btn")) {
     openEditModal(JSON.parse(target.dataset.data), target.dataset.url)
 
+  }
+  else if (target.classList.contains("edit-btn-product")){
+     openEditModal(JSON.parse(target.dataset.data), target.dataset.url)
   }
 
   else if (target.classList.contains("delete-btn")) {
@@ -163,8 +168,6 @@ async function openEditModal(data, url) {
     .filter((key) => !hiddenFields.includes(key))
     .map((key) => {
       const value = `${formatCell(data[key])}` ?? "";
-      console.log(value)
-
       return `
         <div class="mb-3">
           <label class="form-label text-capitalize">${key}</label>
@@ -186,7 +189,7 @@ async function openEditModal(data, url) {
 
     const formData = new FormData(form);
     const updatedData = Object.fromEntries(formData.entries());
-    
+    console.log(updatedData);
     await editData(url, data._id, updatedData);
     await loadUi(url)
 
@@ -324,6 +327,9 @@ async function createData(url, data) {
 }
 
 async function editData(url, id, data) {
+  console.log(data)
+  console.log(JSON.stringify(data))
+
   try {
     const response = await fetch(`${url}/${id}`, {
       method: "PUT",
