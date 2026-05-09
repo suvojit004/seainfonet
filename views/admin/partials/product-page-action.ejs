@@ -1,0 +1,11 @@
+<div class="card border-0 shadow-sm mb-4 d-none" id="product-page-action" >
+            <div class="card-body">
+              <div class="d-flex flex-wrap gap-2">
+                <% data.forEach(element => { %>
+                  <button class="btn" data-prdkey="<%= element.productKey %>" >
+                  <%= element.productKey %>
+                </button>
+                <% }) %>
+              </div>
+            </div>
+          </div>

@@ -59,13 +59,7 @@ routeProductPage.get("/:productKey", async (req, res, next) => {
 // UPDATE
 routeProductPage.put("/:productKey", async (req, res, next) => {
   const data = req.body
-  
-  console.log(data)
-  console.log(typeof data)
-  console.log(JSON.parse(data))
-
- /* try {
-
+ try {
     const updated = await ProductPage.findOneAndUpdate(
       { productKey: req.params.productKey.toLowerCase() },
        {
@@ -84,7 +78,7 @@ routeProductPage.put("/:productKey", async (req, res, next) => {
     });
   } catch (err) {
     next(err);
-  }*/
+  }
 });
 
 

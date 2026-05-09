@@ -2,6 +2,8 @@
 const sectionButtons = document.querySelectorAll(".Home");
 const homeActions = document.getElementById("home-actions");
 const contentArea = document.getElementById("content-area");
+const productPageActionButtonCard = document.getElementById("product-page-action");
+const productPageActionButtons = document.querySelectorAll("[data-prdkey]");
 const CarouselButton = document.querySelector(".Carousel")
 const ProductsButton = document.querySelector(".Products")
 const UseCasesButton = document.querySelector(".Use-Cases")
@@ -15,9 +17,15 @@ sectionButtons.forEach(button => {
 
     if (this.dataset.section === "Home") {
       homeActions.classList.remove("d-none");
+      productPageActionButtonCard.classList.add("d-none")
+    }
+    else if (this.dataset.section === "Products") {
+      productPageActionButtonCard.classList.remove("d-none")
+      homeActions.classList.add("d-none");
     }
     else {
       homeActions.classList.add("d-none");
+      productPageActionButtonCard.classList.add("d-none")
     }
   });
 });
@@ -41,40 +49,34 @@ demoFormButton.addEventListener("click", async () => {
 porductPageButton.addEventListener("click", async () => {
   await loadProductUi('/productpage')
 })
+productPageActionButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    await loadProductUi("/productpage", button.dataset.prdkey)
+  })
+}
+)
 
-
-
-async function loadProductUi(url) {
-  const data = await loadData(url)
+async function loadProductUi(url, productKey) {
+  const data = await loadData(`${url}/${productKey}`)
   if (!data.success || data.data.length === 0) {
-    contentArea.innerHTML = `<p>No data found</p>
+    contentArea.innerHTML = `<p>No data found/ Select Correct product</p>
+    <button class="btn btn-sm btn-primary new-product-page" data-url="${url}">+ New Product Page </button>
     `;
     return;
   } else {
-    const dataArray = data.data;
     contentArea.innerHTML = `
-   <div class="mb-3">
-      ${dataArray.map(data => `
-         <button
-            class="btn btn-sm btn-primary"
-            data-url="${url/data.productKey}"
-         >
-            ${data.productKey}
-         </button>
-      `).join("")}
-   </div>
-
-    ${UiJson(dataArray[0],url)}
+    ${UiJson(data.data, url)}
     `;
 
   }
 
 }
 
-function UiJson(data,url){
+function UiJson(data, url) {
 
 
   return ` 
+  <button class="btn btn-sm btn-primary new-product-page" data-url="${url}">+ New Product Page </button>
   <textarea
       id="json-editor"
       style="
@@ -85,7 +87,7 @@ function UiJson(data,url){
       "
    >${JSON.stringify(data, null, 2)}</textarea>
 
-   <button class="btn btn-sm btn-primary" data-id="${data.productKey}" data-url="${url}" >Edit</button>
+   <button class="btn btn-sm btn-primary edit-btn-product-page" data-id="${data.productKey}" data-url="${url}" data-data='${JSON.stringify(data)}'>Edit</button>
    
     <button class="btn btn-sm btn-danger delete-btn" data-id="${data.productKey}" data-url="${url}">Delete</button>
   </textarea>`
@@ -109,20 +111,46 @@ contentArea.addEventListener("click", async (e) => {
     }
 
   }
-  else if (target.classList.contains("edit-btn")) {
-    openEditModal(JSON.parse(target.dataset.data), target.dataset.url)
-
+  else if (target.classList.contains("new-product-page")) {
+    const url = target.dataset.url;
+    await openModal("createProductPageProduct", url)
   }
-  else if (target.classList.contains("edit-btn-product")){
-     openEditModal(JSON.parse(target.dataset.data), target.dataset.url)
+  else if (target.classList.contains("edit-btn-product-page")) {
+    const editor = document.querySelector("#json-editor");
+    if (!editor) {
+      alert("Editor not found");
+      return;
+    }
+    await editData(target.dataset.url, target.dataset.id, JSON.parse(editor.value))
+    await loadProductUi(target.dataset.url, target.dataset.id)
+  }
+  else if (target.classList.contains("edit-btn")) {
+    let confirmed = confirm(
+      "Do you want to edit this product?"
+    );
+    if (confirmed) {
+      openEditModal(JSON.parse(target.dataset.data), target.dataset.url)
+    }
+
+
   }
 
   else if (target.classList.contains("delete-btn")) {
     const id = target.dataset.id;
     const url = target.dataset.url
+    let confirmed = confirm(
+      "You are going to Delete this product?"
+    );
+    if (confirmed) {
+      await deleteData(url, id)
+      if (url === "/productpage") {
+        await loadProductUi(url, "Undefined")
+      }
+      else {
+        await loadUi(url)
+      }
 
-    await deleteData(url, id)
-    await loadUi(url)
+    }
   }
 
 })
@@ -147,7 +175,13 @@ async function openModal(modalId, url) {
     const data = Object.fromEntries(formData.entries());
 
     await createData(url, data);
-    await loadUi(url);
+    if (url === "/productpage") {
+      await loadProductUi(url, "Undefined")
+    }
+    else {
+      await loadUi(url);
+    }
+
 
     modal.hide();
     form.reset();
@@ -327,9 +361,6 @@ async function createData(url, data) {
 }
 
 async function editData(url, id, data) {
-  console.log(data)
-  console.log(JSON.stringify(data))
-
   try {
     const response = await fetch(`${url}/${id}`, {
       method: "PUT",
@@ -414,7 +445,7 @@ function formatCell(value) {
     ) {
 
       return value
-        .map(item =>JSON.stringify(item))
+        .map(item => JSON.stringify(item))
         .join(", ");
     }
 

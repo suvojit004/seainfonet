@@ -3,6 +3,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 
 const adminRoute = express.Router();
+const ProductPage = require("../models/productPageSchema");
 
 const { Admin } = require("../models/schema");
 
@@ -96,10 +97,23 @@ adminRoute.post("/login", async (req, res) => {
 // PROTECTED DASHBOARD
 adminRoute.get(
   "/show",
-  /*authenticate,*/
+  authenticate,
   async (req, res) => {
+    let products = [];
+    try {
+        products = await ProductPage.find({}, {
+        productKey: 1,
+        _id: 0
+      }).lean();
 
-    res.render("admin/show");
+    } catch (error) {
+      return res.send(error);
+    }
+
+
+    res.render("admin/show", {
+      data: products
+    });
 
   }
 );
