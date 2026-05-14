@@ -130,7 +130,7 @@ app.use('/carousel', routeCarousel);
 app.use('/productscenario', routeProductScenario);
 app.use('/homeproduct', routeProduct);
 app.use('/productpage', routeProductPage);
-app.use('/form', routeForms);
+app.use('/form', authenticate, routeForms);
 app.use('/admin',routeAdmin );
 
 

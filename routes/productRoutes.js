@@ -1,11 +1,13 @@
 const express = require("express");
 const routeProduct = express.Router();
 const {HomeProduct} = require("../models/schema");
-
+const authenticate = require(
+  "../middleware/authenticate"
+);
 
 
 // CREATE
-routeProduct.post("/", async (req, res, next) => {
+routeProduct.post("/",authenticate, async (req, res, next) => {
   try {
     const item = await HomeProduct.create(req.body);
     res.json(item);
@@ -26,7 +28,7 @@ routeProduct.get("/", async (req, res, next) => {
 });
 
 // UPDATE
-routeProduct.put("/:id", async (req, res, next) => {
+routeProduct.put("/:id",authenticate, async (req, res, next) => {
   try {
     
     const updated = await HomeProduct.findByIdAndUpdate(
@@ -44,7 +46,7 @@ routeProduct.put("/:id", async (req, res, next) => {
 });
 
 // DELETE
-routeProduct.delete("/:id", async (req, res, next) => {
+routeProduct.delete("/:id",authenticate, async (req, res, next) => {
   try {
     await HomeProduct.findByIdAndDelete(req.params.id);
     res.send("Deleted");
