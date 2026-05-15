@@ -67,7 +67,7 @@ routeProductPage.put("/:productKey",authenticate, async (req, res, next) => {
        {
         $set: req.body
       },
-      { new: true, runValidators: true }
+      { returnDocument: 'after', runValidators: true }
     );
 
     if (!updated) {

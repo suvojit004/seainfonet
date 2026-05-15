@@ -18,7 +18,16 @@ const authenticate = require(
 // LOGIN PAGE
 adminRoute.get("/login", (req, res) => {
 
-  res.render("admin/login");
+  res.render("admin/login", {
+    header: {
+      title: "Admin Login | SEA Infonet",
+
+      description:
+        "Secure administrator login portal for SEA Infonet.",
+
+      robots: "noindex, nofollow"
+    }
+  });
 
 });
 
@@ -101,7 +110,7 @@ adminRoute.get(
   async (req, res) => {
     let products = [];
     try {
-        products = await ProductPage.find({}, {
+      products = await ProductPage.find({}, {
         productKey: 1,
         _id: 0
       }).lean();
@@ -112,7 +121,15 @@ adminRoute.get(
 
 
     res.render("admin/show", {
-      data: products
+      data: products,
+      header: {
+        title: "Admin Dashboard | SEA Infonet",
+
+        description:
+          "SEA Infonet administration dashboard.",
+
+        robots: "noindex, nofollow"
+      }
     });
 
   }
