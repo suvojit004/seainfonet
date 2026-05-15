@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const path = require("path");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
+const MongoStore = require("connect-mongo").default;
 
 const { Product, Email } = require("./models/product");
 const { HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm, Admin } = require("./models/schema");
@@ -26,13 +27,17 @@ const app = express();
 const multer = require("multer");
 app.use(session({
 
-  secret: "seainfonet2126",
+  secret: process.env.SESSION_SECRET,
 
   resave: false,
-
   saveUninitialized: false,
 
-  cookie: {
+  store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+      collectionName: "sessions",
+    }),
+
+  cookie: {  // need to change when using https :  secure: ture,  httpOnly: true
     secure: false,
     maxAge: 1000 * 60 * 60 * 24
   }
@@ -250,11 +255,15 @@ function chunkArray(arr, size = 3) {
 /* Temporary Funtion*/
 
 async function createAdmin() {
+  const adminEmail = process.env.ADMIN_EMAIL;
+const adminPassword = process.env.ADMIN_PASSWORD;
+
+const hashedPassword = await bcrypt.hash(adminPassword, 10);
 
   try {
 
     const exists = await Admin.findOne({
-      email: "admin@test.com"
+      email: adminEmail
     });
 
     if (exists) {
@@ -265,12 +274,10 @@ async function createAdmin() {
 
     }
 
-    const hashedPassword =
-      await bcrypt.hash("123456", 10);
 
     await Admin.create({
 
-      email: "admin@test.com",
+      email: adminEmail,
 
       password: hashedPassword
 
