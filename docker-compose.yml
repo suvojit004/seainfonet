@@ -42,7 +42,7 @@ services:
 
     networks:
       - app-network
-      - traefik-proxy
+      
 
     logging:
       driver: "json-file"
@@ -78,8 +78,6 @@ services:
 
 networks:
   app-network:
-  traefik-proxy:
-    external: true
 
 volumes:
   mongo-data:
