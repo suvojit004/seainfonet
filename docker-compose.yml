@@ -72,8 +72,9 @@ services:
 
     labels:
       - traefik.enable=true
-      - traefik.http.routers.myapp.rule=PathPrefix(`/`)
-      - traefik.http.routers.myapp.entrypoints=web
+      - traefik.http.routers.myapp.rule=Host(`seainfonet.tech`)
+      - traefik.http.routers.myapp.entrypoints=websecure
+      - traefik.http.routers.myapp.tls.certresolver=letsencrypt
       - traefik.http.services.myapp.loadbalancer.server.port=80
 
 networks:
