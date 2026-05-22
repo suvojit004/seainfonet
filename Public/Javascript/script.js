@@ -104,6 +104,38 @@ function getVisible() {
 }
 
 
+/**FeedBack */
+
+{
+  const cards = document.querySelectorAll('.feedback-card');
+  const dotsEl = document.getElementById('fbDots');
+  let cur = 0;
+  const total = cards.length;
+
+  cards.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'feedback-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    cards[cur].classList.remove('active');
+    cards[cur].style.position = 'absolute';
+    dotsEl.querySelectorAll('.feedback-dot')[cur].classList.remove('active');
+    cur = (n + total) % total;
+    cards[cur].classList.add('active');
+    cards[cur].style.position = 'relative';
+    dotsEl.querySelectorAll('.feedback-dot')[cur].classList.add('active');
+  }
+
+  document.getElementById('fbPrev').addEventListener('click', () => goTo(cur - 1));
+  document.getElementById('fbNext').addEventListener('click', () => goTo(cur + 1));
+  setInterval(() => goTo(cur + 1), 4500);
+}
+
+
+
 productSenario_Button.forEach(button => {
   button.addEventListener('click', () => {
     if (!button.classList.contains("active")) {

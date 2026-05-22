@@ -1,32 +1,96 @@
-<div id="feedbackCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-  <div class="carousel-inner">
+<div class="feedback-section">
+  <svg class="feedback-bg" viewBox="0 0 1100 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="1050" cy="80" r="200" fill="#1b7f67" fill-opacity="0.04"/>
+    <circle cx="50" cy="420" r="160" fill="#ffbd59" fill-opacity="0.06"/>
+    <circle cx="600" cy="500" r="120" fill="#1b7f67" fill-opacity="0.03"/>
+    <circle cx="900" cy="400" r="50" fill="none" stroke="#ffbd59" stroke-opacity="0.15" stroke-width="1.5" stroke-dasharray="5 5"/>
+    <g fill="#1b7f67" fill-opacity="0.06">
+      <circle cx="80" cy="80" r="4"/><circle cx="100" cy="80" r="4"/><circle cx="120" cy="80" r="4"/>
+      <circle cx="80" cy="100" r="4"/><circle cx="100" cy="100" r="4"/><circle cx="120" cy="100" r="4"/>
+      <circle cx="80" cy="120" r="4"/><circle cx="100" cy="120" r="4"/><circle cx="120" cy="120" r="4"/>
+    </g>
+  </svg>
 
-    <!-- Feedback 1 -->
-    <div class="carousel-item active text-center p-4">
-      <p class="fs-5">"Amazing service! Highly recommended."</p>
-      <h6>- Rahul Sharma</h6>
+  <div class="feedback-inner">
+    <div class="feedback-layout">
+
+      <div class="feedback-left">
+        <span class="feedback-label">Testimonials</span>
+        <h2 class="feedback-heading">What our<br>clients <span>say</span><br>about us</h2>
+        <p class="feedback-subtext">Trusted by hundreds of businesses across India for our cybersecurity expertise and reliable support.</p>
+        <div class="feedback-counter">
+          <div>
+            <div class="feedback-stat-num">1500<span>+</span></div>
+            <div class="feedback-stat-label">Happy Clients</div>
+          </div>
+          <div>
+            <div class="feedback-stat-num">25<span>+</span></div>
+            <div class="feedback-stat-label">Years</div>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:2rem;">
+          <div class="feedback-nav">
+            <button class="feedback-arrow" id="fbPrev">&#8592;</button>
+            <button class="feedback-arrow" id="fbNext">&#8594;</button>
+          </div>
+          <div class="feedback-dots" id="fbDots"></div>
+        </div>
+      </div>
+
+      <div class="feedback-right">
+        <div class="feedback-card active" style="position:relative;">
+          <div class="feedback-accent-bar"></div>
+          <span class="feedback-quote">"</span>
+          <p class="feedback-text">Amazing service! The team was incredibly professional and went above and beyond to ensure everything was perfect. Highly recommended to any business looking for top-tier IT security.</p>
+          <div class="feedback-footer">
+            <div class="feedback-avatar">RS</div>
+            <div>
+              <p class="feedback-author">Rahul Sharma</p>
+              <p class="feedback-role">IT Manager</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="feedback-card">
+          <div class="feedback-accent-bar"></div>
+          <span class="feedback-quote">"</span>
+          <p class="feedback-text">Great support and incredibly fast delivery. We've been working with them for over two years and the consistency in quality and service is truly impressive.</p>
+          <div class="feedback-footer">
+            <div class="feedback-avatar">PD</div>
+            <div>
+              <p class="feedback-author">Priya Das</p>
+              <p class="feedback-role">Operations Head</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="feedback-card">
+          <div class="feedback-accent-bar"></div>
+          <span class="feedback-quote">"</span>
+          <p class="feedback-text">Professional and reliable company. Their cybersecurity solutions have significantly improved our infrastructure's resilience against modern threats.</p>
+          <div class="feedback-footer">
+            <div class="feedback-avatar">AS</div>
+            <div>
+              <p class="feedback-author">Amit Singh</p>
+              <p class="feedback-role">CTO</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="feedback-card">
+          <div class="feedback-accent-bar"></div>
+          <span class="feedback-quote">"</span>
+          <p class="feedback-text">Professional and reliable company. Their cybersecurity solutions have significantly improved our infrastructure's resilience against modern threats.</p>
+          <div class="feedback-footer">
+            <div class="feedback-avatar">AS</div>
+            <div>
+              <p class="feedback-author">Amit Singh</p>
+              <p class="feedback-role">CTO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <!-- Feedback 2 -->
-    <div class="carousel-item text-center p-4">
-      <p class="fs-5">"Great support and fast delivery."</p>
-      <h6>- Priya Das</h6>
-    </div>
-
-    <!-- Feedback 3 -->
-    <div class="carousel-item text-center p-4">
-      <p class="fs-5">"Professional and reliable company."</p>
-      <h6>- Amit Singh</h6>
-    </div>
-
   </div>
-
-  <!-- Controls -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#feedbackCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-
-  <button class="carousel-control-next" type="button" data-bs-target="#feedbackCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
 </div>

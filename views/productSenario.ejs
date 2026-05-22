@@ -1,40 +1,51 @@
-<div class="container productSenario">
-    <div class="card text-center">
-        <div class="card-header mx-auto">
-            <ul class="nav nav-tabs card-header-tabs">
-                <li class="nav-item">
-                    <button class="nav-link senarioButton active" aria-current="true" data-index="0">Use Case 1</button>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link senarioButton" data-index="1">Use Case 2</button>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link senarioButton" data-index="2">Use Case 3</button>
-                </li>
-                  
-            </ul>
-        </div>
-        <div class="card-body align-items-center row gy-2">
-            <div class="col order-lg-3">
-                <img class="card-img-top productSenario-image" src=<%=data[0].url %>>
-            </div>
-            <div class="col-lg-1 order-lg-2"></div>
-            <div class="col order-lg-1">
-                <h5 class="card-title productSenario-title">
-                    <%= data[0].name %>
-                </h5>
-                <p class="card-text productSenario-description">
-                    <%= data[0].description %>
-                </p>
+<div class="scenario-section">
+  <div class="scenario-heading">
+    <div class="scenario-label">Use Cases</div>
+    <h2 class="scenario-title">See it in action</h2>
+  </div>
 
-                <button class="btn btn-primary productSenario-btn" data-bs-toggle="modal" data-bs-target="#talkToExpert">
-                    <%= data[0].btntxt %>
-                </button>
-            </div>
+  <div class="scenario-tabs">
+    <button class="scenario-tab active" data-index="0">Use Case 1</button>
+    <button class="scenario-tab" data-index="1">Use Case 2</button>
+    <button class="scenario-tab" data-index="2">Use Case 3</button>
+  </div>
+
+  <div class="scenario-card">
+    <div class="scenario-panels">
+
+      <% data.forEach((item, index) => { %>
+      <div class="scenario-panel <%= index === 0 ? 'active' : '' %>" data-panel="<%= index %>">
+        <div class="scenario-content">
+          <div class="scenario-tag">Use Case <%= index + 1 %></div>
+          <div class="scenario-divider"></div>
+          <h3 class="scenario-name"><%= item.name %></h3>
+          <p class="scenario-desc"><%= item.description %></p>
+          <button class="scenario-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#talkToExpert">
+            <%= item.btntxt %>
+          </button>
         </div>
+        <div class="scenario-imgwrap">
+          <img src="<%= item.url %>" alt="<%= item.name %>">
+        </div>
+      </div>
+      <% }) %>
+
     </div>
+  </div>
 </div>
-
 <script>
-  const DATA = <%-JSON.stringify(data) %>;
+  const DATA = <%- JSON.stringify(data) %>;
+  const tabs = document.querySelectorAll('.scenario-tab');
+  const panels = document.querySelectorAll('.scenario-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const i = tab.dataset.index;
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`.scenario-panel[data-panel="${i}"]`).classList.add('active');
+    });
+  });
 </script>
