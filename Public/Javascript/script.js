@@ -8,6 +8,21 @@ const productSenario_description= document.querySelector('.productSenario-descri
 const productSenario_img= document.querySelector('.productSenario-image')
 const productSenario_inside_button = document.querySelector('.productSenario-btn');
 
+/**Nav */
+
+{
+  const toggle = document.getElementById('seaToggle');
+  const mobile = document.getElementById('seaMobile');
+  const nav = document.getElementById('seaNav');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    mobile.classList.toggle('open');
+  });
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+}
+
 /*Hero Carousel*/
 {const slides = document.querySelectorAll('.herocarousel-slide');
   const dotsContainer = document.getElementById('dots');

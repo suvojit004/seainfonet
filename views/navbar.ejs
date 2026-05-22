@@ -1,49 +1,72 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary SEAnav">
-  <div class="container">
-    <!-- Logo (Left) -->
-    <a class="navbar-brand" href="/">
-      <img id="NavImage" src="/Images/Companylogo/SEAInfonetLogo.png" alt="" height="40" />
+
+
+<span class="sea-nav-accent"></span>
+<nav class="sea-nav" id="seaNav">
+  <div class="sea-nav-inner">
+
+    <a class="sea-nav-brand" href="/">
+      <%# Replace the SVG box with your logo image %>
+      <img src="/Images/Companylogo/SEAInfonetLogo.png" alt="SEA Infonet" height="40" id="NavImage">
     </a>
 
-    <!-- Toggle Button (Mobile) -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav">
-      <span class="navbar-toggler-icon"></span>
+    <ul class="sea-nav-links">
+      <li><a class="sea-nav-link" href="/msp">MSP</a></li>
+      <li><a class="sea-nav-link" href="/contact">Partners</a></li>
+
+      <li class="sea-nav-dropdown">
+        <a class="sea-nav-link sea-nav-dropdown-toggle" href="#">
+          Products
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="#3d5a52"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+        </a>
+        <ul class="sea-nav-dropdown-menu">
+          <% data.forEach(item => { %>
+          <li>
+            <a class="sea-nav-dropdown-item" href="/product/<%= item.productKey %>">
+              <%= item.productKey.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ") %>
+            </a>
+          </li>
+          <% }) %>
+        </ul>
+      </li>
+
+      <li><a class="sea-nav-link" href="/contact">Contact Us</a></li>
+      <li><a class="sea-nav-link" href="/resource">Resources</a></li>
+      <li><a class="sea-nav-link" href="/about">About Us</a></li>
+      <li><a class="sea-nav-cta" href="/demo">Request Demo</a></li>
+    </ul>
+
+    <button class="sea-nav-toggle" id="seaToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
     </button>
 
-    <!-- Nav Items (Right) -->
-    <div class="collapse navbar-collapse justify-content-end" id="topNav">
-      <ul class="navbar-nav ms-auto gap-lg-4">
-        <li class="nav-item"><a class="nav-link" href="/msp">MSP</a></li>
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">Partners</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Products
-          </a>
-          <ul class="dropdown-menu">
-
-            <% data.forEach(item=> { %>
-              <li>
-                <a class="dropdown-item" href="/product/<%= item.productKey %>">
-                  <%= item.productKey.split("-").map(word=> word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(" ") %>
-                </a>
-              </li>
-              <% }) %>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/demo">Request Demo</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/resource">Resources</a>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
-      </ul>
-    </div>
   </div>
-</nav>
+
+  <div class="sea-nav-mobile" id="seaMobile">
+  <a class="sea-nav-mobile-link" href="/msp">MSP</a>
+  <a class="sea-nav-mobile-link" href="/contact">Partners</a>
+
+  <%# Products accordion %>
+  <div class="sea-nav-mobile-accordion" id="mobileProductAccordion">
+    <button class="sea-nav-mobile-accordion-btn" id="mobileProductToggle">
+      Products
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="#1b7f67" id="mobileProductArrow">
+        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+      </svg>
+    </button>
+    <ul class="sea-nav-mobile-products" id="mobileProductList">
+      <% data.forEach(item => { %>
+      <li>
+        <a href="/product/<%= item.productKey %>">
+          <%= item.productKey.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ") %>
+        </a>
+      </li>
+      <% }) %>
+      <li><a href="/product" style="color:#1b7f67; font-weight:600;">View All Products →</a></li>
+    </ul>
+  </div>
+
+  <a class="sea-nav-mobile-link" href="/contact">Contact Us</a>
+  <a class="sea-nav-mobile-link" href="/resource">Resources</a>
+  <a class="sea-nav-mobile-link" href="/about">About Us</a>
+  <a class="sea-nav-mobile-cta" href="/demo">Request Demo</a>
+</div>
