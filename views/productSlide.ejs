@@ -1,18 +1,23 @@
-<div id="productSlide" class="carousel slide mt-5 mb-5"  data-bs-ride="carousel" data-bs-interval="3000">
-  
-  <div class="carousel-inner">
-       <% data.forEach((item, index) => { %>
-       <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
-       <%- include('productCard',{data:item}) %>
+<div class="productSlide-section container">
+  <div class="productSlide-header">
+    <div class="productSlide-label">What we offer</div>
+    <h2 class="productSlide-heading">Products we deal with</h2>
+  </div>
+
+  <div class="productSlide-wrap">
+    <div class="productSlide-track" id="psTrack">
+  <% data.forEach((item) => { %>
+    <div class="productSlide-card-item">
+      <%- include('productCard', { data: item }) %>
     </div>
-    <% }); %>
-     </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#productSlide" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#productSlide" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+  <% }) %>
+</div>
+
+  <div class="productSlide-footer">
+    <div class="productSlide-dots" id="psDots"></div>
+    <div class="productSlide-nav">
+      <button class="productSlide-arrow" id="psPrev" aria-label="Previous">&#8592;</button>
+      <button class="productSlide-arrow" id="psNext" aria-label="Next">&#8594;</button>
+    </div>
+  </div>
 </div>

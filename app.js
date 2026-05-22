@@ -69,7 +69,7 @@ app.get('/', async (req, res) => {
   res.render('index', {
     productSenario: await HomeProductScenario.find(),
     heroImg: await HomeCarousel.find(),
-    productCardData: chunkArray(await HomeProduct.find()),
+    productCardData: await HomeProduct.find(),
     navData: await ProductPage.find({status: "published"}).select("productKey -_id").lean()
   });
 

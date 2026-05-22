@@ -9,7 +9,7 @@ const productSenario_img= document.querySelector('.productSenario-image')
 const productSenario_inside_button = document.querySelector('.productSenario-btn');
 
 /*Hero Carousel*/
-const slides = document.querySelectorAll('.herocarousel-slide');
+{const slides = document.querySelectorAll('.herocarousel-slide');
   const dotsContainer = document.getElementById('dots');
   const total = slides.length;
   document.getElementById('totalSlides').textContent = total;
@@ -36,9 +36,72 @@ const slides = document.querySelectorAll('.herocarousel-slide');
 
   document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
   document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
-  resetTimer();
+  resetTimer();}
 
   /**End */
+
+  /** Product Slide and Porduct Card */
+{
+const track = document.getElementById('psTrack');
+  const cards = Array.from(track.querySelectorAll('.productSlide-card-item'));
+  const dotsEl = document.getElementById('psDots');
+  const prevBtn = document.getElementById('psPrev');
+  const nextBtn = document.getElementById('psNext');
+  let cur = 0;
+
+function getVisible() {
+  if (window.innerWidth >= 992) return 3;
+  if (window.innerWidth >= 768) return 2;
+  return 1;
+}
+
+  function totalSlides() {
+      return Math.ceil(cards.length / getVisible());
+  }
+
+  function setCardWidths() {
+    const visible = getVisible();
+    cards.forEach(c => c.style.width = `${100 / visible}%`);
+  }
+
+  function buildDots() {
+     dotsEl.innerHTML = '';
+    for (let i = 0; i < totalSlides(); i++) {
+      const d = document.createElement('div');
+      d.className = 'productSlide-dot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(d);
+    }
+  }
+
+  function goTo(n) {
+     const total = totalSlides();
+    cur = (n + total) % total;
+    const visible = getVisible();
+    // Use actual card width in px instead of percentage
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const translatePx = cur * visible * cardWidth;
+    track.style.transform = `translateX(-${translatePx}px)`;
+    dotsEl.querySelectorAll('.productSlide-dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+    prevBtn.disabled = cur === 0;
+    nextBtn.disabled = cur >= total - 1;
+  }
+
+  function init() {
+    setCardWidths();
+    buildDots();
+    cur = 0;
+    track.style.transform = 'translateX(0)';
+    goTo(0);
+  }
+
+  prevBtn.addEventListener('click', () => goTo(cur - 1));
+  nextBtn.addEventListener('click', () => goTo(cur + 1));
+  window.addEventListener('resize', init);
+
+  init();
+  setInterval(() => goTo(cur >= totalSlides() - 1 ? 0 : cur + 1), 7000);
+}
 
 
 productSenario_Button.forEach(button => {

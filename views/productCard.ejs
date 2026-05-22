@@ -1,21 +1,14 @@
-<div class="container">
-  <div id="HomePageProduct" class="row gx-3 justify-content-center">
-    <% data.forEach((item) => { %>
-  <div class="col-md-4">
-    <div class="card text-center h-auto custom-hover">
-      <img src="<%= item.url %>" class="card-img-top p-3" alt="">
-      <div class="card-body">
-        <h5 class="card-title"><%= item.name %></h5>
-        <p class="card-text"><%= item.description %></p>
-        <button class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#talkToExpert">
-          <%= item.btntxt %>
-        </button>
-      </div>
-    </div>
+<div class="productSlide-card">
+  <div class="productSlide-imgwrap">
+    <img src="<%= data.url %>" alt="<%= data.name %>">
   </div>
-<% }) %>
-
+  <div class="productSlide-body">
+    <h3 class="productSlide-name"><%= data.name %></h3>
+    <p class="productSlide-desc"><%= data.description %></p>
+    <button class="productSlide-btn"
+      data-bs-toggle="modal"
+      data-bs-target="#talkToExpert">
+      <%= data.btntxt %>
+    </button>
   </div>
 </div>

@@ -24,6 +24,94 @@ body {
   .herocarousel-counter { position: absolute; top: 2rem; right: 3rem; z-index: 10; font-family: 'Source Sans 3', sans-serif; font-size: 12px; letter-spacing: 1.5px; color: rgba(240,236,228,0.5); }
   .herocarousel-counter span { color: #f0ece4; font-weight: 600; }
 
+  /* Product Slide*/
+
+  :root {
+  --ps-primary: #1b7f67;
+  --ps-accent: #ffbd59;
+  --ps-primary-light: #e8f5f1;
+  --ps-text: #1a2e28;
+  --ps-muted: #5a7a72;
+}
+
+.productSlide-section { padding: 3rem 1.5rem; background: #f7faf9; }
+.productSlide-header { text-align: center; margin-bottom: 2.5rem; }
+.productSlide-label { font-family: 'Source Sans 3', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ps-primary); background: var(--ps-primary-light); padding: 4px 14px; display: inline-block; margin-bottom: 0.75rem; }
+.productSlide-heading { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 600; color: var(--ps-text); margin: 0; }
+
+.productSlide-wrap { position: relative; overflow: hidden; }
+.productSlide-track { display: flex; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+
+
+.productSlide-imgwrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.productSlide-card { background: #fff; border: 1px solid #ddeee9; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; height: 100%; transition: border-color 0.25s, transform 0.25s; }
+.productSlide-card:hover { border-color: var(--ps-primary); transform: translateY(-4px); }
+.productSlide-imgwrap {
+  background: var(--ps-primary-light);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+}
+
+.productSlide-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+.productSlide-name { font-family: 'Source Sans 3', sans-serif; font-size: 15px; font-weight: 600; color: var(--ps-text); margin: 0 0 0.5rem; }
+.productSlide-desc {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ps-muted);
+  line-height: 1.6;
+  flex: 1;
+  margin: 0 0 1rem;
+}
+.productSlide-btn {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--ps-primary);
+  border: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  align-self: flex-start;
+  white-space: nowrap;
+}
+.productSlide-btn:hover { background: #155f4e; }
+
+.productSlide-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; }
+.productSlide-dots { display: flex; gap: 8px; align-items: center; }
+.productSlide-dot { width: 8px; height: 8px; border-radius: 50%; background: #c8ddd9; cursor: pointer; transition: background 0.3s, width 0.3s; }
+.productSlide-dot.active { background: var(--ps-primary); width: 24px; border-radius: 4px; }
+.productSlide-nav { display: flex; gap: 8px; }
+.productSlide-arrow { width: 40px; height: 40px; border: 1.5px solid var(--ps-primary); background: transparent; color: var(--ps-primary); border-radius: 50%; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; }
+.productSlide-arrow:hover { background: var(--ps-primary); color: #fff; }
+.productSlide-arrow:disabled { border-color: #c8ddd9; color: #c8ddd9; cursor: default; }
+.productSlide-arrow:disabled:hover { background: transparent; color: #c8ddd9; }
+.productSlide-card-item { box-sizing: border-box; padding: 0.5rem; flex-shrink: 0; width: 33.333%; }
+@media (max-width: 991px) { .productSlide-card-item { width: 50%; } }
+@media (max-width: 767px) { .productSlide-card-item { width: 100%; } }
+
+@media (max-width: 767px) {
+  .productSlide-section { padding: 2rem 1rem; }
+  .productSlide-arrow { width: 36px; height: 36px; font-size: 14px; }
+  .productSlide-imgwrap { height: 220px; }
+  .productSlide-card { margin: 0 auto; max-width: 400px; }
+}
+/*End*/
 
 .container {
     border-radius: 10px;
