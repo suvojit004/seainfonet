@@ -1,12 +1,7 @@
-const productSenario_Button = document.querySelectorAll('.senarioButton');
+
 const talkToExpertForm = document.getElementById("talkToExpertForm");
 const demoForm = document.getElementById("demoForm");
 const contactForm = document.getElementById('contactForm');
-const container = document.getElementById("formContainer");
-const productSenario_title = document.querySelector('.productSenario-title')
-const productSenario_description= document.querySelector('.productSenario-description')
-const productSenario_img= document.querySelector('.productSenario-image')
-const productSenario_inside_button = document.querySelector('.productSenario-btn');
 
 /**Nav */
 
@@ -151,19 +146,6 @@ function getVisible() {
 
 
 
-productSenario_Button.forEach(button => {
-  button.addEventListener('click', () => {
-    if (!button.classList.contains("active")) {
-      productSenario_Button.forEach(btn => btn.classList.remove('active'));
-      button.classList.add("active")
-      productSenario_title.textContent = DATA[Number(button.dataset.index)].name; // DATA array is available in the page
-      productSenario_description.textContent = DATA[Number(button.dataset.index)].description;
-      productSenario_img.src = DATA[Number(button.dataset.index)].url;
-      productSenario_inside_button.textContent = DATA[Number(button.dataset.index)].btntxt;
-    }
-  });
-});
-
 
 if (talkToExpertForm) {
   talkToExpertForm.addEventListener("submit", async function (e) {
@@ -226,33 +208,28 @@ async function FormSubMition(event, form, submitUrl, tostId, modalId = null) {  
 
 
 document.addEventListener("DOMContentLoaded", function () {
-
-  // Select your popover trigger
   const trigger = document.querySelector('[data-bs-toggle="popover"]');
 
-  // Initialize popover
+  // ✅ Guard against missing element
+  if (!trigger) return;
+
   const popover = new bootstrap.Popover(trigger, {
     trigger: 'manual',
     html: true,
-    
   });
 
-  // Toggle on click
   trigger.addEventListener('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
     popover.toggle();
   });
 
-  // Close when clicking outside
   document.addEventListener('click', function (e) {
     const pop = document.querySelector('.popover');
-
     if (!trigger.contains(e.target) && !pop?.contains(e.target)) {
       popover.hide();
     }
   });
-
 });
 
 /*End*/
