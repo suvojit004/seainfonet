@@ -305,6 +305,47 @@ body {
 
 /**/
 
+/*Footer*/
+
+.footer { background: #0f1e1a; color: #fff; padding: 4rem 2rem 0; position: relative; overflow: hidden; font-family: 'Source Sans 3', sans-serif; }
+.footer-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.footer-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr 1.5fr; gap: 3rem; padding-bottom: 3rem; }
+.footer-brand-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #fff; margin: 0 0 0.25rem; letter-spacing: 1px; }
+.footer-brand-tag { font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #ffbd59; margin: 0 0 1rem; display: block; }
+.footer-brand-desc { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.8; margin: 0 0 1.5rem; max-width: 260px; }
+.footer-social { display: flex; gap: 10px; }
+.footer-social-btn { width: 36px; height: 36px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12); background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, border-color 0.2s; text-decoration: none; color: rgba(255,255,255,0.6); }
+.footer-social-btn:hover { background: #1b7f67; border-color: #1b7f67; color: #fff; }
+.footer-col-title { font-family: 'Source Sans 3', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #ffbd59; margin: 0 0 1.25rem; display: block; }
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 0.6rem; }
+.footer-links a { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s, padding-left 0.2s; display: inline-block; }
+.footer-links a:hover { color: #fff; padding-left: 4px; }
+.footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.85rem; }
+.footer-contact-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(27,127,103,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.footer-contact-text { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.5; }
+.footer-contact-text strong { display: block; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 2px; }
+.footer-newsletter { margin-top: 1.25rem; }
+.footer-newsletter-label { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.75rem; display: block; }
+.footer-newsletter-wrap { display: flex; }
+.footer-newsletter-input { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-right: none; border-radius: 8px 0 0 8px; padding: 10px 14px; font-size: 13px; color: #fff; font-family: 'Source Sans 3', sans-serif; outline: none; transition: border-color 0.2s; }
+.footer-newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+.footer-newsletter-input:focus { border-color: #1b7f67; }
+.footer-newsletter-btn { background: #1b7f67; border: 1px solid #1b7f67; border-radius: 0 8px 8px 0; padding: 10px 16px; color: #fff; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; font-family: 'Source Sans 3', sans-serif; transition: background 0.2s; white-space: nowrap; }
+.footer-newsletter-btn:hover { background: #155f4e; }
+.footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 0; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); margin: 0; }
+.footer-copy span { color: #1b7f67; font-weight: 600; }
+.footer-bottom-links { display: flex; gap: 1.5rem; }
+.footer-bottom-links a { font-size: 12px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+.footer-bottom-links a:hover { color: #fff; }
+.footer-accent-line { height: 3px; background: linear-gradient(to right, #1b7f67, #ffbd59, #1b7f67); width: 100%; display: block; }
+@media (max-width: 991px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+@media (max-width: 575px) { .footer-grid { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; } }
+
+/**/
 
 
 .container {
