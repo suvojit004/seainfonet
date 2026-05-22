@@ -1,4 +1,5 @@
-<div class="productSlide-section container">
+<div class="container">
+<div class="productSlide-section">
   <div class="productSlide-header">
     <div class="productSlide-label">What we offer</div>
     <h2 class="productSlide-heading">Products we deal with</h2>
@@ -6,18 +7,20 @@
 
   <div class="productSlide-wrap">
     <div class="productSlide-track" id="psTrack">
-  <% data.forEach((item) => { %>
-    <div class="productSlide-card-item">
-      <%- include('productCard', { data: item }) %>
+      <% data.forEach((item)=> { %>
+        <div class="productSlide-card-item">
+          <%- include('productCard', { data: item }) %>
+        </div>
+        <% }) %>
     </div>
-  <% }) %>
-</div>
+  </div>
 
-  <div class="productSlide-footer">
-    <div class="productSlide-dots" id="psDots"></div>
-    <div class="productSlide-nav">
-      <button class="productSlide-arrow" id="psPrev" aria-label="Previous">&#8592;</button>
-      <button class="productSlide-arrow" id="psNext" aria-label="Next">&#8594;</button>
+    <div class="productSlide-footer">
+      <div class="productSlide-dots" id="psDots"></div>
+      <div class="productSlide-nav">
+        <button class="productSlide-arrow" id="psPrev" aria-label="Previous">&#8592;</button>
+        <button class="productSlide-arrow" id="psNext" aria-label="Next">&#8594;</button>
+      </div>
     </div>
   </div>
 </div>
