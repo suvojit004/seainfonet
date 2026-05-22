@@ -232,7 +232,38 @@ body {
   .feedback-subtext { max-width: 100%; }
 }
 
+/*END*/
+
+/*Awards*/
+
+.awards-section { padding: 5rem 2rem; background: #fff; position: relative; overflow: hidden; }
+.awards-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.awards-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.awards-heading { text-align: center; margin-bottom: 3rem; }
+.awards-label { font-family: 'Source Sans 3', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #1b7f67; background: #e8f5f1; padding: 4px 14px; display: inline-block; margin-bottom: 0.75rem; }
+.awards-title { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 600; color: #1a2e28; margin: 0; }
+.awards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.awards-card { background: #f7faf9; border: 1px solid #ddeee9; border-radius: 20px; padding: 2.5rem 2rem; display: flex; gap: 1.75rem; align-items: flex-start; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
+.awards-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: #ffbd59; transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; }
+.awards-card:hover { border-color: #1b7f67; transform: translateY(-5px); }
+.awards-card:hover::after { transform: scaleX(1); }
+.awards-icon-wrap { width: 64px; height: 64px; border-radius: 16px; background: #1b7f67; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.3s; }
+.awards-card:hover .awards-icon-wrap { background: #ffbd59; }
+.awards-card:hover .awards-icon-wrap svg { fill: #1a2e28; }
+.awards-icon-wrap svg { transition: fill 0.3s; }
+.awards-content { flex: 1; }
+.awards-badge { display: inline-block; font-family: 'Source Sans 3', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #1b7f67; background: #e8f5f1; border: 1px solid rgba(27,127,103,0.2); padding: 3px 10px; border-radius: 4px; margin-bottom: 0.75rem; }
+.awards-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: #1a2e28; margin: 0 0 0.75rem; line-height: 1.3; }
+.awards-desc { font-family: 'Source Sans 3', sans-serif; font-size: 13px; font-weight: 300; color: #5a7a72; line-height: 1.7; margin: 0; }
+.awards-watermark { position: absolute; right: -20px; bottom: -20px; opacity: 0.04; }
+@media (max-width: 767px) {
+  .awards-grid { grid-template-columns: 1fr; }
+  .awards-card { flex-direction: column; }
+}
+
+
 /**/
+
 
 
 .container {
