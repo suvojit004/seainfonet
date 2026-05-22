@@ -243,7 +243,9 @@ async function loadUi(url) {
   const hiddenColumns = ["_id", "createdAt", "updatedAt", "__v"];
 
   if (!data.success || data.data.length === 0) {
-    contentArea.innerHTML = `<p>No data found</p>
+    contentArea.innerHTML = `
+    <button class="btn btn-sm btn-primary new-btn" data-url="${url}">New Add ${url}</button>
+    <p>No data found</p>
     `;
     return;
   } else {

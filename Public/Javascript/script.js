@@ -8,6 +8,39 @@ const productSenario_description= document.querySelector('.productSenario-descri
 const productSenario_img= document.querySelector('.productSenario-image')
 const productSenario_inside_button = document.querySelector('.productSenario-btn');
 
+/*Hero Carousel*/
+const slides = document.querySelectorAll('.herocarousel-slide');
+  const dotsContainer = document.getElementById('dots');
+  const total = slides.length;
+  document.getElementById('totalSlides').textContent = total;
+  let current = 0, timer;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'herocarousel-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    document.querySelectorAll('.herocarousel-dot')[current].classList.remove('active');
+    current = (n + total) % total;
+    slides[current].classList.add('active');
+    document.querySelectorAll('.herocarousel-dot')[current].classList.add('active');
+    document.getElementById('curSlide').textContent = current + 1;
+    resetTimer();
+  }
+
+  function resetTimer() { clearInterval(timer); timer = setInterval(() => goTo(current + 1), 5000); }
+
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+  resetTimer();
+
+  /**End */
+
+
 productSenario_Button.forEach(button => {
   button.addEventListener('click', () => {
     if (!button.classList.contains("active")) {

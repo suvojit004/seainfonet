@@ -1,17 +1,22 @@
-<div id="SEAherocrousel" class="carousel slide">
-  <div class="carousel-inner ">
-     <% data.forEach((item, index) => { %>
-    <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
-      <img src="<%= item.url %>" class="d-block w-100" alt="carousel image">
+<div class="herocarousel-wrap" id="heroCarousel">
+
+  <% data.forEach((item, index) => { %>
+  <div class="herocarousel-slide <%= index === 0 ? 'active' : '' %>" data-index="<%= index %>">
+    <img src="<%= item.url %>" alt="carousel image">
+    <div class="herocarousel-overlay"></div>
+    <div class="herocarousel-content">
+      <div class="herocarousel-tag">Our Vision</div>
+      <h2 class="herocarousel-title">Building Tomorrow's Business Infrastructure</h2>
+      <p class="herocarousel-subtitle">Delivering world-class solutions that empower enterprises to scale with confidence.</p>
+      <button class="herocarousel-btn">Discover More</button>
     </div>
-  <% }) %>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#SEAherocrousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#SEAherocrousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+  <% }) %>
+
+  <div class="herocarousel-counter"><span id="curSlide">1</span> / <span id="totalSlides"></span></div>
+  <div class="herocarousel-dots" id="dots"></div>
+  <div class="herocarousel-nav">
+    <button class="herocarousel-arrow" id="prevBtn" aria-label="Previous">&#8592;</button>
+    <button class="herocarousel-arrow" id="nextBtn" aria-label="Next">&#8594;</button>
+  </div>
 </div>
