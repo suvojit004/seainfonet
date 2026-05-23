@@ -1,72 +1,118 @@
+<%# ══ NAVBAR ══ %>
+<nav id="sea-nav">
+  <div class="sea-container">
+    <div class="sea-nav-inner">
+      <a href="/" class="sea-nav-logo">
+        <img src="/Images/Companylogo/SEAInfonetLogo.png" alt="SEA Infonet" height="38" id="NavImage">
+      </a>
 
+      <ul class="sea-nav-links">
+        <li><a href="/about">About</a></li>
 
-<span class="sea-nav-accent"></span>
-<nav class="sea-nav" id="seaNav">
-  <div class="sea-nav-inner">
-
-    <a class="sea-nav-brand" href="/">
-      <%# Replace the SVG box with your logo image %>
-      <img src="/Images/Companylogo/SEAInfonetLogo.png" alt="SEA Infonet" height="40" id="NavImage">
-    </a>
-
-    <ul class="sea-nav-links">
-      <li><a class="sea-nav-link" href="/msp">MSP</a></li>
-      <li><a class="sea-nav-link" href="/contact">Partners</a></li>
-
-      <li class="sea-nav-dropdown">
-        <a class="sea-nav-link sea-nav-dropdown-toggle" href="#">
-          Products
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="#3d5a52"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
-        </a>
-        <ul class="sea-nav-dropdown-menu">
-          <% data.forEach(item => { %>
-          <li>
-            <a class="sea-nav-dropdown-item" href="/product/<%= item.productKey %>">
-              <%= item.productKey.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ") %>
+        <li class="sea-has-dropdown">
+          <a href="/product">Products ▾</a>
+          <div class="sea-dropdown">
+            <% data.forEach(item => { %>
+            <a href="/product/<%= item.productKey %>">
+              <%= item.productKey.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") %>
             </a>
-          </li>
-          <% }) %>
-        </ul>
-      </li>
+            <% }) %>
+            <a href="/product" style="color:#1b7f67;font-weight:700;">View All →</a>
+          </div>
+        </li>
 
-      <li><a class="sea-nav-link" href="/contact">Contact Us</a></li>
-      <li><a class="sea-nav-link" href="/resource">Resources</a></li>
-      <li><a class="sea-nav-link" href="/about">About Us</a></li>
-      <li><a class="sea-nav-cta" href="/demo">Request Demo</a></li>
-    </ul>
+        <li class="sea-has-dropdown">
+          <a href="#">Support ▾</a>
+          <div class="sea-dropdown">
+            <a href="/support/ticket">🎫 Raise a Ticket</a>
+            <a href="/resource">📚 Knowledge Base</a>
+            <a href="/resource">🎓 Product Training</a>
+          </div>
+        </li>
 
-    <button class="sea-nav-toggle" id="seaToggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+        <li class="sea-has-dropdown">
+          <a href="/contact">Partners ▾</a>
+          <div class="sea-dropdown">
+            <a href="/contact">🤝 Partner With Us</a>
+            <a href="/partner-login">🔐 Partner Login</a>
+          </div>
+        </li>
 
+        <li class="sea-has-dropdown">
+          <a href="/resource">Resources ▾</a>
+          <div class="sea-dropdown">
+            <a href="/resource">📄 Datasheets</a>
+            <a href="/resource">📊 Case Studies</a>
+            <a href="/resource">🎓 Trainings</a>
+            <a href="/resource">📅 Events &amp; Webinars</a>
+          </div>
+        </li>
+
+        <li><a href="/msp">MSP</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+
+      <a href="/demo" class="sea-nav-cta">Request a Demo</a>
+
+      <button class="sea-hamburger" id="seaHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
+</nav>
 
-  <div class="sea-nav-mobile" id="seaMobile">
-  <a class="sea-nav-mobile-link" href="/msp">MSP</a>
-  <a class="sea-nav-mobile-link" href="/contact">Partners</a>
+<%# ══ MOBILE MENU ══ %>
+<div id="sea-mobile-menu">
+  <a href="/about">About</a>
 
-  <%# Products accordion %>
-  <div class="sea-nav-mobile-accordion" id="mobileProductAccordion">
-    <button class="sea-nav-mobile-accordion-btn" id="mobileProductToggle">
-      Products
-      <svg width="12" height="12" viewBox="0 0 16 16" fill="#1b7f67" id="mobileProductArrow">
-        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-      </svg>
+  <div class="sea-mob-accordion">
+    <button class="sea-mob-acc-btn" id="seaMobProducts">
+      Products <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" id="seaMobProdArrow"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
     </button>
-    <ul class="sea-nav-mobile-products" id="mobileProductList">
+    <ul class="sea-mob-acc-list" id="seaMobProdList">
       <% data.forEach(item => { %>
-      <li>
-        <a href="/product/<%= item.productKey %>">
-          <%= item.productKey.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ") %>
-        </a>
-      </li>
+      <li><a href="/product/<%= item.productKey %>">
+        <%= item.productKey.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") %>
+      </a></li>
       <% }) %>
-      <li><a href="/product" style="color:#1b7f67; font-weight:600;">View All Products →</a></li>
+      <li><a href="/product" style="color:#1b7f67;font-weight:700;">View All Products →</a></li>
     </ul>
   </div>
 
-  <a class="sea-nav-mobile-link" href="/contact">Contact Us</a>
-  <a class="sea-nav-mobile-link" href="/resource">Resources</a>
-  <a class="sea-nav-mobile-link" href="/about">About Us</a>
-  <a class="sea-nav-mobile-cta" href="/demo">Request Demo</a>
+  <div class="sea-mob-accordion">
+    <button class="sea-mob-acc-btn" id="seaMobSupport">
+      Support <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+    </button>
+    <ul class="sea-mob-acc-list">
+      <li><a href="/support/ticket">🎫 Raise a Ticket</a></li>
+      <li><a href="/resource">📚 Knowledge Base</a></li>
+      <li><a href="/resource">🎓 Product Training</a></li>
+    </ul>
+  </div>
+
+  <div class="sea-mob-accordion">
+    <button class="sea-mob-acc-btn">
+      Partners <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+    </button>
+    <ul class="sea-mob-acc-list">
+      <li><a href="/contact">🤝 Partner With Us</a></li>
+      <li><a href="/partner-login">🔐 Partner Login</a></li>
+    </ul>
+  </div>
+
+  <div class="sea-mob-accordion">
+    <button class="sea-mob-acc-btn">
+      Resources <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+    </button>
+    <ul class="sea-mob-acc-list">
+      <li><a href="/resource">📄 Datasheets</a></li>
+      <li><a href="/resource">📊 Case Studies</a></li>
+      <li><a href="/resource">🎓 Trainings</a></li>
+      <li><a href="/resource">📅 Events &amp; Webinars</a></li>
+    </ul>
+  </div>
+
+  <a href="/msp">MSP</a>
+  <a href="/contact">Contact</a>
+  <a href="/demo" class="sea-mob-cta">Request a Demo →</a>
 </div>

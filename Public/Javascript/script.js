@@ -5,48 +5,27 @@ const contactForm = document.getElementById('contactForm');
 
 /**Nav */
 
-{
-  const toggle = document.getElementById('seaToggle');
-  const mobile = document.getElementById('seaMobile');
-  const nav = document.getElementById('seaNav');
-  toggle.addEventListener('click', () => {
-    toggle.classList.toggle('open');
-    mobile.classList.toggle('open');
+// ══ JS ══
+const hamburger = document.getElementById('seaHamburger');
+const mobileMenu = document.getElementById('sea-mobile-menu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+
+// Generic accordion for all mobile dropdowns
+document.querySelectorAll('.sea-mob-acc-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const list = btn.nextElementSibling;
+    const isOpen = list.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.sea-mob-acc-list').forEach(l => l.classList.remove('open'));
+    document.querySelectorAll('.sea-mob-acc-btn').forEach(b => b.classList.remove('open'));
+    // Toggle clicked
+    if (!isOpen) { list.classList.add('open'); btn.classList.add('open'); }
   });
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 10);
-  });
-}
-
-/*Hero Carousel*/
-{const slides = document.querySelectorAll('.herocarousel-slide');
-  const dotsContainer = document.getElementById('dots');
-  const total = slides.length;
-  document.getElementById('totalSlides').textContent = total;
-  let current = 0, timer;
-
-  slides.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'herocarousel-dot' + (i === 0 ? ' active' : '');
-    d.addEventListener('click', () => goTo(i));
-    dotsContainer.appendChild(d);
-  });
-
-  function goTo(n) {
-    slides[current].classList.remove('active');
-    document.querySelectorAll('.herocarousel-dot')[current].classList.remove('active');
-    current = (n + total) % total;
-    slides[current].classList.add('active');
-    document.querySelectorAll('.herocarousel-dot')[current].classList.add('active');
-    document.getElementById('curSlide').textContent = current + 1;
-    resetTimer();
-  }
-
-  function resetTimer() { clearInterval(timer); timer = setInterval(() => goTo(current + 1), 5000); }
-
-  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
-  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
-  resetTimer();}
+});
 
   /**End */
 

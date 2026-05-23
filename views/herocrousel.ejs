@@ -1,22 +1,37 @@
-<div class="herocarousel-wrap" id="heroCarousel">
-
-  <% data.forEach((item, index) => { %>
-  <div class="herocarousel-slide <%= index === 0 ? 'active' : '' %>" data-index="<%= index %>">
-    <img src="<%= item.url %>" alt="carousel image">
-    <div class="herocarousel-overlay"></div>
-    <div class="herocarousel-content">
-      <div class="herocarousel-tag">Our Vision</div>
-      <h2 class="herocarousel-title">Building Tomorrow's Business Infrastructure</h2>
-      <p class="herocarousel-subtitle">Delivering world-class solutions that empower enterprises to scale with confidence.</p>
-      <button class="herocarousel-btn">Discover More</button>
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow"><div class="dot"></div> Founded 2001 · Kolkata, India</div>
+        <h1 class="hero-h1">India's Premier<br><span class="accent">Cybersecurity</span><br>Distributor</h1>
+        <p class="hero-sub">Empowering secure futures through world-class IT security solutions, expert training, and a network of 2000+ trusted resellers across India.</p>
+        <div class="hero-actions">
+          <a href="#products" class="btn-primary">Explore Solutions →</a>
+          <a href="#contact" class="btn-secondary">📅 Schedule a Call</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="num">2000+</div><div class="lbl">Reseller Network</div></div>
+          <div class="hero-stat"><div class="num">70+</div><div class="lbl">Team Members</div></div>
+          <div class="hero-stat"><div class="num">24+</div><div class="lbl">Years of Trust</div></div>
+          <div class="hero-stat"><div class="num">10+</div><div class="lbl">Vendor Brands</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="shield-wrap">
+          <div class="shield-ring"></div>
+          <div class="shield-ring"></div>
+          <div class="shield-ring"></div>
+          <div class="shield-core">🛡️</div>
+          <div class="orbit-node">🔐</div>
+          <div class="orbit-node">☁️</div>
+          <div class="orbit-node">🛡️</div>
+          <div class="orbit-node">🔍</div>
+          <div class="orbit-node">📊</div>
+        </div>
+      </div>
     </div>
   </div>
-  <% }) %>
-
-  <div class="herocarousel-counter"><span id="curSlide">1</span> / <span id="totalSlides"></span></div>
-  <div class="herocarousel-dots" id="dots"></div>
-  <div class="herocarousel-nav">
-    <button class="herocarousel-arrow" id="prevBtn" aria-label="Previous">&#8592;</button>
-    <button class="herocarousel-arrow" id="nextBtn" aria-label="Next">&#8594;</button>
-  </div>
-</div>
+</section>
