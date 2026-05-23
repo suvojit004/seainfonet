@@ -998,7 +998,7 @@ footer::before{
 .footer-brand p{font-size:14px;color:rgba(255,255,255,.4);line-height:1.75;max-width:260px}
 .footer-brand .socials{display:flex;gap:10px;margin-top:20px}
 .social-btn{
-  width:38px;height:38px;border-radius:10px;
+  width:120px;height:38px;border-radius:10px;
   background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);
   display:flex;align-items:center;justify-content:center;font-size:16px;
   transition:background .2s,border-color .2s,transform .2s;
@@ -1439,14 +1439,10 @@ footer ul li a:hover{color:var(--gold);padding-left:4px}
 }
 
 .linkedin  .social-btn { color: #0A66C2; border-color: rgba(10,102,194,0.3); }
-.facebook  .social-btn { color: #1877F2; border-color: rgba(24,119,242,0.3); }
-.twitter   .social-btn { color: #000;    border-color: rgba(0,0,0,0.2); }
-.instagram .social-btn { color: #dc2743; border-color: rgba(220,39,67,0.3); }
+
 
 .linkedin:hover  .social-btn { background: #0A66C2; color: #fff; border-color: #0A66C2; }
-.facebook:hover  .social-btn { background: #1877F2; color: #fff; border-color: #1877F2; }
-.twitter:hover   .social-btn { background: #000;    color: #fff; border-color: #000; }
-.instagram:hover .social-btn { background: #dc2743; color: #fff; border-color: #dc2743; }
+
 
 
 
