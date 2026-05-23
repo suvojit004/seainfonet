@@ -1,53 +1,48 @@
-
-<div class="scenario-section">
-  <div class="scenario-heading">
-    <div class="scenario-label">Use Cases</div>
-    <h2 class="scenario-title">See it in action</h2>
-  </div>
-
-  <div class="scenario-tabs">
-    <button class="scenario-tab active" data-index="0">Use Case 1</button>
-    <button class="scenario-tab" data-index="1">Use Case 2</button>
-    <button class="scenario-tab" data-index="2">Use Case 3</button>
-  </div>
-
-  <div class="scenario-card">
-    <div class="scenario-panels">
-
-      <% data.forEach((item, index) => { %>
-      <div class="scenario-panel <%= index === 0 ? 'active' : '' %>" data-panel="<%= index %>">
-        <div class="scenario-content">
-          <div class="scenario-tag">Use Case <%= index + 1 %></div>
-          <div class="scenario-divider"></div>
-          <h3 class="scenario-name"><%= item.name %></h3>
-          <p class="scenario-desc"><%= item.description %></p>
-          <button class="scenario-btn"
-            data-bs-toggle="modal"
-            data-bs-target="#talkToExpert">
-            <%= item.btntxt %>
-          </button>
-        </div>
-        <div class="scenario-imgwrap">
-          <img src="<%= item.url %>" alt="<%= item.name %>">
-        </div>
+<!-- ══ SERVICES ══ -->
+<section id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <div class="section-eyebrow">What We Offer</div>
+      <h2 class="section-title">Everything You Need to Stay Secure</h2>
+      <p class="section-sub">From procurement to deployment, training to support — SEA Infonet is with you at every step of your security journey.</p>
+    </div>
+    <div class="services-row">
+      <div class="service-card dark reveal">
+        <span class="service-icon">🛒</span>
+        <div class="s-num"><span style="background:rgba(255,189,89,.15);color:var(--gold);padding:2px 8px;border-radius:4px">01</span></div>
+        <h3>Product Distribution</h3>
+        <p>Authorised distributor for Kaspersky, Safetica, Acronis, Teramind, GoDMARC, and more — with genuine licences, full vendor support, and competitive pricing for resellers.</p>
       </div>
-      <% }) %>
-
+      <div class="service-card light reveal reveal-delay-1">
+        <span class="service-icon">🎓</span>
+        <div class="s-num"><span style="background:rgba(27,127,103,.1);color:var(--green);padding:2px 8px;border-radius:4px">02</span></div>
+        <h3>Training &amp; Certification</h3>
+        <p>Structured product training programmes for reseller teams, enterprise IT staff, and students. Hands-on, certified, and tied to real-world deployment scenarios.</p>
+      </div>
+      <div class="service-card light reveal reveal-delay-2">
+        <span class="service-icon">🎫</span>
+        <div class="s-num"><span style="background:rgba(27,127,103,.1);color:var(--green);padding:2px 8px;border-radius:4px">03</span></div>
+        <h3>Technical Support</h3>
+        <p>Toll-free helpline (1800 258 6800), online ticket system, and a knowledge base to keep your deployments running smoothly from day one through the entire product lifecycle.</p>
+      </div>
+      <div class="service-card light reveal">
+        <span class="service-icon">🧪</span>
+        <div class="s-num"><span style="background:rgba(27,127,103,.1);color:var(--green);padding:2px 8px;border-radius:4px">04</span></div>
+        <h3>Proof of Concept</h3>
+        <p>We help enterprises evaluate solutions in their own environment before purchasing — de-risking procurement decisions with real-world validation by our technical experts.</p>
+      </div>
+      <div class="service-card light reveal reveal-delay-1">
+        <span class="service-icon">🤝</span>
+        <div class="s-num"><span style="background:rgba(27,127,103,.1);color:var(--green);padding:2px 8px;border-radius:4px">05</span></div>
+        <h3>Partner Programme</h3>
+        <p>Join our reseller network — get access to deal registration, certified training, marketing support, and a dedicated channel manager to help you grow your security practice.</p>
+      </div>
+      <div class="service-card dark reveal reveal-delay-2">
+        <span class="service-icon">📊</span>
+        <div class="s-num"><span style="background:rgba(255,189,89,.15);color:var(--gold);padding:2px 8px;border-radius:4px">06</span></div>
+        <h3>Events &amp; Webinars</h3>
+        <p>Regular training sessions, product launches, cybersecurity awareness webinars, and industry events — keeping your team ahead of the ever-evolving threat landscape.</p>
+      </div>
     </div>
   </div>
-</div>
-
-<script>
-  const DATA = <%- JSON.stringify(data) %>;
-  const tabs = document.querySelectorAll('.scenario-tab');
-  const panels = document.querySelectorAll('.scenario-panel');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const i = tab.dataset.index;
-      tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-      tab.classList.add('active');
-      document.querySelector(`.scenario-panel[data-panel="${i}"]`).classList.add('active');
-    });
-  });
-</script>
+</section>

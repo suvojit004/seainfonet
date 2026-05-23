@@ -1,17 +1,71 @@
-<div class="container vision mb-4">
-    <div class="card text-center custom-hover">
-        <div class="card-body align-items-center row gy-2 ">
-            <div class="col order-lg-3">
-                <img class="card-img-top" src="../Images/Vision/vision.jpg">
-            </div>
-            <div class="col-lg-1 order-lg-2"></div>
-            <div class="col order-lg-1">
-            <h5 class="card-title">Our Vision</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#talkToExpert">
-                   Join With Us
-                </button>
-            </div>
+<section id="vision">
+  <div class="container">
+    <div class="vis-card">
+
+      <!-- Text Side -->
+      <div class="vis-text">
+        <div class="vis-label">Our Vision</div>
+        <h2 class="vis-title">Securing the <span>Digital Future</span> of Every Business</h2>
+        <div class="vis-divider"></div>
+        <p class="vis-desc">
+          At SEA Infonet, we envision a world where every organisation — regardless of size — operates in a cyber-resilient environment. We bring together best-in-class security technologies, expert guidance, and managed services to protect what matters most: your data, your people, and your continuity.
+        </p>
+        <div class="vis-pillars">
+          <div class="vis-pillar">
+            <div class="vis-pillar-dot green"></div>
+            Proactive threat defence across every layer
+          </div>
+          <div class="vis-pillar">
+            <div class="vis-pillar-dot gold"></div>
+            Trusted partnerships with global security leaders
+          </div>
+          <div class="vis-pillar">
+            <div class="vis-pillar-dot teal"></div>
+            Empowering businesses with knowledge &amp; training
+          </div>
         </div>
+        <button class="vis-cta" data-bs-toggle="modal" data-bs-target="#talkToExpert">
+          Join With Us
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Animation Side -->
+      <div class="vis-anim">
+        <svg class="vis-anim-bg" viewBox="0 0 500 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="420" cy="60" r="120" fill="#1b7f67" fill-opacity="0.05"/>
+          <circle cx="80" cy="380" r="100" fill="#ffbd59" fill-opacity="0.05"/>
+          <circle cx="250" cy="210" r="2" fill="#1b7f67" fill-opacity="0.3"/>
+          <circle cx="380" cy="320" r="2" fill="#ffbd59" fill-opacity="0.3"/>
+          <circle cx="120" cy="100" r="2" fill="#4ecba8" fill-opacity="0.3"/>
+        </svg>
+
+        <div class="vis-shield-wrap">
+          <div class="vis-pulse-rings">
+            <div class="vis-pulse-ring"></div>
+            <div class="vis-pulse-ring"></div>
+            <div class="vis-pulse-ring"></div>
+          </div>
+
+          <div class="vis-orbit vis-orbit-3"><div class="vis-orbit-dot"></div></div>
+          <div class="vis-orbit vis-orbit-2">
+            <div class="vis-orbit-dot"></div>
+            <div class="vis-orbit-dot vis-orbit-dot-b"></div>
+          </div>
+          <div class="vis-orbit vis-orbit-1"><div class="vis-orbit-dot"></div></div>
+
+          <div class="vis-shield-core">
+            <svg viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg" width="100" height="110">
+              <path d="M50 5L10 22V52C10 74 28 93 50 100C72 93 90 74 90 52V22L50 5Z" fill="#1b7f67" fill-opacity="0.15" stroke="#1b7f67" stroke-width="2"/>
+              <path d="M50 15L18 29V52C18 69 32 84 50 90C68 84 82 69 82 52V29L50 15Z" fill="#1b7f67" fill-opacity="0.25"/>
+              <path class="vis-shield-check" d="M34 55L45 66L66 44" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
     </div>
-</div>
+  </div>
+</section>
