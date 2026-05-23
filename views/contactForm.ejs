@@ -1,60 +1,88 @@
 <%- include('successToast') %>
 
-<div class="container vision mb-4">
-  <div class="card text-center">
-    <div class="card-body align-items-center row gy-2">
+<section id="contact-enquiry">
+  <div class="container">
+    <div class="contact-card">
 
-      <!-- Image -->
-      <div class="col order-lg-1">
-        <img class="card-img-top img-fluid" src="../Images/Icons/inquery.svg" alt="icon">
-        
+      <!-- LEFT PANEL -->
+      <div class="cf-left">
+        <div class="cf-illustration">
+          <div class="cf-ill-ring"><div class="cf-ill-dot"></div></div>
+          <div class="cf-ill-ring"><div class="cf-ill-dot"></div></div>
+          <div class="cf-ill-core">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="cf-left-content">
+          <div class="cf-eyebrow">Get In Touch</div>
+          <h2 class="cf-title">Let's Start a <span>Conversation</span></h2>
+          <div class="cf-divider"></div>
+          <p class="cf-desc">Have a question or need a solution? Our team of security experts is ready to help you protect what matters most.</p>
+        </div>
+
+        <div class="cf-info-items">
+          <div class="cf-info-item">
+            <div class="cf-info-dot" style="background:#1b7f67;"></div>
+            We respond within 24 hours
+          </div>
+          <div class="cf-info-item">
+            <div class="cf-info-dot" style="background:#ffbd59;"></div>
+            Certified security consultants
+          </div>
+          <div class="cf-info-item">
+            <div class="cf-info-dot" style="background:#4ecba8;"></div>
+            Tailored solutions for your business
+          </div>
+        </div>
       </div>
 
-      <!-- Spacer -->
-      <div class="col-lg-1 order-lg-2"></div>
+      <!-- RIGHT PANEL -->
+      <div class="cf-right">
+        <h3 class="cf-form-title">Send us a Message</h3>
+        <p class="cf-form-sub">Fill in the form and we'll get back to you shortly.</p>
 
-      <!-- Form -->
-      <div class="col order-lg-3">
+        <form id="contactForm" action="/submit" method="post">
+          <div class="cf-form-grid">
 
-        <form id="contactForm" class="text-start" action="/submit" method="post">
+            <div class="cf-field">
+              <label for="cf-name">Full Name</label>
+              <input id="cf-name" type="text" name="name" placeholder="Your full name" required>
+            </div>
 
-          <!-- Name -->
-          <div class="mb-3">
-            <label class="form-label">Full Name :</label>
-            <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+            <div class="cf-field">
+              <label for="cf-phone">Phone Number</label>
+              <input id="cf-phone" type="tel" name="phone" placeholder="+91 00000 00000" required>
+            </div>
+
+            <div class="cf-field full">
+              <label for="cf-email">Email Address</label>
+              <input id="cf-email" type="email" name="email" placeholder="you@company.com" required>
+            </div>
+
+            <div class="cf-field full">
+              <label for="cf-subject">Subject</label>
+              <input id="cf-subject" type="text" name="subject" placeholder="What would you like to discuss?" required>
+            </div>
+
+            <div class="cf-field full">
+              <label for="cf-desc">Description</label>
+              <textarea id="cf-desc" name="description" placeholder="Tell us more about your enquiry…" required></textarea>
+            </div>
+
+            <button type="submit" class="cf-submit">
+              Send Message
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
           </div>
-
-          <!-- Phone -->
-          <div class="mb-3">
-            <label class="form-label">Phone Number :</label>
-            <input type="tel" name="number" class="form-control" placeholder="Enter your number" required>
-          </div>
-
-          <!-- Email -->
-          <div class="mb-3">
-            <label class="form-label">Email :</label>
-            <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
-          </div>
-
-          <!-- Subject -->
-          <div class="mb-3">
-            <label class="form-label">Subject :</label>
-            <input type="text" name="subject" class="form-control" placeholder="Enter subject" required>
-          </div>
-
-          <!-- Description -->
-          <div class="mb-3">
-            <label class="form-label">Description :</label>
-            <textarea class="form-control" name="description" rows="3" placeholder="Write your message..." required></textarea>
-          </div>
-
-          <!-- Button -->
-          <button type="submit" class="btn btn-success w-100">Submit</button>
-
         </form>
-
       </div>
 
     </div>
   </div>
-</div>
+</section>

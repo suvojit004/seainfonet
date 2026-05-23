@@ -75,13 +75,8 @@ app.get('/', async (req, res) => {
   res.render('index', {
     productSenario: await HomeProductScenario.find(),
     heroImg: await HomeCarousel.find(),
-    productCardData: chunkArray(await HomeProduct.find()),
-    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-    header: {
-      title: "SEA Infonet PVT. LTD. - Leading IT Security Value Added Distributor in India",
-      description: "SEA Infonet Pvt. Ltd. is a leading cybersecurity and IT security value-added distributor in India.",
-      canonical: "https://www.seainfonet.com"
-    }
+    productCardData: await HomeProduct.find(),
+    navData: await ProductPage.find({status: "published"}).select("productKey -_id").lean()
   });
 
 

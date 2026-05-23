@@ -1,38 +1,176 @@
-<div class="container mt-3 officeLocation">
-    <div class="row">
-        <h2 class="col fw-semibold contact-title">OUR OFFICE</h2>
-        <hr class="border-light">
-    </div>
-    <div class="row justify-content-center  align-items-center">
-     
+<section id="offices">
+  <div class="container">
 
-    <div class="col-auto">
-        <%- include('officeLocation', {location : {
-        office : "Corporate Office",
-        city : "Delhi",
-        location : "1107, 11th Floor, Hemkunt Chambers 89, Nehru Place, New Delhi, 110019 ",
-        phone : "+91 11 41652608",
-        email : "info@seainfonet.com"
-        }}) %>
-    </div>
-    <div class="col-auto">
-        <%- include('officeLocation', {location : {
-        office : "Head Office",
-        city : "Kolkata",
-        location : "P17, G.C Avenue, Missin Row Extension,Chandni Chowk, Esplanade, Bow Barracks, Kolkata, West Bengal 700013",
-        phone : "Mob/Fax: +91 33 4005 4044",
-        email : "info@seainfonet.com"
-    }}) %>
-    </div>
-    <div class="col-auto">
-        <%- include('officeLocation', {location : {
-        office : "Support Centre",
-        city : "Kolkata",
-        location : "312, DLF Galleria, Major Arterial Road, Action Area-1, New Town, Kolkata- 700156 ",
-        phone : "1800 258 6800",
-        email : "info@seainfonet.com"
-        }}) %>
+    <div class="offices-head">
+      <div class="offices-eyebrow">Locations</div>
+      <h2 class="offices-title">Our Offices</h2>
+      <div class="offices-divider"></div>
     </div>
 
-</div>
-</div>
+    <div class="offices-grid">
+
+      <!-- Corporate Office -->
+      <div class="office-card">
+        <div class="office-card-top">
+          <div class="office-type-badge">Corporate Office</div>
+          <h3 class="office-city"><span class="office-city-dot"></span>Delhi</h3>
+        </div>
+        <div class="office-body">
+          <div class="office-info-row">
+            <div class="office-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 1.5a4.5 4.5 0 0 0-4.5 4.5C3.5 9.5 8 14.5 8 14.5S12.5 9.5 12.5 6A4.5 4.5 0 0 0 8 1.5z" stroke="#1b7f67" stroke-width="1.3"/>
+                <circle cx="8" cy="6" r="1.5" fill="#1b7f67"/>
+              </svg>
+            </div>
+            <div>
+              <p class="office-info-label">Address</p>
+              <p class="office-info-value">1107, 11th Floor, Hemkunt Chambers 89,<br>Nehru Place, New Delhi – 110019</p>
+            </div>
+          </div>
+          <div class="office-sep"></div>
+          <div class="office-info-row">
+            <div class="office-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3.5 2h2l1 3-1.5 1a7 7 0 0 0 4 4l1-1.5 3 1v2C13.5 13 12 14 10.5 14 6 14 2 10 2 5.5 2 4 3 2.5 3.5 2z" stroke="#1b7f67" stroke-width="1.3" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="office-info-label">Phone</p>
+              <p class="office-info-value">+91 11 41652608</p>
+            </div>
+          </div>
+          <div class="office-sep"></div>
+          <div class="office-info-row">
+            <div class="office-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="#1b7f67" stroke-width="1.3"/>
+                <path d="M1.5 5l6.5 4.5L14.5 5" stroke="#1b7f67" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="office-info-label">Email</p>
+              <p class="office-info-value">info@seainfonet.com</p>
+            </div>
+          </div>
+          <a class="office-map-btn" href="https://maps.google.com/?q=Hemkunt+Chambers+89+Nehru+Place+New+Delhi" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M8 1.5a4.5 4.5 0 0 0-4.5 4.5C3.5 9.5 8 14.5 8 14.5S12.5 9.5 12.5 6A4.5 4.5 0 0 0 8 1.5z" stroke="#1b7f67" stroke-width="1.4"/>
+              <circle cx="8" cy="6" r="1.5" fill="#1b7f67"/>
+            </svg>
+            View on Map
+          </a>
+        </div>
+      </div>
+
+      <!-- Head Office -->
+      <div class="office-card">
+        <div class="office-card-top">
+          <div class="office-type-badge">Head Office</div>
+          <h3 class="office-city"><span class="office-city-dot"></span>Kolkata</h3>
+        </div>
+        <div class="office-body">
+          <div class="office-info-row">
+            <div class="office-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 1.5a4.5 4.5 0 0 0-4.5 4.5C3.5 9.5 8 14.5 8 14.5S12.5 9.5 12.5 6A4.5 4.5 0 0 0 8 1.5z" stroke="#1b7f67" stroke-width="1.3"/>
+                <circle cx="8" cy="6" r="1.5" fill="#1b7f67"/>
+              </svg>
+            </div>
+            <div>
+              <p class="office-info-label">Address</p>
+              <p class="office-info-value">P17, G.C Avenue, Mission Row Extension,<br>Chandni Chowk, Kolkata – 700013</p>
+            </div>
+          </div>
+          <div class="office-sep"></div>
+          <div class="office-info-row">
+            <div class="office-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3.5 2h2l1 3-1.5 1a7 7 0 0 0 4 4l1-1.5 3 1v2C13.5 13 12 14 10.5 14 6 14 2 10 2 5.5 2 4 3 2.5 3.5 2z" stroke="#1b7f67" stroke-width="1.3" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="office-info-label">Phone</p>
+              <p class="office-info-value">+91 33 4005 4044</p>
+            </div>
+          </div>
+          <div class="office-sep"></div>
+          <div class="office-info-row">
+            <div class="office-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="#1b7f67" stroke-width="1.3"/>
+                <path d="M1.5 5l6.5 4.5L14.5 5" stroke="#1b7f67" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="office-info-label">Email</p>
+              <p class="office-info-value">info@seainfonet.com</p>
+            </div>
+          </div>
+          <a class="office-map-btn" href="https://maps.google.com/?q=P17+GC+Avenue+Mission+Row+Kolkata" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M8 1.5a4.5 4.5 0 0 0-4.5 4.5C3.5 9.5 8 14.5 8 14.5S12.5 9.5 12.5 6A4.5 4.5 0 0 0 8 1.5z" stroke="#1b7f67" stroke-width="1.4"/>
+              <circle cx="8" cy="6" r="1.5" fill="#1b7f67"/>
+            </svg>
+            View on Map
+          </a>
+        </div>
+      </div>
+
+      <!-- Support Centre -->
+      <div class="office-card">
+        <div class="office-card-top">
+          <div class="office-type-badge">Support Centre</div>
+          <h3 class="office-city"><span class="office-city-dot"></span>Kolkata</h3>
+        </div>
+        <div class="office-body">
+          <div class="office-info-row">
+            <div class="office-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8 1.5a4.5 4.5 0 0 0-4.5 4.5C3.5 9.5 8 14.5 8 14.5S12.5 9.5 12.5 6A4.5 4.5 0 0 0 8 1.5z" stroke="#1b7f67" stroke-width="1.3"/>
+                <circle cx="8" cy="6" r="1.5" fill="#1b7f67"/>
+              </svg>
+            </div>
+            <div>
+              <p class="office-info-label">Address</p>
+              <p class="office-info-value">312, DLF Galleria, Major Arterial Road,<br>New Town, Kolkata – 700156</p>
+            </div>
+          </div>
+          <div class="office-sep"></div>
+          <div class="office-info-row">
+            <div class="office-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3.5 2h2l1 3-1.5 1a7 7 0 0 0 4 4l1-1.5 3 1v2C13.5 13 12 14 10.5 14 6 14 2 10 2 5.5 2 4 3 2.5 3.5 2z" stroke="#1b7f67" stroke-width="1.3" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="office-info-label">Toll Free</p>
+              <p class="office-info-value">1800 258 6800</p>
+            </div>
+          </div>
+          <div class="office-sep"></div>
+          <div class="office-info-row">
+            <div class="office-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="#1b7f67" stroke-width="1.3"/>
+                <path d="M1.5 5l6.5 4.5L14.5 5" stroke="#1b7f67" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="office-info-label">Email</p>
+              <p class="office-info-value">info@seainfonet.com</p>
+            </div>
+          </div>
+          <a class="office-map-btn" href="https://maps.google.com/?q=DLF+Galleria+New+Town+Kolkata" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M8 1.5a4.5 4.5 0 0 0-4.5 4.5C3.5 9.5 8 14.5 8 14.5S12.5 9.5 12.5 6A4.5 4.5 0 0 0 8 1.5z" stroke="#1b7f67" stroke-width="1.4"/>
+              <circle cx="8" cy="6" r="1.5" fill="#1b7f67"/>
+            </svg>
+            View on Map
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

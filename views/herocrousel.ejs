@@ -1,17 +1,37 @@
-<div id="SEAherocrousel" class="carousel slide">
-  <div class="carousel-inner ">
-     <% data.forEach((item, index) => { %>
-    <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
-      <img src="<%= item.url %>" class="d-block w-100" alt="carousel image">
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow"><div class="dot"></div> Founded 2001 · Kolkata, India</div>
+        <h1 class="hero-h1">India's Premier<br><span class="accent">Cybersecurity</span><br>Distributor</h1>
+        <p class="hero-sub">Empowering secure futures through world-class IT security solutions, expert training, and a network of 2000+ trusted resellers across India.</p>
+        <div class="hero-actions">
+          <a href="#products" class="btn-primary">Explore Solutions →</a>
+          <a href="/demo" class="btn-secondary">📅 Schedule a Call</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="num">2000+</div><div class="lbl">Reseller Network</div></div>
+          <div class="hero-stat"><div class="num">70+</div><div class="lbl">Team Members</div></div>
+          <div class="hero-stat"><div class="num">24+</div><div class="lbl">Years of Trust</div></div>
+          <div class="hero-stat"><div class="num">10+</div><div class="lbl">Vendor Brands</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="shield-wrap">
+          <div class="shield-ring"></div>
+          <div class="shield-ring"></div>
+          <div class="shield-ring"></div>
+          <div class="shield-core">🛡️</div>
+          <div class="orbit-node">🔐</div>
+          <div class="orbit-node">☁️</div>
+          <div class="orbit-node">🛡️</div>
+          <div class="orbit-node">🔍</div>
+          <div class="orbit-node">📊</div>
+        </div>
+      </div>
     </div>
-  <% }) %>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#SEAherocrousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#SEAherocrousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+</section>
