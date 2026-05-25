@@ -1,26 +1,32 @@
-<section class="mb-4">
-  <div class="container bg-white">
-    <h2 class="text-center mb-4 pt-4 fw-semibold">Plans</h2>
+<section class="plans-section">
+  <div class="plans-inner">
 
-    <table class="table table-bordered text-center table-hover">
-      <thead>
-        <tr>
-          <th>Plan</th>
-          <th>Best For</th>
-          <th>Key Features</th>
-        </tr>
-      </thead>
+    <div class="plans-head">
+      <div class="plans-eyebrow">Pricing</div>
+      <h2 class="plans-title">Plans</h2>
+      <div class="plans-divider"></div>
+    </div>
 
-      <tbody>
-        <% data.forEach(element => {%>
+    <div class="plans-table-wrap">
+      <table class="plans-table">
+        <thead>
           <tr>
-          <td><%= element.plan %></td>
-          <td><%= element.bestFor %></td>
-          <td><%= element.keyFeatures %></td>
-        </tr>
-        <% }); %>
-        
-      </tbody>
-    </table>
+            <th>Plan</th>
+            <th>Best For</th>
+            <th>Key Features</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(element => { %>
+          <tr>
+            <td><span class="plans-plan-badge"><%= element.plan %></span></td>
+            <td><%= element.bestFor %></td>
+            <td><%= element.keyFeatures %></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </section>
