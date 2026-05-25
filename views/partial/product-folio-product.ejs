@@ -2,26 +2,26 @@
   <div class="prod-list-inner">
 
     <div class="prod-list-head">
-      <div class="prod-list-eyebrow">Our Portfolio</div>
-      <h2 class="prod-list-title">Our Products</h2>
+      <div class="prod-list-eyebrow">Portfolio</div>
+      <h2 class="prod-list-title">Products</h2>
       <div class="prod-list-divider"></div>
       <p class="prod-list-sub">Enterprise-grade security solutions tailored for every layer of your organisation.</p>
     </div>
 
     <div class="prod-list-grid">
       <% data.forEach((element, i) => { %>
-      <a href="/product/<%= element.productKey %>" class="prod-list-card">
+      <div  class="prod-list-card">
         <div class="prod-list-card-num"><%= String(i + 1).padStart(2, '0') %></div>
         <h3 class="prod-list-card-title"><%= element.title %></h3>
         <div class="prod-list-card-sep"></div>
         <p class="prod-list-card-desc"><%= element.description %></p>
         <span class="prod-list-card-link">
-          Learn More
+          <a href="/demo">Learn More</a> 
           <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
-      </a>
+      </div>
       <% }); %>
     </div>
 
