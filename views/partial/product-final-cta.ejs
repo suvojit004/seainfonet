@@ -1,8 +1,14 @@
-<section class="py-5 text-center bg-success text-white">
-  <div class="container">
-    <h2><%= data.title %></h2>
-    <% data.buttons.forEach(element => {%>
-        <a class="btn m-2" href="<%= element.link %>"><%= element.text %></a>
-    <%}); %>
+<section class="prod-cta">
+  <div class="prod-cta-inner">
+    <div class="prod-cta-label">Get Started</div>
+    <h2 class="prod-cta-title"><%= data.title %></h2>
+    <div class="prod-cta-divider"></div>
+    <div class="prod-cta-actions">
+      <% data.buttons.forEach((element, i) => { %>
+      <a href="<%= element.link %>" class="<%= i === 0 ? 'prod-cta-btn-primary' : 'prod-cta-btn-secondary' %>">
+        <%= element.text %>
+      </a>
+      <% }); %>
+    </div>
   </div>
 </section>

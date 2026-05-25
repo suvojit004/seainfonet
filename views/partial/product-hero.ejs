@@ -1,26 +1,36 @@
-<section class=" bg-white mb-4">
-  <div class="container">
-    <div class="row align-items-center">
+<section class="prod-hero">
+  <div class="prod-hero-inner">
 
-      <div class="col-md-6">
-        <h1><%= data.title %></h1>
-        <p class="lead"><%= data.subtitle %></p>
+    <!-- LEFT -->
+    <div class="prod-hero-text">
+      <div class="prod-hero-eyebrow">Security Solution</div>
+      <h1 class="prod-hero-title"><%= data.title %></h1>
+      <p class="prod-hero-sub"><%= data.subtitle %></p>
 
-        <ul >
-          <% data.highlights.forEach(element => {%>
-            <li><%= element %></li>
-         <% }); %>
-        </ul>
+      <ul class="prod-hero-highlights">
+        <% data.highlights.forEach(element => { %>
+          <li><%= element %></li>
+        <% }); %>
+      </ul>
 
-        <% data.buttons.forEach(element => {%>
-          <a class="btn btn-primary me-2" href="<%= element.link %>"><%= element.text %> </a>
-       <% }); %>
+      <div class="prod-hero-actions">
+        <% data.buttons.forEach((element, i) => { %>
+          <a href="<%= element.link %>" class="<%= i === 0 ? 'prod-btn-primary' : 'prod-btn-secondary' %>">
+            <%= element.text %>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="<%= i === 0 ? '#fff' : '#1b7f67' %>" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        <% }); %>
       </div>
-
-      <div class="col-md-6 text-center">
-        <img src="<%= data.image %>" class="img-fluid" alt="product">
-      </div>
-
     </div>
+
+    <!-- RIGHT -->
+    <div class="prod-hero-visual">
+      <div class="prod-hero-img-wrap">
+        <img src="<%= data.image %>" class="prod-hero-img" alt="<%= data.title %>">
+      </div>
+    </div>
+
   </div>
 </section>

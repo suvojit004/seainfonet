@@ -1,35 +1,41 @@
-<section class="mb-4">
-  <div class="container card">
-    <div class="row align-items-center">
+<section class="prod-features">
+  <div class="prod-features-inner">
 
-      <div class="col-md-6 text-center">
-        <img src="<%= data.image %>" class="img-fluid" alt="product">
+    <!-- LEFT: Image -->
+    <div class="prod-feat-visual">
+      <div class="prod-feat-img-wrap">
+        <img src="<%= data.image %>" alt="<%= data.title %>" class="prod-feat-img">
+        <div class="prod-feat-stat">
+          <div class="prod-feat-stat-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 13A6 6 0 1 1 8 2a6 6 0 0 1 0 12z" fill="#fff"/>
+              <path d="m10.97 4.97-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06l2.69 2.664a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.135-1.045z" fill="#fff"/>
+            </svg>
+          </div>
+        </div>
       </div>
-
-      <div class="col-md-6">
-        <h1 class="text-center">
-          <%= data.title %>
-        </h1>
-        <p class="lead text-center">
-          <%= data.subtitle %>
-        </p>
-
-        <ul>
-          <% data.points.forEach(element=> {%>
-            <li>
-              <h5>
-                <%= element.title %>
-              </h5>
-              <p>
-                <%= element.description %>
-              </p>
-            </li>
-            <%}); %>
-
-        </ul>
-      </div>
-
-
     </div>
+
+    <!-- RIGHT: Content -->
+    <div class="prod-feat-content">
+      <div class="prod-feat-eyebrow">Key Features</div>
+      <h2 class="prod-feat-title"><%= data.title %></h2>
+      <p class="prod-feat-sub"><%= data.subtitle %></p>
+
+      <ul class="prod-feat-points">
+        <% data.points.forEach((element, i) => { %>
+        <li class="prod-feat-point">
+          <div class="prod-feat-point-num">
+            <%= String(i + 1).padStart(2, '0') %>
+          </div>
+          <div class="prod-feat-point-body">
+            <h3 class="prod-feat-point-title"><%= element.title %></h3>
+            <p class="prod-feat-point-desc"><%= element.description %></p>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+
   </div>
 </section>

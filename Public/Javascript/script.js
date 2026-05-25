@@ -122,3 +122,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+/* ═══════════════════════════════════════════
+   FAQ ACCORDION
+═══════════════════════════════════════════ */
+document.querySelectorAll('.faq-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+
+    // close all
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+    // open clicked one if it was closed
+    if (!isOpen) item.classList.add('open');
+  });
+});
