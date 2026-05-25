@@ -1,26 +1,47 @@
-<section class=" bg-white mb-4">
-  <div class="container">
-    <div class="row align-items-center">
+<section class="prod-hero">
+  <div class="prod-hero-inner">
 
-      <div class="col-md-6">
-        <h1><%= data.title %></h1>
-        <p class="lead"><%= data.subtitle %></p>
+    <!-- LEFT -->
+    <div class="prod-hero-text">
+      <div class="prod-hero-eyebrow">Security Solution</div>
+      <h1 class="prod-hero-title"><%= data.title %></h1>
+      <p class="prod-hero-sub"><%= data.subtitle %></p>
 
-        <ul >
-          <% data.highlights.forEach(element => {%>
-            <li><%= element %></li>
-         <% }); %>
-        </ul>
+      <ul class="prod-hero-highlights">
+        <% data.highlights.forEach(element => { %>
+          <li><%= element %></li>
+        <% }); %>
+      </ul>
 
-        <% data.buttons.forEach(element => {%>
-          <a class="btn btn-primary me-2" href="<%= element.link %>"><%= element.text %> </a>
-       <% }); %>
+      <div class="prod-hero-actions">
+        <% data.buttons.forEach((element, i) => { %>
+          <a href="<%= element.link %>" class="<%= i === 0 ? 'prod-btn-primary' : 'prod-btn-secondary' %>">
+            <%= element.text %>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="<%= i === 0 ? '#fff' : '#1b7f67' %>" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        <% }); %>
       </div>
-
-      <div class="col-md-6 text-center">
-        <img src="<%= data.image %>" class="img-fluid" alt="product">
-      </div>
-
     </div>
+
+    <!-- RIGHT -->
+    <div class="prod-hero-visual">
+      <div class="prod-hero-img-wrap">
+        <img src="<%= data.image %>" class="prod-hero-img" alt="<%= data.title %>">
+        <div class="prod-hero-badge">
+          <div class="prod-hero-badge-icon">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+              <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5" fill="#fff"/>
+            </svg>
+          </div>
+          <div class="prod-hero-badge-text">
+            <div class="t1">Award Winning</div>
+            <div class="t2">ISO 27001 Certified</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
