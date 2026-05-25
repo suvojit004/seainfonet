@@ -1,24 +1,35 @@
-<section class=" bg-light mb-4">
-    <div class="container card">
-        <div class="row align-items-center">
-            
-            <div class="col-md-6">
-                <h1 class="text-center"><%= data.title %></h1>
-                <p class="lead text-center"><%= data.subtitle %></p>
+<section class="prod-alt">
+  <div class="prod-alt-inner">
 
-                <ul>
-                    <% data.features.forEach(element => {%>
-                        <li>
-                        <h5><%= element.title %></h5>
-                        <p><%= element.description %></p>
-                    </li>
-                   <%  }); %>
-                </ul>
-            </div>
+    <!-- LEFT: Text + Features -->
+    <div class="prod-alt-text">
+      <div class="prod-alt-eyebrow">Why Choose This</div>
+      <h2 class="prod-alt-title"><%= data.title %></h2>
+      <p class="prod-alt-sub"><%= data.subtitle %></p>
 
-            <div class="col-md-6 text-center">
-                <img src="<%= data.image %>" class="img-fluid" alt="product">
-            </div>
-        </div>
+      <ul class="prod-alt-features">
+        <% data.features.forEach(element => { %>
+        <li class="prod-alt-feature">
+          <div class="prod-alt-feature-bar"></div>
+          <div class="prod-alt-feature-body">
+            <h3 class="prod-alt-feature-title"><%= element.title %></h3>
+            <p class="prod-alt-feature-desc"><%= element.description %></p>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
     </div>
+
+    <!-- RIGHT: Image -->
+    <div class="prod-alt-visual">
+      <div class="prod-alt-img-wrap">
+        <img src="<%= data.image %>" alt="<%= data.title %>" class="prod-alt-img">
+        <div class="prod-alt-pill">
+          <div class="prod-alt-pill-dot"></div>
+          <div class="prod-alt-pill-text">Protection <span>Active</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </section>
