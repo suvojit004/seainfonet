@@ -48,6 +48,8 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set("view cache", false);
 app.set('views', './views');
+// app.set("trust proxy", 2);
+
 const upload = multer();
 // app.use(express.static(path.join(__dirname, "Public")));
 app.disable('x-powered-by');
@@ -58,14 +60,8 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 
-//app.use(helmet({
-//    strictTransportSecurity: false,
-//  }));
-/*const data = {
-  title : "Kaspersky",
-  description : "Antivirus",
-  url : "../Images/ProductImage/product1.jpg"
-}*/
+//app.use(helmet());
+
 
 const port = 3000;
 
