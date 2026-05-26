@@ -1,9 +1,11 @@
 const express = require("express");
 const routeCarousel = express.Router();
 const {HomeCarousel} = require("../models/schema");
-
+const authenticate = require(
+  "../middleware/authenticate"
+);
 // CREATE
-routeCarousel.post("/", async (req, res, next) => {
+routeCarousel.post("/",authenticate, async (req, res, next) => {
   try {
     const item = await HomeCarousel.create({ url: req.body.url });
     res.json(item);
@@ -23,7 +25,7 @@ routeCarousel.get("/", async (req, res, next) => {
 });
 
 // UPDATE
-routeCarousel.put("/:id", async (req, res, next) => {
+routeCarousel.put("/:id", authenticate, async (req, res, next) => {
   try {
     const updated = await HomeCarousel.findByIdAndUpdate(
       req.params.id,
@@ -40,7 +42,7 @@ routeCarousel.put("/:id", async (req, res, next) => {
 });
 
 // DELETE
-routeCarousel.delete("/:id", async (req, res, next) => {
+routeCarousel.delete("/:id",authenticate, async (req, res, next) => {
   try {
     await HomeCarousel.findByIdAndDelete(req.params.id);
     res.send("Deleted");
