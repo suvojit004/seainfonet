@@ -1,13 +1,46 @@
 <%- include('header', {data: header}) %>
 <%- include('navbar', {data: navData}) %>
-<%- include('./partial/product-hero',{data: data.hero}) %>
-<%- include('./partial/product-why',{data: data.whyThisProduct}) %>
-<%- include('./partial/product-folio-product',{data: data.products}) %>
-<%- include('./partial/product-key_feature',{data: data.keyFeatures}) %>
-<%- include('./partial/product-use_case',{data:data.useCases}) %>
-<%- include('./partial/product-plan',{data: data.plans}) %>
-<%- include('./partial/product-reseller_benifit',{data: [data.resellerBenefits,data.whySeaInfonet]}) %>
-<%- include('./partial/product-resource',{data: data.resources}) %>
-<%- include('./partial/product-faq',{data: data.faqs}) %>
-<%- include('./partial/product-final-cta',{data: data.finalCTA}) %>
+<section class="all-products">
+  <div class="all-products-inner">
+
+    <div class="all-products-head">
+      <div class="all-products-eyebrow">Our Portfolio</div>
+      <h1 class="all-products-title">All Products</h1>
+      <div class="all-products-divider"></div>
+    </div>
+
+    <div class="all-products-grid">
+      <% data.forEach(item => { %>
+      <a href="/product/<%= item.productKey%>" class="ap-card">
+
+        <% if (item.hero.image) { %>
+          <img src="<%= item.hero.image %>" class="ap-card-img" alt="<%= item.hero.title %>">
+        <% } else { %>
+          <div class="ap-card-img-placeholder">
+            <span class="ap-card-img-placeholder-text"><%= item.hero.title %></span>
+          </div>
+        <% } %>
+
+        <div class="ap-card-body">
+          <h2 class="ap-card-title"><%= item.hero.title %></h2>
+          <div class="ap-card-sep"></div>
+          <p class="ap-card-sub"><%= item.hero.subtitle %></p>
+        </div>
+
+        <div class="ap-card-footer">
+          <span class="ap-card-link">
+            View Product
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+
+      </a>
+      <% }); %>
+    </div>
+
+  </div>
+</section>
+
 <%- include('footer') %>
