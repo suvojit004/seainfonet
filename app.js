@@ -110,15 +110,43 @@ app.get('/contact', async (req, res) => {
 });
 
 app.post('/submit', upload.none(), async (req, res) => {
-  console.log("Form Data Received:");
-  if (req.body.product) {
-    await new DemoForm({ ...req.body }).save();
+   try {
+    if (req.body.product) {
+
+      await new DemoForm({
+        name: req.body.name,
+        number: req.body.number,
+        email: req.body.email,
+        product: req.body.product,
+        subject: req.body.subject,
+        description: req.body.description
+      }).save();
+
+    } else {
+
+      await new ContactForm({
+        name: req.body.name,
+        number: req.body.number,
+        email: req.body.email,
+        subject: req.body.subject,
+        description: req.body.description
+      }).save();
+
+    }
+
+    res.status(200).json({
+      message: "Form submitted successfully"
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      message: "Server Error"
+    });
 
   }
-  else {
-    await new ContactForm({ name: `${req.body.name}`, number: `${req.body.number}`, email: `${req.body.email}`, subject: `${req.body.subject}`, description: `${req.body.description}` }).save();
-  }
-  res.status(200).json({ message: "Form submitted successfully" });
 });
 
 app.get('/demo', async (req, res) => {

@@ -1,144 +1,112 @@
 <%- include('../successToast') %>
-<!-- ══ CONTACT ══ -->
-<section id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <div class="section-eyebrow">Get In Touch</div>
-        <h2 class="section-title">Let's Secure Your Future</h2>
-        <p class="section-sub">Whether you're an enterprise, reseller, or just exploring options — our team is ready to help you find the right solution.</p>
-        <div class="office-cards">
-          <div class="office-card">
-            <div class="office-icon">🏢</div>
-            <div>
-              <h4>Head Office — Kolkata</h4>
-              <p>P-17, Mission Row Extension, at Bentick Street Crossing, Kolkata – 700 013</p>
-              <a href="mailto:info@seainfonet.com">info@seainfonet.com →</a>
+  <!-- ══ CONTACT ══ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="section-eyebrow">Get In Touch</div>
+          <h2 class="section-title">Let's Secure Your Future</h2>
+          <p class="section-sub">Whether you're an enterprise, reseller, or just exploring options — our team is ready
+            to help you find the right solution.</p>
+          <div class="office-cards">
+            <div class="office-card">
+              <div class="office-icon">🏢</div>
+              <div>
+                <h4>Head Office — Kolkata</h4>
+                <p>P-17, Mission Row Extension, at Bentick Street Crossing, Kolkata – 700 013</p>
+                <a href="mailto:info@seainfonet.com">info@seainfonet.com →</a>
+              </div>
             </div>
-          </div>
-          <div class="office-card">
-            <div class="office-icon">🏙️</div>
-            <div>
-              <h4>New Delhi Office</h4>
-              <p>1107, 11th Floor, Hemkunt Chambers, 89 Nehru Place, New Delhi – 110019</p>
-              <a href="mailto:info@seainfonet.com">info@seainfonet.com →</a>
+            <div class="office-card">
+              <div class="office-icon">🏙️</div>
+              <div>
+                <h4>New Delhi Office</h4>
+                <p>1107, 11th Floor, Hemkunt Chambers, 89 Nehru Place, New Delhi – 110019</p>
+                <a href="mailto:info@seainfonet.com">info@seainfonet.com →</a>
+              </div>
             </div>
-          </div>
-          <div class="office-card">
-            <div class="office-icon">🔧</div>
-            <div>
-              <h4>Support Centre — New Town</h4>
-              <p>716, DLF Galleria, Major Arterial Road, Action Area-1, New Town, Kolkata – 700156</p>
-              <a href="tel:18002586800">📞 1800 258 6800 (Toll-Free) →</a>
+            <div class="office-card">
+              <div class="office-icon">🔧</div>
+              <div>
+                <h4>Support Centre — New Town</h4>
+                <p>716, DLF Galleria, Major Arterial Road, Action Area-1, New Town, Kolkata – 700156</p>
+                <a href="tel:18002586800">📞 1800 258 6800 (Toll-Free) →</a>
+              </div>
             </div>
           </div>
         </div>
+        <form id="demoForm" class="contact-form-wrap reveal reveal-delay-2" action="/submit" method="post">
+
+          <h3>Send Us a Message</h3>
+          <p class="sub">We'll get back to you within 1 business day.</p>
+
+          <div class="form-row">
+
+            <div class="form-group">
+              <label for="df-name">Your Name *</label>
+              <input id="df-name" type="text" name="name" placeholder="Rajan Kumar" required>
+            </div>
+
+            <div class="form-group">
+              <label for="df-company">Company</label>
+              <input id="df-company" type="text" name="company" placeholder="Acme Corp">
+            </div>
+
+          </div>
+
+          <div class="form-row">
+
+            <div class="form-group">
+              <label for="df-phone">Phone Number *</label>
+              <input id="df-phone" type="tel" name="number" placeholder="+91 00000 00000" required>
+            </div>
+
+            <div class="form-group">
+              <label for="df-email">Email *</label>
+              <input id="df-email" type="email" name="email" placeholder="you@company.com" required>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label for="df-product">I'm interested in…</label>
+
+            <select id="df-product" name="product" required>
+              <option value="">Select a product / service</option>
+              <option value="Kaspersky">Kaspersky</option>
+              <option value="Bytescreen">Bytescreen</option>
+              <option value="Acronis">Acronis Cyber Protect</option>
+              <option value="Safetica">Safetica DLP & IRM</option>
+              <option value="Teramind">Teramind</option>
+              <option value="GoDMARC">GoDMARC</option>
+              <option value="Tacitine">Tacitine</option>
+              <option value="Quantum">Quantum</option>
+              <option value="Cybernexa">Cybernexa</option>
+              <option value="EverestIMS">EverestIMS</option>
+              <option value="Partner Programme">Partner Programme</option>
+              <option value="Product Training">Product Training</option>
+              <option value="Technical Support">Technical Support</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="df-subject">Subject *</label>
+            <input id="df-subject" type="text" name="subject" placeholder="What would you like to discuss?" required>
+          </div>
+
+          <div class="form-group">
+            <label for="df-desc">Message *</label>
+
+            <textarea id="df-desc" name="description" placeholder="Tell us about your security needs or challenges…"
+              required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            Send Message →
+          </button>
+
+        </form>
       </div>
-      <form id="demoForm" class="contact-form-wrap reveal reveal-delay-2" action="/submit" method="post">
-
-  <h3>Send Us a Message</h3>
-  <p class="sub">We'll get back to you within 1 business day.</p>
-
-  <div class="form-row">
-    
-    <div class="form-group">
-      <label for="df-name">Your Name *</label>
-      <input 
-        id="df-name"
-        type="text"
-        name="name"
-        placeholder="Rajan Kumar"
-        required
-      >
     </div>
-
-    <div class="form-group">
-      <label for="df-company">Company</label>
-      <input 
-        id="df-company"
-        type="text"
-        name="company"
-        placeholder="Acme Corp"
-      >
-    </div>
-
-  </div>
-
-  <div class="form-row">
-
-    <div class="form-group">
-      <label for="df-phone">Phone Number *</label>
-      <input 
-        id="df-phone"
-        type="tel"
-        name="number"
-        placeholder="+91 00000 00000"
-        required
-      >
-    </div>
-
-    <div class="form-group">
-      <label for="df-email">Email *</label>
-      <input 
-        id="df-email"
-        type="email"
-        name="email"
-        placeholder="you@company.com"
-        required
-      >
-    </div>
-
-  </div>
-
-  <div class="form-group">
-    <label for="df-product">I'm interested in…</label>
-
-    <select id="df-product" name="product" required>
-      <option value="">Select a product / service</option>
-      <option value="Kaspersky">Kaspersky</option>
-      <option value="Bytescreen">Bytescreen</option>
-      <option value="Acronis">Acronis Cyber Protect</option>
-      <option value="Safetica">Safetica DLP & IRM</option>
-      <option value="Teramind">Teramind</option>
-      <option value="GoDMARC">GoDMARC</option>
-      <option value="Tacitine">Tacitine</option>
-      <option value="Quantum">Quantum</option>
-      <option value="Cybernexa">Cybernexa</option>
-      <option value="EverestIMS">EverestIMS</option>
-      <option value="Partner Programme">Partner Programme</option>
-      <option value="Product Training">Product Training</option>
-      <option value="Technical Support">Technical Support</option>
-      <option value="Other">Other</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="df-subject">Subject *</label>
-    <input
-      id="df-subject"
-      type="text"
-      name="subject"
-      placeholder="What would you like to discuss?"
-      required
-    >
-  </div>
-
-  <div class="form-group">
-    <label for="df-desc">Message *</label>
-
-    <textarea
-      id="df-desc"
-      name="description"
-      placeholder="Tell us about your security needs or challenges…"
-      required
-    ></textarea>
-  </div>
-
-  <button type="submit" class="btn-submit">
-    Send Message →
-  </button>
-
-</form>
-    </div>
-  </div>
-</section>
+  </section>

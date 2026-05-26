@@ -37,7 +37,8 @@ const contactFormSchema = new mongoose.Schema(baseFormFields, { timestamps: true
 
 const demoFormSchema = new mongoose.Schema({
     ...baseFormFields,
-    product: { type: String, required: true, trim: true }
+    product: { type: String, required: true, trim: true },
+    company: {type: String, trim: true},
 }, { timestamps: true })
 
 const adminSchema = new mongoose.Schema({
