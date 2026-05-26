@@ -4,9 +4,7 @@ const homeActions = document.getElementById("home-actions");
 const contentArea = document.getElementById("content-area");
 const productPageActionButtonCard = document.getElementById("product-page-action");
 const productPageActionButtons = document.querySelectorAll("[data-prdkey]");
-const CarouselButton = document.querySelector(".Carousel")
-const ProductsButton = document.querySelector(".Products")
-const UseCasesButton = document.querySelector(".Use-Cases")
+
 const porductPageButton = document.querySelector('[data-section="Products"]');
 const formButton = document.querySelector('[data-section="Forms"]');
 const demoFormButton = document.querySelector('[data-section="Demo-Forms"]');
@@ -31,15 +29,6 @@ sectionButtons.forEach(button => {
 });
 
 
-CarouselButton.addEventListener("click", async () => {
-  await loadUi('/carousel')
-})
-ProductsButton.addEventListener("click", async () => {
-  await loadUi('/homeproduct')
-})
-UseCasesButton.addEventListener("click", async () => {
-  await loadUi('/productscenario')
-})
 formButton.addEventListener("click", async () => {
   await loadUi('/form/contactform')
 })
@@ -57,7 +46,7 @@ productPageActionButtons.forEach((button) => {
 )
 
 async function loadProductUi(url, productKey) {
-  const data = await loadData(`${url}/${productKey}`)
+  const data = productKey === 'undefined'? await loadData(`${url}`) : await loadData(`${url}/${productKey}`);
   if (!data.success || data.data.length === 0) {
     contentArea.innerHTML = `<p>No data found/ Select Correct product</p>
     <button class="btn btn-sm btn-primary new-product-page" data-url="${url}">+ New Product Page </button>
