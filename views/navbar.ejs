@@ -10,7 +10,7 @@
           <li><a href="/about">About</a></li>
 
           <li class="sea-has-dropdown">
-            <a href="#">Products ▾</a>
+            <a >Products ▾</a>
             <div class="sea-dropdown">
               <% (data || []).slice(0, 4).forEach(item=> { %>
                 <a href="/product/<%= item.productKey %>">
@@ -23,9 +23,9 @@
           </li>
 
           <li class="sea-has-dropdown">
-            <a href="#">Support ▾</a>
+            <a >Support ▾</a>
             <div class="sea-dropdown">
-              <a href="/support/ticket">🎫 Raise a Ticket</a>
+              <a href="/resource">🎫 Raise a Ticket</a>
               <a href="/resource">📚 Knowledge Base</a>
               <a href="/resource">🎓 Product Training</a>
             </div>
@@ -35,7 +35,7 @@
             <a href="/contact">Partners ▾</a>
             <div class="sea-dropdown">
               <a href="/contact">🤝 Partner With Us</a>
-              <a href="/partner-login">🔐 Partner Login</a>
+              <a href="/resource">🔐 Partner Login</a>
             </div>
           </li>
 
@@ -91,7 +91,7 @@
           </svg>
         </button>
         <ul class="sea-mob-acc-list">
-          <li><a href="/support/ticket">🎫 Raise a Ticket</a></li>
+          <li><a href="/resource">🎫 Raise a Ticket</a></li>
           <li><a href="/resource">📚 Knowledge Base</a></li>
           <li><a href="/resource">🎓 Product Training</a></li>
         </ul>
@@ -106,7 +106,7 @@
         </button>
         <ul class="sea-mob-acc-list">
           <li><a href="/contact">🤝 Partner With Us</a></li>
-          <li><a href="/partner-login">🔐 Partner Login</a></li>
+          <li><a href="/resource">🔐 Partner Login</a></li>
         </ul>
       </div>
 

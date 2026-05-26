@@ -110,7 +110,7 @@ button{cursor:pointer;border:none;background:none;font:inherit}
 .sea-has-dropdown .sea-dropdown {
   display: none;
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   left: 0;
   background: #fff;
   border: 1px solid #e0ede8;
