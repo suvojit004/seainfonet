@@ -48,7 +48,7 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set("view cache", false);
 app.set('views', './views');
-// app.set("trust proxy", 2);
+app.set("trust proxy", true);
 
 const upload = multer();
 // app.use(express.static(path.join(__dirname, "Public")));
