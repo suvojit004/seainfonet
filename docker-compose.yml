@@ -70,10 +70,14 @@ services:
         max-file: "3"
     labels:
       - traefik.enable=true
-      - traefik.http.routers.site.rule=Host(`seainfonet.tech`)
+      - traefik.http.routers.site.rule=Host(`seainfonet.tech`,`www.seainfonet.tech`)
       - traefik.http.routers.site.entrypoints=websecure
       - traefik.http.routers.site.tls.certresolver=letsencrypt
       - traefik.http.services.site.loadbalancer.server.port=80
+      - traefik.http.routers.site-http.rule=Host(`seainfonet.tech`,`www.seainfonet.tech`)
+      - traefik.http.routers.site-http.entrypoints=web
+      - traefik.http.routers.site-http.middlewares=redirect-to-https
+      - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
 
 networks:
   app-network:
