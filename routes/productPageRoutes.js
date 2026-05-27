@@ -1,10 +1,12 @@
 const express = require("express");
 const routeProductPage = express.Router();
 const ProductPage = require("../models/productPageSchema");
-
+const authenticate = require(
+  "../middleware/authenticate"
+);
 
 // CREATE
-routeProductPage.post("/", async (req, res, next) => {
+routeProductPage.post("/", authenticate, async (req, res, next) => {
   try {
     const exists = await ProductPage.findOne({
       productKey: req.body.productKey.toLowerCase()
@@ -57,7 +59,7 @@ routeProductPage.get("/:productKey", async (req, res, next) => {
 
 
 // UPDATE
-routeProductPage.put("/:productKey", async (req, res, next) => {
+routeProductPage.put("/:productKey",authenticate, async (req, res, next) => {
   const data = req.body
  try {
     const updated = await ProductPage.findOneAndUpdate(
@@ -65,7 +67,7 @@ routeProductPage.put("/:productKey", async (req, res, next) => {
        {
         $set: req.body
       },
-      { new: true, runValidators: true }
+      { returnDocument: 'after', runValidators: true }
     );
 
     if (!updated) {
@@ -83,7 +85,7 @@ routeProductPage.put("/:productKey", async (req, res, next) => {
 
 
 // DELETE
-routeProductPage.delete("/:productKey", async (req, res, next) => {
+routeProductPage.delete("/:productKey",authenticate, async (req, res, next) => {
   try {
     const deleted = await ProductPage.findOneAndDelete({
       productKey: req.params.productKey.toLowerCase()

@@ -6,33 +6,50 @@ services:
       - "3000"
     restart: unless-stopped
     environment:
-      - NODE_ENV=development  # need to change to 'production' after modification
-      - MONGO_URI=mongodb://appuser:apppassword@mongodb:27017/mydb
-    volumes: 
-      - .:/app:delegated #for Development after that i have remove whole thing
+      - NODE_ENV=production  
+      - MONGO_URI=mongodb://${MONGO_APP_USER}:${MONGO_APP_PASSWORD}@mongodb:27017/mydb
+
+    env_file:
+      - .env
     depends_on:
       - mongodb
     networks:
       - app-network
-    command: ["npx", "nodemon", "--legacy-watch", "app.js"] #For development 
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
   
   mongodb:
     image: mongo:8.2.7
-    container_name: mongodb
 
-    #restart: unless-stopped      disabling this for development
+    restart: unless-stopped 
 
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
       MONGO_INITDB_DATABASE: mydb
-
+    
+    env_file:
+      - .env
+    
     volumes:
       - mongo-data:/data/db
       - ./init.js:/docker-entrypoint-initdb.d/init.js
 
     networks:
       - app-network
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+
   nginx:
     image: nginx:stable-alpine
     restart: always
@@ -45,6 +62,12 @@ services:
       - app
     networks:
       - app-network
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 networks:
   app-network:

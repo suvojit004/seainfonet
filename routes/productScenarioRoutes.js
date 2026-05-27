@@ -1,10 +1,12 @@
 const express = require("express");
 const routeProductScenario = express.Router();
 const {HomeProductScenario} = require("../models/schema");
-
+const authenticate = require(
+  "../middleware/authenticate"
+);
 
 // CREATE
-routeProductScenario.post("/", async (req, res, next) => {
+routeProductScenario.post("/", authenticate, async (req, res, next) => {
   try {
     const count = await HomeProductScenario.countDocuments();
 
@@ -34,7 +36,7 @@ routeProductScenario.get("/", async (req, res, next) => {
 });
 
 // UPDATE
-routeProductScenario.put("/:id", async (req, res, next) => {
+routeProductScenario.put("/:id",authenticate, async (req, res, next) => {
   try {
     const updated = await HomeProductScenario.findByIdAndUpdate(
       req.params.id,
@@ -51,7 +53,7 @@ routeProductScenario.put("/:id", async (req, res, next) => {
 });
 
 // DELETE
-routeProductScenario.delete("/:id", async (req, res, next) => {
+routeProductScenario.delete("/:id",authenticate, async (req, res, next) => {
   try {
     await HomeProductScenario.findByIdAndDelete(req.params.id);
     res.send("Deleted");
