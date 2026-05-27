@@ -460,10 +460,60 @@ section{padding:88px 0}
 }
 .product-card:hover::before{transform:scaleX(1)}
 .product-card:hover{transform:translateY(-6px);box-shadow:0 20px 56px rgba(27,127,103,.15);border-color:rgba(27,127,103,.25)}
-.product-icon{
-  width:56px;height:56px;border-radius:14px;
-  display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;
+
+
+/* ── Product Icon — redesigned ── */
+.product-icon {
+  width: 100%;
+  height: 160px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0b1f1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 4px;
 }
+
+/* subtle grid background behind logo */
+.product-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(27,127,103,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27,127,103,0.07) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* soft glow behind the logo */
+.product-icon::after {
+  content: '';
+  position: absolute;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(27,127,103,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.product-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill ;  /* keeps aspect ratio, no cropping */
+  position: relative;
+  z-index: 1;
+  filter: brightness(1.05);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.product-card:hover .product-icon img {
+  transform: scale(1.04);
+  filter: brightness(1.12);
+}
+
+
 .product-card h3{font-size:18px;font-weight:800;color:var(--ink)}
 .product-card p{font-size:14px;color:var(--muted);line-height:1.65;flex:1}
 .product-tags{display:flex;flex-wrap:wrap;gap:6px}
