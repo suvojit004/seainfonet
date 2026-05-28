@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=development  # need to change to 'production' after modification
-      - MONGO_URI=mongodb://appuser:apppassword@mongodb:27017/mydb
+      - MONGO_URI=mongodb://${MONGO_APP_USER}:${MONGO_APP_PASSWORD}@mongodb:27017/mydb
     volumes: 
       - .:/app:delegated #for Development after that i have remove whole thing
     depends_on:
@@ -26,8 +26,8 @@ services:
     #restart: unless-stopped      disabling this for development
 
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_APP_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_APP_PASSWORD}
       MONGO_INITDB_DATABASE: mydb
 
     volumes:
