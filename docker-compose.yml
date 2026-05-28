@@ -70,10 +70,10 @@ services:
         max-file: "3"
     labels:
      - traefik.enable=true
-     - traefik.http.routers.site.rule=Host(`seainfonet.tech`)
+     - traefik.http.routers.site.rule=Host(`seainfonet.com`)
      - traefik.http.routers.site.entrypoints=websecure
      - traefik.http.routers.site.tls.certresolver=letsencrypt
-     - traefik.http.routers.site-www.rule=Host(`www.seainfonet.tech`)
+     - traefik.http.routers.site-www.rule=Host(`www.seainfonet.com`)
      - traefik.http.routers.site-www.entrypoints=websecure
      - traefik.http.routers.site-www.tls.certresolver=letsencrypt
      - traefik.http.services.site.loadbalancer.server.port=80
