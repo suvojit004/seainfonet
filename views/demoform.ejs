@@ -2,121 +2,140 @@
 
 
 
-<section id="demo" class="demo-section">
-  <div class="container">
-    <div class="demo-card">
+  <section id="demo" class="demo-section">
+    <div class="container">
+      <div class="demo-card">
 
-      <!-- ── LEFT PANEL ── -->
-      <div class="demo-left">
-        <svg class="demo-left-bg" viewBox="0 0 520 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="480" cy="60" r="140" fill="#1b7f67" fill-opacity="0.05"/>
-          <circle cx="40" cy="540" r="110" fill="#ffbd59" fill-opacity="0.05"/>
-          <circle cx="260" cy="300" r="2" fill="#1b7f67" fill-opacity="0.25"/>
-          <circle cx="420" cy="420" r="1.5" fill="#ffbd59" fill-opacity="0.25"/>
-          <circle cx="80" cy="160" r="1.5" fill="#4ecba8" fill-opacity="0.25"/>
-        </svg>
+        <!-- ── LEFT PANEL ── -->
+        <div class="demo-left">
+          <svg class="demo-left-bg" viewBox="0 0 520 600" preserveAspectRatio="xMidYMid slice"
+            xmlns="http://www.w3.org/2000/svg">
+            <circle cx="480" cy="60" r="140" fill="#1b7f67" fill-opacity="0.05" />
+            <circle cx="40" cy="540" r="110" fill="#ffbd59" fill-opacity="0.05" />
+            <circle cx="260" cy="300" r="2" fill="#1b7f67" fill-opacity="0.25" />
+            <circle cx="420" cy="420" r="1.5" fill="#ffbd59" fill-opacity="0.25" />
+            <circle cx="80" cy="160" r="1.5" fill="#4ecba8" fill-opacity="0.25" />
+          </svg>
 
-        <div class="demo-orbit-wrap">
-          <div class="demo-orbit-ring"><div class="demo-orbit-dot"></div></div>
-          <div class="demo-orbit-ring"><div class="demo-orbit-dot"></div></div>
-          <div class="demo-orbit-ring"><div class="demo-orbit-dot"></div></div>
-        </div>
-
-        <div class="demo-left-content">
-          <div class="demo-eyebrow">Live Demo</div>
-          <h2 class="demo-headline">See Our Products <span>In Action</span></h2>
-          <div class="demo-divider"></div>
-          <p class="demo-sub">Discover how SEA Infonet's security solutions can safeguard your organisation through a personalised, hands-on walkthrough tailored to your needs.</p>
-
-          <div class="demo-book-tag">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" fill="#4ecba8"/>
-              <path d="M7.5 4.5v4l2.5 1.5" stroke="#4ecba8" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-            Book your personalised product demo
-          </div>
-
-          <div class="demo-trust">
-            <div class="demo-trust-item">
-              <div class="demo-trust-dot" style="background:#1b7f67;"></div>
-              No commitment required — explore at your pace
+          <div class="demo-orbit-wrap">
+            <div class="demo-orbit-ring">
+              <div class="demo-orbit-dot"></div>
             </div>
-            <div class="demo-trust-item">
-              <div class="demo-trust-dot" style="background:#ffbd59;"></div>
-              Tailored walkthrough for your industry &amp; team size
+            <div class="demo-orbit-ring">
+              <div class="demo-orbit-dot"></div>
             </div>
-            <div class="demo-trust-item">
-              <div class="demo-trust-dot" style="background:#4ecba8;"></div>
-              Expert guidance from certified security consultants
+            <div class="demo-orbit-ring">
+              <div class="demo-orbit-dot"></div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- ── RIGHT PANEL ── -->
-      <div class="demo-right">
-        <h3 class="demo-form-title">Request a Demo</h3>
-        <p class="demo-form-sub">Fill in your details and we'll get back to you within 24 hours.</p>
+          <div class="demo-left-content">
+            <div class="demo-eyebrow">Live Demo</div>
+            <h2 class="demo-headline">See Our Products <span>In Action</span></h2>
+            <div class="demo-divider"></div>
+            <p class="demo-sub">Discover how SEA Infonet's security solutions can safeguard your organisation through a
+              personalised, hands-on walkthrough tailored to your needs.</p>
 
-        <form id="demoForm" action="/leads" method="post">
-          <div class="demo-form-grid">
-
-            <div class="demo-field">
-              <label for="df-fname">First Name</label>
-              <input id="df-fname" type="text" name="firstName" placeholder="Arjun" required>
-            </div>
-            <div class="demo-field">
-              <label for="df-lname">Last Name</label>
-              <input id="df-lname" type="text" name="lastName" placeholder="Kumar" required>
-            </div>
-             <div class="demo-field">
-              <label for="df-company">company</label>
-              <input id="df-company" type="text" name="company" placeholder="Sea Infonet" required>
-            </div>
-
-            <div class="demo-field">
-              <label for="df-phone">Phone Number</label>
-              <input id="df-phone" type="tel" name="phone" placeholder="+91 00000 00000" required>
-            </div>
-
-            <div class="demo-field full">
-              <label for="df-email">Email Address</label>
-              <input id="df-email" type="email" name="email" placeholder="you@company.com" required>
-            </div>
-
-            <div class="demo-field full">
-              <label for="df-product">Choose Product</label>
-              <select id="df-product" name="product" required>
-                <option value="">Select a product…</option>
-                <option value="Kaspersky">Kaspersky</option>
-                <option value="Bytescreen">Bytescreen</option>
-                <option value="Acronis">Acronis</option>
-                <option value="Safetica">Safetica</option>
-                <option value="Teramind">Teramind</option>
-                <option value="GoDMARC">GoDMARC</option>
-                <option value="Tacitine">Tacitine</option>
-                <option value="Quantum">Quantum</option>
-                <option value="Cybernexa">Cybernexa</option>
-                <option value="EverestIMS">EverestIMS</option>
-              </select>
-            </div>
-
-            <div class="demo-field full">
-              <label for="df-desc">message</label>
-              <textarea id="df-desc" name="message" rows="3" placeholder="Tell us about your company and what you're looking for…" required></textarea>
-            </div>
-
-            <button type="submit" class="demo-submit">
-              Request My Demo
+            <div class="demo-book-tag">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"
+                  fill="#4ecba8" />
+                <path d="M7.5 4.5v4l2.5 1.5" stroke="#4ecba8" stroke-width="1.2" stroke-linecap="round" />
               </svg>
-            </button>
+              Book your personalised product demo
+            </div>
 
+            <div class="demo-trust">
+              <div class="demo-trust-item">
+                <div class="demo-trust-dot" style="background:#1b7f67;"></div>
+                No commitment required — explore at your pace
+              </div>
+              <div class="demo-trust-item">
+                <div class="demo-trust-dot" style="background:#ffbd59;"></div>
+                Tailored walkthrough for your industry &amp; team size
+              </div>
+              <div class="demo-trust-item">
+                <div class="demo-trust-dot" style="background:#4ecba8;"></div>
+                Expert guidance from certified security consultants
+              </div>
+            </div>
           </div>
-        </form>
-      </div>
+        </div>
 
+        <!-- ── RIGHT PANEL ── -->
+        <div class="demo-right">
+          <h3 class="demo-form-title">Request a Demo</h3>
+          <p class="demo-form-sub">Fill in your details and we'll get back to you within 24 hours.</p>
+
+          <form id="demoForm" action="/leads" method="post">
+            <div class="demo-form-grid">
+
+              <div style="display:none;">
+                <input type="text" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+              <input type="hidden" name="formLoadedAt" id="formLoadedAt" />
+
+              <div class="demo-field">
+                <label for="df-fname">First Name</label>
+                <input id="df-fname" type="text" name="firstName" placeholder="Arjun" required>
+              </div>
+              <div class="demo-field">
+                <label for="df-lname">Last Name</label>
+                <input id="df-lname" type="text" name="lastName" placeholder="Kumar" required>
+              </div>
+              <div class="demo-field">
+                <label for="df-company">company</label>
+                <input id="df-company" type="text" name="company" placeholder="Sea Infonet" required>
+              </div>
+
+              <div class="demo-field">
+                <label for="df-phone">Phone Number</label>
+                <input id="df-phone" type="tel" name="phone" placeholder="+91 00000 00000" required>
+              </div>
+
+              <div class="demo-field full">
+                <label for="df-email">Email Address</label>
+                <input id="df-email" type="email" name="email" placeholder="you@company.com" required>
+              </div>
+
+              <div class="demo-field full">
+                <label for="df-product">Choose Product</label>
+                <select id="df-product" name="product" required>
+                  <option value="">Select a product…</option>
+                  <option value="Kaspersky">Kaspersky</option>
+                  <option value="Bytescreen">Bytescreen</option>
+                  <option value="Acronis">Acronis</option>
+                  <option value="Safetica">Safetica</option>
+                  <option value="Teramind">Teramind</option>
+                  <option value="GoDMARC">GoDMARC</option>
+                  <option value="Tacitine">Tacitine</option>
+                  <option value="Quantum">Quantum</option>
+                  <option value="Cybernexa">Cybernexa</option>
+                  <option value="EverestIMS">EverestIMS</option>
+                </select>
+              </div>
+
+              <div class="demo-field full">
+                <label for="df-desc">message</label>
+                <textarea id="df-desc" name="message" rows="3"
+                  placeholder="Tell us about your company and what you're looking for…" required></textarea>
+              </div>
+
+              <button type="submit" class="demo-submit">
+                Request My Demo
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
     </div>
-  </div>
-</section>
+    <script>
+      document.getElementById("formLoadedAt").value = Date.now();
+    </script>
+  </section>

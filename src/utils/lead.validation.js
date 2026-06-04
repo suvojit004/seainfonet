@@ -27,6 +27,8 @@ const createLeadSchema =
     
     product:
     z.enum(Object.values(PRODUCT)),
+    
+    website: z.string().optional(),
 
     message:
       z.string().min(10),

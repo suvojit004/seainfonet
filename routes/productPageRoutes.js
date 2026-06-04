@@ -1,6 +1,6 @@
 const express = require("express");
 const routeProductPage = express.Router();
-const ProductPage = require("../models/productPageSchema");
+const ProductPage = require("../src/models/productPageSchema");
 const authenticate = require(
   "../middleware/authenticate"
 );

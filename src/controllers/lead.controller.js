@@ -5,6 +5,16 @@ const leadService = require("../services/lead.service");
 const createLead =
   asyncHandler(
     async (req, res) => {
+
+     
+      console.log(req.body)
+      if (req.body.website) {
+        return res.status(400).json({
+          success: false,
+          message: "Spam detected"
+        });
+      }
+     
       const lead =
         await leadService.createLead(
           req.body
@@ -20,8 +30,8 @@ const createLead =
 const getLeads =
   asyncHandler(
     async (req, res) => {
-      const result  = await leadService.getLeads(req.query);
-        
+      const result = await leadService.getLeads(req.query);
+
 
       res.status(200).json({
         success: true,

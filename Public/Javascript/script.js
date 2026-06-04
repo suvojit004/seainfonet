@@ -68,6 +68,9 @@ async function FormSubMition(event, form, submitUrl, tostId, modalId = null) {
   if ((typeof submitUrl === 'string') && (typeof tostId === 'string')) {
     event.preventDefault();
     const formData = new FormData(form);
+    for (const [key, value] of formData.entries()) {
+  console.log(key, value);
+}
     const toastElement = document.getElementById(tostId);
     const toast = new bootstrap.Toast(toastElement);
 

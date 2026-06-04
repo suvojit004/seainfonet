@@ -21,7 +21,7 @@ const routeProductScenario = require("../routes/productScenarioRoutes");
 const routeProduct = require("../routes/productRoutes");
 const routeProductPage = require("../routes/productPageRoutes");
 const routeForms = require("../routes/formRoutes");
-const ProductPage = require("../models/productPageSchema");
+const ProductPage = require("./models/productPageSchema");
 const routeAdmin = require("../routes/admin")
 
 const authenticate = require(
