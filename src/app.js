@@ -6,21 +6,39 @@ const helmet = require('helmet');
 const path = require("path");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
+const morgan = require("morgan");
+const cors = require("cors");
 const MongoStore = require("connect-mongo").default;
 
-const { Product, Email } = require("./models/product");
-const { HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm, Admin } = require("./models/schema");
-const routeCarousel = require("./routes/carouselRoutes");
-const routeProductScenario = require("./routes/productScenarioRoutes");
-const routeProduct = require("./routes/productRoutes");
-const routeProductPage = require("./routes/productPageRoutes");
-const routeForms = require("./routes/formRoutes");
-const ProductPage = require("./models/productPageSchema");
-const routeAdmin = require("./routes/admin")
+
+
+
+
+const { Product, Email } = require("../models/product");
+const { HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm, Admin } = require("../models/schema");
+const routeCarousel = require("../routes/carouselRoutes");
+const routeProductScenario = require("../routes/productScenarioRoutes");
+const routeProduct = require("../routes/productRoutes");
+const routeProductPage = require("../routes/productPageRoutes");
+const routeForms = require("../routes/formRoutes");
+const ProductPage = require("../models/productPageSchema");
+const routeAdmin = require("../routes/admin")
 
 const authenticate = require(
-  "./middleware/authenticate"
+  "../middleware/authenticate"
 );
+const authRoute = require("./routes/auth.routes");
+const userRoutes = require("./routes/user.routes");
+const leadRoutes = require("./routes/lead.routes");
+
+const notFound = require(
+  "./middlewares/notFound.middleware"
+);
+
+const errorHandler = require(
+  "./middlewares/error.middleware"
+);
+
 
 
 const app = express();
@@ -53,12 +71,6 @@ app.set('views', './views');
 const upload = multer();
 // app.use(express.static(path.join(__dirname, "Public")));
 app.disable('x-powered-by');
-
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.log(err));
-
-
 
 //app.use(helmet());
 
@@ -252,8 +264,14 @@ app.use('/homeproduct', routeProduct);
 app.use('/productpage', routeProductPage);
 app.use('/form', authenticate, routeForms);
 app.use('/admin', routeAdmin);
+app.use("/createuser", authRoute);
+app.use("/users", userRoutes);
+app.use("/leads", leadRoutes);
 
 
+app.use(notFound);
+app.use(errorHandler);
+/*
 // custom 404
 app.use(async (req, res, next) => {
   res.status(404).render('404', {
@@ -278,10 +296,12 @@ app.use(async (err, req, res, next) => {
     }
   })
 });
+*/
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-});
+
+module.exports = app;
+
+
 
 
 function chunkArray(arr, size = 3) {

@@ -33,6 +33,8 @@ services:
     volumes:
       - mongo-data:/data/db
       - ./init.js:/docker-entrypoint-initdb.d/init.js
+    ports:
+      - "27017:27017"
     env_file:
       - .env
     networks:
