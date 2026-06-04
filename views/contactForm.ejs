@@ -44,32 +44,52 @@
         <h3 class="cf-form-title">Send us a Message</h3>
         <p class="cf-form-sub">Fill in the form and we'll get back to you shortly.</p>
 
-        <form id="contactForm" action="/submit" method="post">
+        <form id="contactForm" action="/leads" method="post">
           <div class="cf-form-grid">
 
-            <div class="cf-field">
-              <label for="cf-name">Full Name</label>
-              <input id="cf-name" type="text" name="name" placeholder="Your full name" required>
+            <div class="demo-field">
+              <label for="df-fname">First Name</label>
+              <input id="df-fname" type="text" name="firstName" placeholder="Arjun" required>
+            </div>
+            <div class="demo-field">
+              <label for="df-lname">Last Name</label>
+              <input id="df-lname" type="text" name="lastName" placeholder="Kumar" required>
+            </div>
+             <div class="demo-field">
+              <label for="df-company">company</label>
+              <input id="df-company" type="text" name="company" placeholder="Sea Infonet" required>
             </div>
 
-            <div class="cf-field">
-              <label for="cf-phone">Phone Number</label>
-              <input id="cf-phone" type="tel" name="phone" placeholder="+91 00000 00000" required>
+            <div class="demo-field">
+              <label for="df-phone">Phone Number</label>
+              <input id="df-phone" type="tel" name="phone" placeholder="+91 00000 00000" required>
             </div>
 
-            <div class="cf-field full">
-              <label for="cf-email">Email Address</label>
-              <input id="cf-email" type="email" name="email" placeholder="you@company.com" required>
+            <div class="demo-field full">
+              <label for="df-email">Email Address</label>
+              <input id="df-email" type="email" name="email" placeholder="you@company.com" required>
             </div>
 
-            <div class="cf-field full">
-              <label for="cf-subject">Subject</label>
-              <input id="cf-subject" type="text" name="subject" placeholder="What would you like to discuss?" required>
+            <div class="demo-field full">
+              <label for="df-product">Choose Product</label>
+              <select id="df-product" name="product" required>
+                <option value="">Select a product…</option>
+                <option value="Kaspersky">Kaspersky</option>
+                <option value="Bytescreen">Bytescreen</option>
+                <option value="Acronis">Acronis</option>
+                <option value="Safetica">Safetica</option>
+                <option value="Teramind">Teramind</option>
+                <option value="GoDMARC">GoDMARC</option>
+                <option value="Tacitine">Tacitine</option>
+                <option value="Quantum">Quantum</option>
+                <option value="Cybernexa">Cybernexa</option>
+                <option value="EverestIMS">EverestIMS</option>
+              </select>
             </div>
 
-            <div class="cf-field full">
-              <label for="cf-desc">Description</label>
-              <textarea id="cf-desc" name="description" placeholder="Tell us more about your enquiry…" required></textarea>
+            <div class="demo-field full">
+              <label for="df-desc">message</label>
+              <textarea id="df-desc" name="message" rows="3" placeholder="Tell us about your company and what you're looking for…" required></textarea>
             </div>
 
             <button type="submit" class="cf-submit">

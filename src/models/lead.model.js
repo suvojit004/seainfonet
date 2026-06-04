@@ -34,6 +34,7 @@ const leadSchema = new mongoose.Schema(
 
         inquiryType: {
             type: String,
+            default: "demo",
             enum: Object.values(
                 INQUIRY_TYPES
             ),

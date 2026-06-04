@@ -22,7 +22,8 @@ const createLeadSchema =
       z.string().optional(),
 
     inquiryType:
-      z.enum(Object.values(INQUIRY_TYPES)),
+      z.enum(Object.values(INQUIRY_TYPES))
+      .default(INQUIRY_TYPES.DEMO),
     
     product:
     z.enum(Object.values(PRODUCT)),
