@@ -3,7 +3,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 
 const adminRoute = express.Router();
-const ProductPage = require("../src/models/productPageSchema");
+const ProductPage = require("../src/models/productPage.model");
 
 const { Admin } = require("../models/schema");
 

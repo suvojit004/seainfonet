@@ -1,5 +1,5 @@
 const { ZodError } = require("zod");
-const ProductPage = require("../models/productPageSchema")
+const ProductPage = require("../models/productPage.model")
 
 const errorHandler =async (err, req, res, next) => {
 
