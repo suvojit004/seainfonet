@@ -18,21 +18,11 @@ router.post("/",
  productPageController.createProduct)
 
 router.get("/",
-    protect,
-  authorize(
-    "super_admin",
-    "admin"
-  ),
   productPageController.getAllProduct,
 )
 
 router.get(
   "/:productKey",
-  protect,
-  authorize(
-    "super_admin",
-    "admin"
-  ),
   productPageController.getProductByKey
 );
 

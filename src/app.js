@@ -14,11 +14,11 @@ const MongoStore = require("connect-mongo").default;
 
 
 
-const { Product, Email } = require("../models/product");
+const Product = require("./models/product.model");
 const { HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm, Admin } = require("../models/schema");
 const routeCarousel = require("../routes/carouselRoutes");
 const routeProductScenario = require("../routes/productScenarioRoutes");
-const routeProduct = require("../routes/productRoutes");
+const routeProduct = require("./routes/product.routes");
 const routeProductPage = require("./routes/productPage.routes");
 const routeForms = require("../routes/formRoutes");
 const ProductPage = require("./models/productPage.model");
