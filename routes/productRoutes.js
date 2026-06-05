@@ -2,7 +2,7 @@ const express = require("express");
 const routeProduct = express.Router();
 const {HomeProduct} = require("../models/schema");
 const authenticate = require(
-  "../middleware/authenticate"
+  "../src/middlewares/authenticate"
 );
 
 

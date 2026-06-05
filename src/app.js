@@ -25,7 +25,7 @@ const ProductPage = require("./models/productPageSchema");
 const routeAdmin = require("../routes/admin")
 
 const authenticate = require(
-  "../middleware/authenticate"
+  "./middlewares/authenticate"
 );
 
 const { globalLimiter } = require(

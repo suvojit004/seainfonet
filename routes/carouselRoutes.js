@@ -2,7 +2,7 @@ const express = require("express");
 const routeCarousel = express.Router();
 const {HomeCarousel} = require("../models/schema");
 const authenticate = require(
-  "../middleware/authenticate"
+  "../src/middlewares/authenticate"
 );
 // CREATE
 routeCarousel.post("/",authenticate, async (req, res, next) => {

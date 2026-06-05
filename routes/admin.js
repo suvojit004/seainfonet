@@ -8,7 +8,7 @@ const ProductPage = require("../src/models/productPageSchema");
 const { Admin } = require("../models/schema");
 
 const authenticate = require(
-  "../middleware/authenticate"
+  "../src/middlewares/authenticate"
 );
 
 
