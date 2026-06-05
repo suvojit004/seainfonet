@@ -18,7 +18,7 @@ const errorHandler =async (err, req, res, next) => {
   const statusCode = err.statusCode || 500;
 
   const message = err.message || "Internal Server Error";
-  if (statusCode === 404) {
+  /*if (statusCode === 404) {
     res.status(statusCode).render('404', {
       navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
       header: {
@@ -37,11 +37,11 @@ const errorHandler =async (err, req, res, next) => {
         robots: "noindex, follow"
       }
     })
-  } else{
+  } else{}*/
   res.status(statusCode).json({
     success: false,
     message,
-  });}
+  });
 };
 
 module.exports = errorHandler;

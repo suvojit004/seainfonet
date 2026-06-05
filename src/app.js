@@ -278,32 +278,7 @@ app.use("/leads", leadRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
-/*
-// custom 404
-app.use(async (req, res, next) => {
-  res.status(404).render('404', {
-    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-    header: {
-      title: "404 - Page Not Found | SEA Infonet",
-      description: "The page you are looking for could not be found.",
-      robots: "noindex, follow"
-    }
-  })
-});
 
-// custom error handler
-app.use(async (err, req, res, next) => {
-  console.error(err.stack)
-  res.status(500).render('5xx', {
-    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-    header: {
-      title: "500 - Internal Server Error | SEA Infonet",
-      description: "We are facing some internal server error.",
-      robots: "noindex, follow"
-    }
-  })
-});
-*/
 
 
 module.exports = app;
