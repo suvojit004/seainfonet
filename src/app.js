@@ -27,6 +27,11 @@ const routeAdmin = require("../routes/admin")
 const authenticate = require(
   "../middleware/authenticate"
 );
+
+const { globalLimiter } = require(
+  "./middlewares/rateLimit.middleware"
+);
+
 const authRoute = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const leadRoutes = require("./routes/lead.routes");
@@ -63,9 +68,11 @@ app.use(session({
 }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(globalLimiter);
 app.set('view engine', 'ejs');
 app.set("view cache", false);
 app.set('views', './views');
+
 // app.set("trust proxy", 2);
 
 const upload = multer();

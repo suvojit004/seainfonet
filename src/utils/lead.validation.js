@@ -30,6 +30,8 @@ const createLeadSchema =
     
     website: z.string().optional(),
 
+    formLoadedAt: z.string(),
+
     message:
       z.string().min(10),
   });

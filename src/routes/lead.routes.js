@@ -11,6 +11,10 @@ const {
   "../controllers/lead.controller"
 );
 
+const {
+  leadLimiter,
+} = require("../middlewares/rateLimit.middleware");
+
 const validate =
   require("../middlewares/validate.middleware");
 
@@ -34,6 +38,7 @@ const {
 } = require("../utils/user.validation");
 router.post(
   "/",
+  leadLimiter,
   validate(
     createLeadSchema
   ),
