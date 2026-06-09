@@ -16,6 +16,7 @@ const MongoStore = require("connect-mongo").default;
 
 const Product = require("./models/product.model");
 const { HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm, Admin } = require("../models/schema");
+
 const routeCarousel = require("../routes/carouselRoutes");
 const routeProductScenario = require("../routes/productScenarioRoutes");
 const routeProduct = require("./routes/product.routes");
@@ -73,7 +74,7 @@ app.set('view engine', 'ejs');
 app.set("view cache", false);
 app.set('views', './views');
 
-// app.set("trust proxy", 2);
+app.set("trust proxy", 2);
 
 const upload = multer();
 // app.use(express.static(path.join(__dirname, "Public")));
@@ -89,7 +90,7 @@ app.get('/', async (req, res) => {
   res.render('index', {
     productSenario: await HomeProductScenario.find(),
     heroImg: await HomeCarousel.find(),
-    productCardData: chunkArray(await HomeProduct.find()),
+    productCardData: await Product.find().lean(),
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
     header: {
       title: "SEA Infonet PVT. LTD. - Leading IT Security Value Added Distributor in India",

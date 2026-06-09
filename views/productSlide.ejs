@@ -4,80 +4,27 @@
     <div class="products-header reveal">
       <div class="section-eyebrow">Our Portfolio</div>
       <h2 class="section-title">Enterprise-Grade Security Solutions</h2>
-      <p class="section-sub">We distribute the world's best cybersecurity brands — from endpoint protection to DLP, backup, email security, and network visibility.</p>
+      <p class="section-sub">We distribute the world's best cybersecurity brands — from endpoint protection to DLP,
+        backup, email security, and network visibility.</p>
     </div>
     <div class="products-grid">
-      <div class="product-card reveal">
-      <div class="product-icon" > 
-        <img src="/Images/ProductImage/kaspersky.PNG" alt="Kaspersky Incon">
-      </div>
-        <div>
-          <h3>Kaspersky</h3>
-          <p>Complete endpoint, network, cloud, and industrial cybersecurity. From EDR Foundations for SMBs to Next XDR Expert for enterprises — and SIEM, Threat Intelligence, Container Security.</p>
+      <%data.forEach(element=> {%>
+        <div class="product-card reveal">
+          <div class="product-icon">
+            <img src="<%= element.imageLink %>">
+          </div>
+          <div>
+            <h3><%= element.title %></h3>
+            <p><%= element.description %></p>
+          </div>
+          <div class="product-tags">
+            <%element.tags.forEach(element => {%>
+              <span class="tag"><%= element %></span>
+            <%});%>
+          </div>
+          <a href="<%= element.button.link %>" class="product-link"><%= element.button.text %></a>
         </div>
-        <div class="product-tags">
-          <span class="tag">EDR</span><span class="tag">XDR</span><span class="tag">SIEM</span><span class="tag">Threat Intel</span><span class="tag">ICS</span>
-        </div>
-        <a href="/demo" class="product-link">Learn More →</a>
-      </div>
-      <div class="product-card reveal reveal-delay-1">
-        <div class="product-icon" ><img src="/Images/ProductImage/safetica.jpg" alt="safetica Incon"></div>
-        <div>
-          <h3>Safetica</h3>
-          <p>AI-powered Data Loss Prevention (DLP) and Insider Risk Management (IRM) in one unified platform. Protects sensitive data across email, USB, cloud, print, and clipboard.</p>
-        </div>
-        <div class="product-tags">
-          <span class="tag">DLP</span><span class="tag">IRM</span><span class="tag">Compliance</span><span class="tag">DPDP Act</span>
-        </div>
-        <a href="/demo" class="product-link">Learn More →</a>
-      </div>
-      <div class="product-card reveal reveal-delay-2">
-        <div class="product-icon" > <div class="product-icon" ><img src="/Images/ProductImage/acronis.jpg" alt="acronis Incon"></div></div>
-        <div>
-          <h3>Acronis</h3>
-          <p>Cyber protection combining backup, disaster recovery, AI-based anti-malware, and endpoint management. Available as Acronis Cyber Protect and Acronis Cyber Protect Cloud.</p>
-        </div>
-        <div class="product-tags">
-          <span class="tag">Backup</span><span class="tag">DR</span><span class="tag">Cloud</span>
-        </div>
-        <a href="/demo" class="product-link">Learn More →</a>
-      </div>
-      <div class="product-card reveal">
-        <div class="product-icon" > 
-          <div class="product-icon" ><img src="/Images/ProductImage/teramind.png" alt="teramind Incon"></div>
-        </div>
-        <div>
-          <h3>Teramind</h3>
-          <p>Advanced insider threat detection, employee monitoring, and behaviour analytics platform — helping organisations detect anomalies and prevent data exfiltration in real time.</p>
-        </div>
-        <div class="product-tags">
-          <span class="tag">UEBA</span><span class="tag">Monitoring</span><span class="tag">Insider Risk</span>
-        </div>
-        <a href="/demo" class="product-link">Learn More →</a>
-      </div>
-      <div class="product-card reveal reveal-delay-1">
-        <div class="product-icon" ><img src="/Images/ProductImage/GoDMARC.png" alt="GoDMARC Incon"></div>
-        <div>
-          <h3>GoDMARC</h3>
-          <p>Email authentication and anti-phishing platform. Protects your domain with DMARC, DKIM, SPF enforcement — preventing brand spoofing and phishing attacks.</p>
-        </div>
-        <div class="product-tags">
-          <span class="tag">DMARC</span><span class="tag">Email Security</span><span class="tag">Anti-Phishing</span>
-        </div>
-        <a href="/demo" class="product-link">Learn More →</a>
-      </div>
-      <div class="product-card reveal reveal-delay-2">
-        <div class="product-icon"><img src="/Images/ProductImage/bytescreen.png" alt="bytescreen Incon"></div>
-        <div>
-          <h3>Bytescreen</h3>
-          <p>smart digital signage and screen management solution that helps businesses remotely manage, schedule, and display content across multiple screens from a centralized dashboard. </p>
-        </div>
-        <div class="product-tags">
-          <span class="tag">Awareness</span><span class="tag">Network</span><span class="tag">Identity</span>
-        </div>
-        <a href="/demo" class="product-link">Learn More →</a>
-        <a href="/product" class="product-link">View All Products →</a>
-      </div>
+        <%});%>
     </div>
   </div>
 </section>
