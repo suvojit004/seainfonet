@@ -15,19 +15,14 @@ const MongoStore = require("connect-mongo").default;
 
 
 const Product = require("./models/product.model");
-const { HomeCarousel, HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm, Admin } = require("../models/schema");
+const { HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm, Admin } = require("../models/schema");
 
-const routeCarousel = require("../routes/carouselRoutes");
-const routeProductScenario = require("../routes/productScenarioRoutes");
+
 const routeProduct = require("./routes/product.routes");
 const routeProductPage = require("./routes/productPage.routes");
-const routeForms = require("../routes/formRoutes");
-const ProductPage = require("./models/productPage.model");
-const routeAdmin = require("../routes/admin")
 
-const authenticate = require(
-  "./middlewares/authenticate"
-);
+const ProductPage = require("./models/productPage.model");
+
 
 const { globalLimiter } = require(
   "./middlewares/rateLimit.middleware"
@@ -89,7 +84,6 @@ app.get('/', async (req, res) => {
 
   res.render('index', {
     productSenario: await HomeProductScenario.find(),
-    heroImg: await HomeCarousel.find(),
     productCardData: await Product.find().lean(),
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
     header: {
@@ -275,15 +269,15 @@ app.get('/terms-conditions', async (req, res) => {
 })
 
 
-app.use('/carousel', routeCarousel);
-app.use('/productscenario', routeProductScenario);
+
 app.use('/homeproduct', routeProduct);
 app.use('/productpage', routeProductPage);
-app.use('/form', authenticate, routeForms);
-app.use('/admin', routeAdmin);
+
+
 app.use("/createuser", authRoute);
 app.use("/users", userRoutes);
 app.use("/leads", leadRoutes);
+
 
 
 app.use(notFound);
@@ -296,15 +290,7 @@ module.exports = app;
 
 
 
-function chunkArray(arr, size = 3) {
-  const result = [];
 
-  for (let i = 0; i < arr.length; i += size) {
-    result.push(arr.slice(i, i + size));
-  }
-
-  return result;
-}
 
 /* Temporary Funtion*/
 

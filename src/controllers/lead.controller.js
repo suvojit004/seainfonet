@@ -5,7 +5,6 @@ const leadService = require("../services/lead.service");
 const createLead =
   asyncHandler(
     async (req, res) => {
-      console.log(req.body)
       if (req.body.website) {
         return res.status(400).json({
           success: false,
