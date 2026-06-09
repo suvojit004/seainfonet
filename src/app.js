@@ -106,6 +106,7 @@ app.get('/about', async (req, res) => {
   res.render('about',
     {
       navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
+      productCardData: await Product.find().lean(),
       header: {
         title: "About | SEA Infonet | Leading IT Security Value Added Distributor in India",
         description: "Learn about SEA Infonet Pvt. Ltd., a leading cybersecurity value-added distributor in India.",
@@ -121,6 +122,7 @@ app.get('/partner', async (req, res) => {
 app.get('/contact', async (req, res) => {
   res.render('contact', {
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
+    productCardData: await Product.find().lean(),
     header: {
       title: "Contact | SEA Infonet | Leading IT Security Value Added Distributor in India",
       description: "Contact SEA Infonet Pvt. Ltd., a leading IT security and cybersecurity value-added distributor in India for partnerships, product inquiries, and business support.",
@@ -172,6 +174,7 @@ app.post('/submit', upload.none(), async (req, res) => {
 app.get('/demo', async (req, res) => {
   res.render('demo', {
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
+    productCardData: await Product.find().lean(),
     header: {
       title: "Demo | SEA Infonet | Leading IT Security Value Added Distributor in India",
       description: "Request a cybersecurity product demo from SEA Infonet and explore enterprise IT security solutions for businesses, partners, and MSPs.",
@@ -186,6 +189,7 @@ app.get('/product', async (req,res,next)=>{
 
     res.render('product', {
       data: data, navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
+      productCardData: await Product.find().lean(),
       header: {
         title: `Product | SEA Infonet | Leading IT Security Value Added Distributor in India`,
         description: "Explore cybersecurity and IT security products distributed by SEA Infonet including endpoint security, backup, email security, and enterprise protection solutions.",
@@ -208,6 +212,7 @@ app.get('/product/:productKey', async (req, res, next) => {
     }
     res.render('productPage', {
       data: item, navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
+      productCardData: await Product.find().lean(),
       header: {
         title: `${key} | SEA Infonet | Leading IT Security Value Added Distributor in India`,
         description: "Explore cybersecurity and IT security products distributed by SEA Infonet including endpoint security, backup, email security, and enterprise protection solutions.",
@@ -223,6 +228,7 @@ app.get('/product/:productKey', async (req, res, next) => {
 app.get('/msp', async (req, res) => {
   res.render('msp', {
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
+    productCardData: await Product.find().lean(),
     header: {
       title: "MSP | SEA Infonet | Leading IT Security Value Added Distributor in India",
       description: "Explore cybersecurity and managed security solutions for MSPs with SEA Infonet, a leading IT security value-added distributor in India.",
@@ -236,6 +242,7 @@ app.get('/msp', async (req, res) => {
 app.get('/resource', async (req, res) => {
   res.render('resource', {
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
+    productCardData: await Product.find().lean(),
     header: {
       title: "Resources | SEA Infonet | Leading IT Security Value Added Distributor in India",
       description: "Access cybersecurity resources, product documents, solution guides, datasheets, and industry insights from SEA Infonet.",
@@ -247,6 +254,7 @@ app.get('/resource', async (req, res) => {
 app.get('/privacy-policy', async (req, res) => {
   res.render('privacy-policy', {
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
+    productCardData: await Product.find().lean(),
     header: {
       title: "Privacy Policy | SEA Infonet | Leading IT Security Value Added Distributor in India",
       description: "Read the Privacy Policy of SEA Infonet Pvt. Ltd. to understand how we collect, use, and protect user and business partner information.",
@@ -257,6 +265,7 @@ app.get('/privacy-policy', async (req, res) => {
 app.get('/terms-conditions', async (req, res) => {
   res.render('terms-conditions', {
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
+    productCardData: await Product.find().lean(),
     header: {
       title: "Terms & Conditions | SEA Infonet | Leading IT Security Value Added Distributor in India",
       description: "Read the Terms & Conditions governing the use of the SEA Infonet website, services, and business interactions.",
