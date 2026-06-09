@@ -4,25 +4,14 @@ const express = require('express');
 const mongoose = require("mongoose");
 const helmet = require('helmet');
 const path = require("path");
-const session = require("express-session");
 const bcrypt = require("bcrypt");
 const morgan = require("morgan");
 const cors = require("cors");
-const MongoStore = require("connect-mongo").default;
-
-
-
-
-
 const Product = require("./models/product.model");
-const { HomeProduct, HomeProductScenario, SocialMedia, ContactForm, DemoForm, Admin } = require("../models/schema");
-
 
 const routeProduct = require("./routes/product.routes");
 const routeProductPage = require("./routes/productPage.routes");
-
 const ProductPage = require("./models/productPage.model");
-
 
 const { globalLimiter } = require(
   "./middlewares/rateLimit.middleware"
@@ -44,24 +33,7 @@ const errorHandler = require(
 
 const app = express();
 const multer = require("multer");
-app.use(session({
 
-  secret: process.env.SESSION_SECRET,
-
-  resave: false,
-  saveUninitialized: false,
-
-  store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URI,
-      collectionName: "sessions",
-    }),
-
-  cookie: {  // need to change when using https :  secure: ture,  httpOnly: true
-    secure: false,
-    maxAge: 1000 * 60 * 60 * 24
-  }
-
-}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(globalLimiter);
@@ -83,7 +55,7 @@ const port = 3000;
 app.get('/', async (req, res) => {
 
   res.render('index', {
-    productSenario: await HomeProductScenario.find(),
+   
     productCardData: await Product.find().lean(),
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
     header: {
@@ -123,46 +95,6 @@ app.get('/contact', async (req, res) => {
       canonical: "https://www.seainfonet.com/contact"
     }
   })
-});
-
-app.post('/submit', upload.none(), async (req, res) => {
-   try {
-    if (req.body.product) {
-
-      await new DemoForm({
-        name: req.body.name,
-        number: req.body.number,
-        email: req.body.email,
-        product: req.body.product,
-        subject: req.body.subject,
-        description: req.body.description
-      }).save();
-
-    } else {
-
-      await new ContactForm({
-        name: req.body.name,
-        number: req.body.number,
-        email: req.body.email,
-        subject: req.body.subject,
-        description: req.body.description
-      }).save();
-
-    }
-
-    res.status(200).json({
-      message: "Form submitted successfully"
-    });
-
-  } catch (error) {
-
-    console.error(error);
-
-    res.status(500).json({
-      message: "Server Error"
-    });
-
-  }
 });
 
 app.get('/demo', async (req, res) => {
@@ -291,57 +223,3 @@ module.exports = app;
 
 
 
-
-/* Temporary Funtion*/
-
-async function createAdmin() {
-  const adminEmail = process.env.ADMIN_EMAIL;
-const adminPassword = process.env.ADMIN_PASSWORD;
-
-const hashedPassword = await bcrypt.hash(adminPassword, 10);
-
-  try {
-
-    const exists = await Admin.findOne({
-      email: adminEmail
-    });
-
-    if (exists) {
-
-      console.log("Admin already exists");
-
-      return
-
-    }
-
-
-    await Admin.create({
-
-      email: adminEmail,
-
-      password: hashedPassword
-
-    });
-
-    console.log("Admin Created");
-
-    return
-
-  }
-
-  catch (err) {
-
-    console.log(err);
-    return
-
-  }
-
-}
-
-
-
-
-
-createAdmin();
-
-/* Temporary Funtion End*/
