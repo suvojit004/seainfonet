@@ -35,38 +35,42 @@
             </div>
           </div>
         </div>
-        <form id="demoForm" class="contact-form-wrap reveal reveal-delay-2" action="/submit" method="post">
+        <form id="demoForm" class="contact-form-wrap reveal reveal-delay-2" action="/leads" method="post">
 
           <h3>Send Us a Message</h3>
           <p class="sub">We'll get back to you within 1 business day.</p>
 
           <div class="form-row">
-
+            <div style="display:none;">
+                <input type="text" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+              <input type="hidden" name="formLoadedAt" id="formLoadedAt" />
             <div class="form-group">
-              <label for="df-name">Your Name *</label>
-              <input id="df-name" type="text" name="name" placeholder="Rajan Kumar" required>
+             <label for="df-fname">First Name</label>
+                <input id="df-fname" type="text" name="firstName" placeholder="Arjun" required>
             </div>
 
             <div class="form-group">
-              <label for="df-company">Company</label>
-              <input id="df-company" type="text" name="company" placeholder="Acme Corp">
-            </div>
+                <label for="df-lname">Last Name</label>
+                <input id="df-lname" type="text" name="lastName" placeholder="Kumar" required>
+              </div>
 
           </div>
 
           <div class="form-row">
-
+            <div class="form-group">
+              <label for="df-company">Company</label>
+              <input id="df-company" type="text" name="company" placeholder="Acme Corp">
+            </div>
             <div class="form-group">
               <label for="df-phone">Phone Number *</label>
               <input id="df-phone" type="tel" name="number" placeholder="+91 00000 00000" required>
             </div>
-
-            <div class="form-group">
+          </div>
+           <div class="form-group">
               <label for="df-email">Email *</label>
               <input id="df-email" type="email" name="email" placeholder="you@company.com" required>
             </div>
-
-          </div>
 
           <div class="form-group">
             <label for="df-product">I'm interested in…</label>
@@ -98,7 +102,7 @@
           <div class="form-group">
             <label for="df-desc">Message *</label>
 
-            <textarea id="df-desc" name="description" placeholder="Tell us about your security needs or challenges…"
+            <textarea id="df-desc" name="message" placeholder="Tell us about your security needs or challenges…"
               required></textarea>
           </div>
 
@@ -109,4 +113,7 @@
         </form>
       </div>
     </div>
+    <script>
+      document.getElementById("formLoadedAt").value = Date.now();
+    </script>
   </section>
