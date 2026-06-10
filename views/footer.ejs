@@ -23,12 +23,9 @@
       <div>
         <h4>Products</h4>
         <ul>
-          <li><a href="#">Kaspersky</a></li>
-          <li><a href="#">Safetica</a></li>
-          <li><a href="#">Acronis</a></li>
-          <li><a href="#">Teramind</a></li>
-          <li><a href="#">GoDMARC</a></li>
-          <li><a href="#">Bytescreen</a></li>
+          <%data.forEach(element => {%>
+             <li><a href="<%= element.button.link %>"><%= element.title %></a></li>
+          <%});%>
           <li><a href="/product">View All →</a></li>
         </ul>
       </div>

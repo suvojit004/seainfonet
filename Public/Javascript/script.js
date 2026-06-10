@@ -54,13 +54,13 @@ if (talkToExpertForm) {
 
 if (demoForm) {
   demoForm.addEventListener('submit', async function (e) {
-    FormSubMition(e, demoForm, '/submit', "successToast");
+    FormSubMition(e, demoForm, '/leads', "successToast");
   });
 }
 
 if (contactForm) {
   contactForm.addEventListener('submit', async function (e) {
-    FormSubMition(e, contactForm, '/submit', "successToast");
+    FormSubMition(e, contactForm, '/leads', "successToast");
   });
 }
 
@@ -68,8 +68,11 @@ async function FormSubMition(event, form, submitUrl, tostId, modalId = null) {
   if ((typeof submitUrl === 'string') && (typeof tostId === 'string')) {
     event.preventDefault();
     const formData = new FormData(form);
+    
     const toastElement = document.getElementById(tostId);
     const toast = new bootstrap.Toast(toastElement);
+
+    const data = Object.fromEntries(formData.entries());
 
     if (typeof modalId === 'string') {
       bootstrap.Modal.getInstance(document.getElementById(modalId)).hide();
@@ -78,7 +81,12 @@ async function FormSubMition(event, form, submitUrl, tostId, modalId = null) {
     try {
       const response = await fetch(submitUrl, {
         method: "POST",
-        body: formData
+        headers: {
+          "Content-Type": "application/json",
+        }
+        ,
+        body: JSON.stringify(data),
+
       });
 
       if (response.ok) {

@@ -1,14 +1,13 @@
 
 <%- include('header', {data: header}) %>
-<!-- <%- include('topalert') %> -->
 <%- include('navbar', {data: navData}) %>
-<%- include('herocrousel', {data: heroImg}); %>
+<%- include('herocrousel'); %>
 <%- include('./partial/trusted-by.ejs') %>
 <%- include('./partial/whoweare') %>
 <%- include('productSlide',{data: productCardData}) %> 
 <%- include('usp') %>
-<%- include('productSenario', {data: productSenario}) %>
+<%- include('whysea') %>
 <%- include ('awards') %>
 <%- include ('./partial/connect-us') %>
 
-<%- include('footer') %>
+<%- include('footer', {data: productCardData}) %>
