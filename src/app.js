@@ -7,15 +7,11 @@ const path = require("path");
 const bcrypt = require("bcrypt");
 const morgan = require("morgan");
 const cors = require("cors");
-
 const routeProduct = require("./routes/product.routes");
 const routeProductPage = require("./routes/productPage.routes");
-
-
 const { globalLimiter } = require(
   "./middlewares/rateLimit.middleware"
 );
-
 const authRoute = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const leadRoutes = require("./routes/lead.routes");
@@ -28,8 +24,6 @@ const notFound = require(
 const errorHandler = require(
   "./middlewares/error.middleware"
 );
-
-
 
 const app = express();
 const multer = require("multer");
