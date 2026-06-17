@@ -52,7 +52,7 @@ app.use('/productpage', routeProductPage);
 app.use("/createuser", authRoute);
 app.use("/users", userRoutes);
 app.use("/leads", leadRoutes);
-app.use("/events",eventRoutes)
+app.use("/api-events",eventRoutes)
 
 
 app.use(notFound);
