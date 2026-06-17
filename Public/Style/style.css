@@ -4371,3 +4371,18 @@ tr:hover .plans-plan-badge {
 }
 
 
+.partner-hero{
+  background:var(--ink);color:var(--white);position:relative;overflow:hidden;
+  padding:150px 0 70px;
+}
+.partner-hero .inner{position:relative;z-index:2}
+/* hero-grid-bg / hero-glow already exist and are position:absolute,
+   so they just need a position:relative ancestor — provided above */
+ 
+.partner-enquiry-wrap{background:#f5faf8;padding:80px 0;font-family:'Inter',sans-serif}
+.partner-enquiry-wrap .container{max-width:1100px;margin:0 auto;padding:0 40px}
+ 
+@media(max-width:760px){
+  .partner-enquiry-wrap{padding:56px 0}
+  .partner-enquiry-wrap .container{padding:0 20px}
+}

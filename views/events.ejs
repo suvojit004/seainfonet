@@ -1,40 +1,4 @@
-<%# ════════════════════════════════════════════════════════════
-    VIEW: views/events.ejs
-    CONTENT FRAGMENT ONLY — no <head>, <nav>, or <footer>.
-    Drop this inside your existing layout's <body>, between your
-    own header/nav and footer includes.
 
-    Route example (controller):
-
-      const Event = require('../models/event.model');
-
-      router.get('/events', async (req, res) => {
-        const events = await Event.find({ status: { $ne: 'draft' } })
-          .sort({ eventDate: -1 })
-          .lean();
-
-        res.render('events', {
-          pageTitle: 'Events & Webinars — SEA Infonet',
-          events
-        });
-      });
-
-    EXPECTED LOCALS
-    ───────────────
-    pageTitle  (optional string)  -> not used here since there's no <title>;
-                                      set it in your own layout if needed
-    events     (required array)   -> array of Event documents (.lean() recommended),
-                                      each shaped per event.model.js
-
-    CSS DEPENDENCY
-    ──────────────
-    This fragment uses classes like .ev-page-hero, .ev-featured-card,
-    .ev-tabs, .ev-grid, .ev-card, .pill, .section-eyebrow, .section-title,
-    .btn-primary/.btn-secondary, and .reveal. Make sure those rules
-    (from the previously-provided public/css/style.css) are available
-    globally — either keep linking that file from your layout, or merge
-    the component-specific rules into your own stylesheet.
-═══════════════════════════════════════════════════════════ %>
 
 <%- include('header', {data: header}) %>
 <%- include('navbar', {data: navData}) %>

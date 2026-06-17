@@ -6,7 +6,7 @@ const Event = require('../models/event.model');
 router.get('/', async (req, res) => {
 
   res.render('index', {
-   
+
     productCardData: await Product.find().lean(),
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
     header: {
@@ -60,8 +60,8 @@ router.get('/demo', async (req, res) => {
   })
 });
 
-router.get('/product', async (req,res,next)=>{
-   try {
+router.get('/product', async (req, res, next) => {
+  try {
     const data = await ProductPage.find({ status: "published" }).select('hero productKey -_id').lean();
 
     res.render('product', {
@@ -75,7 +75,7 @@ router.get('/product', async (req,res,next)=>{
     });
 
   } catch (err) {
-    
+
     next(err)
   }
 })
@@ -111,7 +111,7 @@ router.get('/events', async (req, res) => {
     .sort({ eventDate: -1 })
     .lean();
 
-  res.render('events', { 
+  res.render('events', {
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
     productCardData: await Product.find().lean(),
     header: {
@@ -120,7 +120,8 @@ router.get('/events', async (req, res) => {
       canonical: "https://www.seainfonet.com/msp"
 
     },
-    events }); // render inside your layout as usual
+    events
+  }); // render inside your layout as usual
 });
 
 // Detail
@@ -150,7 +151,19 @@ router.get('/events/:slug', async (req, res) => {
 });
 
 
+router.get('/partner-with-us', async (req, res) => {
+  res.render('partner-with-us', {
+    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
+    productCardData: await Product.find().lean(),
+    header: {
+      title: "MSP | SEA Infonet | Leading IT Security Value Added Distributor in India",
+      description: "Explore cybersecurity and managed security solutions for MSPs with SEA Infonet, a leading IT security value-added distributor in India.",
+      canonical: "https://www.seainfonet.com/msp"
 
+    },
+    formStatus: req.query.submitted ? 'success' : null
+  });
+});
 
 
 

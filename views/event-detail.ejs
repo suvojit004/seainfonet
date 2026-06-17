@@ -1,47 +1,4 @@
-<%# ════════════════════════════════════════════════════════════
-    VIEW: views/event-detail.ejs
-    CONTENT FRAGMENT ONLY — no <head>, <nav>, or <footer>.
-    Drop this inside your existing layout's <body>, between your
-    own header/nav and footer includes.
 
-    Route example (controller):
-
-      const Event = require('../models/event.model');
-
-      router.get('/events/:slug', async (req, res) => {
-        const event = await Event.findOne({ slug: req.params.slug }).lean();
-        if (!event) return res.status(404).render('404');
-
-        const relatedEvents = await Event.find({
-          _id: { $ne: event._id },
-          eventType: event.eventType,
-          status: { $ne: 'draft' }
-        }).limit(3).lean();
-
-        res.render('event-detail', {
-          pageTitle: (event.seoTitle || event.title) + ' — SEA Infonet',
-          event,
-          relatedEvents
-        });
-      });
-
-    EXPECTED LOCALS
-    ───────────────
-    pageTitle      (optional string)  -> not used here since there's no <title>;
-                                          set it in your own layout if needed
-    event          (required object)  -> single Event document, shaped per event.model.js
-    relatedEvents  (optional array)   -> other Event documents to show at the bottom
-
-    CSS DEPENDENCY
-    ──────────────
-    This fragment uses classes like .ev-detail-hero, .ev-content-grid,
-    .sp-card, .gallery-grid, .ev-info-card, .ev-cta-stack, .pill,
-    .section-eyebrow/.section-title, .btn-primary/.btn-secondary/.btn-disabled,
-    and #lightbox. Make sure those rules (from the previously-provided
-    public/css/style.css) are available globally — either keep linking
-    that file from your layout, or merge the component-specific rules
-    into your own stylesheet.
-═══════════════════════════════════════════════════════════ %>
 
 <%- include('header', {data: header}) %>
 <%- include('navbar', {data: navData}) %>
