@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const ProductPage = require("../models/productPage.model");
 const Product = require("../models/product.model");
+const Event = require('../models/event.model');
 
 router.get('/', async (req, res) => {
 
@@ -101,6 +102,61 @@ router.get('/product/:productKey', async (req, res, next) => {
 
 });
 
+
+
+
+
+router.get('/events', async (req, res) => {
+  const events = await Event.find({ status: { $ne: 'draft' } })
+    .sort({ eventDate: -1 })
+    .lean();
+
+  res.render('events', { 
+    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
+    productCardData: await Product.find().lean(),
+    header: {
+      title: "MSP | SEA Infonet | Leading IT Security Value Added Distributor in India",
+      description: "Explore cybersecurity and managed security solutions for MSPs with SEA Infonet, a leading IT security value-added distributor in India.",
+      canonical: "https://www.seainfonet.com/msp"
+
+    },
+    events }); // render inside your layout as usual
+});
+
+// Detail
+router.get('/events/:slug', async (req, res) => {
+  const event = await Event.findOne({ slug: req.params.slug }).lean();
+  if (!event) return res.status(404).send('Event not found');
+
+  const relatedEvents = await Event.find({
+    _id: { $ne: event._id },
+    eventType: event.eventType,
+    status: { $ne: 'draft' }
+  }).limit(3).lean();
+
+  res.render('event-detail', {
+    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
+    productCardData: await Product.find().lean(),
+    header: {
+      title: "MSP | SEA Infonet | Leading IT Security Value Added Distributor in India",
+      description: "Explore cybersecurity and managed security solutions for MSPs with SEA Infonet, a leading IT security value-added distributor in India.",
+      canonical: "https://www.seainfonet.com/msp"
+
+    },
+    event,
+    relatedEvents,
+    currentUrl: `${req.protocol}://${req.get('host')}${req.originalUrl}`
+  });
+});
+
+
+
+
+
+
+
+
+
 router.get('/msp', async (req, res) => {
   res.render('msp', {
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
@@ -149,5 +205,7 @@ router.get('/terms-conditions', async (req, res) => {
     }
   })
 })
+
+
 
 module.exports = router;
