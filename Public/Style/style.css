@@ -4187,15 +4187,17 @@ tr:hover .plans-plan-badge {
 
 
 
+
+
 /* ── shared helpers used by the event pages that you don't have yet ── */
 .section-eyebrow.on-dark{background:rgba(255,189,89,.1);border-color:rgba(255,189,89,.3);color:var(--gold)}
 .btn-disabled{background:var(--offwhite);color:var(--muted);padding:14px 30px;border-radius:12px;font-size:15px;font-weight:700;display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--border);cursor:not-allowed}
+
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
 .reveal-delay-1{transition-delay:.08s}
 .reveal-delay-2{transition-delay:.16s}
 .reveal-delay-3{transition-delay:.24s}
-
 /* status pill colors used across listing + detail */
 .pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:99px}
 .st-upcoming{background:rgba(27,127,103,.12);color:var(--green)}
@@ -4373,5 +4375,3 @@ tr:hover .plans-plan-badge {
   .ev-grid{grid-template-columns:1fr}
   .ev-detail-meta-bar{gap:14px}
 }
-
-
