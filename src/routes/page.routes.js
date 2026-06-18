@@ -161,10 +161,8 @@ router.get('/partner-with-us', async (req, res) => {
       canonical: "https://www.seainfonet.com/msp"
 
     },
-    formStatus: req.query.submitted ? 'success' : null
   });
 });
-
 
 
 
