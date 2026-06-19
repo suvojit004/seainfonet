@@ -1,54 +1,20 @@
-<%# ════════════════════════════════════════════════════════════
-    VIEW: views/partner-program.ejs
-    CONTENT FRAGMENT ONLY — no <head>, <nav>, or <footer>.
-    Drop this inside your existing layout's <body>.
 
-    ZERO NEW CSS — every class/id below already exists in your
-    stylesheet. Specifically reused:
-      #why            → hero background (dark, grid pattern, gold ring)
-      .hero-eyebrow / .hero-h1 / .accent / .hero-sub / .hero-stats
-      .btn-primary    → hero CTA, jumps to #enrol
-      .rb-section / .rb-head / .rb-eyebrow / .rb-title / .rb-divider
-      .rb-grid / .rb-col / .rb-col-head / .rb-list / .rb-list-item
-                      → "Why this matters to OEMs" + "Who benefits"
-      .vis-desc       → light-background intro paragraph
-      #products / .products-header / .section-eyebrow / .section-title
-      .products-grid / .product-card / .product-tags / .tag
-                      → benefits grid AND certification steps
-      #about          → plain white section wrapper (steps heading)
-      #offices        → plain off-white section wrapper (who benefits)
-      #award / .awards-card / .awards-icon-wrap / .awards-badge
-      .awards-name / .awards-sep / .awards-desc
-                      → certification callout
-      .rb-cta / .rb-cta-label / .rb-cta-title / .rb-cta-divider
-      .rb-cta-desc / .rb-cta-btn
-                      → closing enrol CTA
-
-    NOTE ON ID REUSE: #why, #products, #about, #offices, #award are
-    your existing homepage/section ids, reused here purely for their
-    background+padding rules. That's safe as long as this fragment
-    renders on its own route (e.g. /partner-program) and never gets
-    pasted onto a page that already has one of those same ids.
-
-    TRADE-OFF: this page now uses your standard 1160px .container
-    instead of a narrow flyer-width layout, since adding a custom
-    container width would mean new CSS. If you want the original
-    compact 860px poster feel back, that's the one thing that can't
-    be done without at least one new rule.
-═══════════════════════════════════════════════════════════ %>
+<%- include('header', {data: header}) %>
+<%- include('navbar', {data: navData}) %>
 
 <!-- HERO -->
 <section id="why">
   <div class="container">
     <div class="hero-eyebrow"><div class="dot"></div> Partner Training Program</div>
     <h1 class="hero-h1" style="font-size:clamp(30px,4vw,46px)">SEA <span class="accent">Educational</span> Program</h1>
-    <p class="hero-sub">SEA Infonet — India's trusted value-added distributor — invites SI partners to unlock deep product expertise, OEM certifications, and a decisive competitive edge.</p>
+    <p class="hero-sub">SEA Infonet — India's trusted value-added distributor — invites partners to unlock deep product expertise, OEM certifications, and a decisive competitive edge.</p>
     <div class="hero-stats" style="margin-bottom:32px">
       <div class="hero-stat"><div class="num">Free</div><div class="lbl">Training for all staff</div></div>
       <div class="hero-stat"><div class="num">OEM</div><div class="lbl">Recognised certificate</div></div>
       <div class="hero-stat"><div class="num">100%</div><div class="lbl">Practical &amp; outcome-led</div></div>
     </div>
-    <a href="#enrol" class="btn-primary">Browse Trainings &amp; Webinars &rarr;</a>
+    <a href="#enrol" class="btn-primary">Browse Trainings &rarr;</a>
+    <a href="/events"  class="btn-secondary">Browse Events &amp; Webinars &rarr;</a>
   </div>
 </section>
 
@@ -223,13 +189,15 @@
 <section class="rb-cta" id="enrol">
   <div class="rb-cta-inner">
     <span class="rb-cta-label">Free for All Partners</span>
-    <h2 class="rb-cta-title">See Upcoming Trainings &amp; Webinars</h2>
+    <h2 class="rb-cta-title">See Upcoming Trainings</h2>
     <div class="rb-cta-divider"></div>
-    <p class="rb-cta-desc">Browse live sessions on our events calendar and register for the one that fits your team's schedule — enrolment is free for all SEA Infonet SI partners.</p>
-    <a class="rb-cta-btn" href="/events?type=training,webinar">&#128197; Browse Trainings &amp; Webinars</a>
+    <p class="rb-cta-desc">Browse live sessions on our events calendar and register for the one that fits your team's schedule — enrolment is free for all SEA Infonet partners.</p>
+    <a class="rb-cta-btn" href="/events?eventType=training&status=upcoming">&#128197; Browse Trainings </a>
     <p style="margin-top:18px;font-size:13px;color:rgba(200,225,215,0.5)">
       Don't see a session that fits?
-      <a href="mailto:promo@seainfonet.com?subject=Partner%20Training%20Enrolment%20Request&body=Hello%20SEA%20Infonet%20Partner%20Team%2C%0A%0AI%20would%20like%20to%20enrol%20my%20team%20in%20the%20SEA%20Infonet%20Partner%20Training%20%26%20Certification%20Program.%0A%0APlease%20share%20next%20steps.%0A%0AThank%20you." style="color:#ffbd59;font-weight:700;text-decoration:underline">Email our partner team directly &rarr;</a>
+      <a href="mailto:promo@seainfonet.com?subject=Partner%20Training%20Enrolment%20Request&body=Hello%20SEA%20Infonet%20Partner%20Team%2C%0A%0AI%20would%20like%20to%20enrol%20my%20team%20in%20the%20SEA%20Infonet%20Partner%20Training%20%26%20Certification%20Program.%0A%0APlease%20share%20next%20steps.%0A%0AThank%20you." style="color:#ffbd59;font-weight:700;text-decoration:underline">Email our team directly &rarr;</a>
     </p>
   </div>
 </section>
+
+<%- include('footer', {data: productCardData}) %>

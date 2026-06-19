@@ -10,6 +10,7 @@ const demoPageController = require ("../controllers/pages/demo.controller");
 const privacyandTermsPageController = require ("../controllers/pages/privacy.terms.controller");
 const partnerPageController = require ("../controllers/pages/partner.controller");
 const productPageController = require ("../controllers/pages/product.controller");
+const partnerProgramController = require ("../controllers/pages/partner.program.controller");
 
 
 
@@ -38,6 +39,7 @@ router.get('/events', eventPageController.getAll);
 router.get('/events/:slug', eventPageController.getBySlug);
 
 router.get('/partner-with-us', partnerPageController.getPartner);
+router.get ('/partner-program', partnerProgramController.getProgram)
 
 router.get('/privacy-policy', privacyandTermsPageController.getPrivacy)
 router.get('/terms-conditions', privacyandTermsPageController.getTerms)
