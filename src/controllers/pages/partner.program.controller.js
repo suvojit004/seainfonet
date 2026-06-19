@@ -8,9 +8,9 @@ const getProgram = asyncHandler(
             navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
             productCardData: await Product.find().lean(),
             header: {
-              title: "MSP | SEA Infonet | Leading IT Security Value Added Distributor in India",
-              description: "Explore cybersecurity and managed security solutions for MSPs with SEA Infonet, a leading IT security value-added distributor in India.",
-              canonical: "https://www.seainfonet.com/msp"
+              title: "Partner Program | SEA Infonet | Leading Cybersecurity Distributor in India",
+              description: "Become a SEA Infonet partner and accelerate growth with industry-leading cybersecurity solutions. Access vendor partnerships, technical training, pre-sales support, marketing resources, and dedicated channel enablement from India's leading cybersecurity distributor.",
+              canonical: "https://www.seainfonet.com/partner-program'"
         
             },
           });

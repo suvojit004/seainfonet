@@ -13,8 +13,8 @@ const getAllProduct = asyncHandler(
           navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
           productCardData: await Product.find().lean(),
           header: {
-            title: `Product | SEA Infonet | Leading IT Security Value Added Distributor in India`,
-            description: "Explore cybersecurity and IT security products distributed by SEA Infonet including endpoint security, backup, email security, and enterprise protection solutions.",
+            title: "Cybersecurity Solutions & Products | SEA Infonet | Leading Cybersecurity Distributor in India",
+            description: "Cybersecurity Solutions & Products | SEA Infonet | Leading Cybersecurity Distributor in India",
             canonical: `https://www.seainfonet.com/product`
           }
         });

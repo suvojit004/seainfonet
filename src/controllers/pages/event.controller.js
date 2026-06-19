@@ -13,9 +13,9 @@ const getAll = asyncHandler(async (req, res) => {
         navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
         productCardData: await Product.find().lean(),
         header: {
-            title: "MSP | SEA Infonet | Leading IT Security Value Added Distributor in India",
-            description: "Explore cybersecurity and managed security solutions for MSPs with SEA Infonet, a leading IT security value-added distributor in India.",
-            canonical: "https://www.seainfonet.com/msp"
+            title: "Cybersecurity Events & Partner Trainings | SEA Infonet | Leading IT Security Value Added Distributor in India",
+            description: "Join cybersecurity webinars, partner trainings, workshops, and industry events hosted by SEA Infonet. Learn from security experts and stay updated on the latest IT security solutions and technologies.",
+            canonical: "https://www.seainfonet.com/events"
 
         },
         events: events.events
@@ -34,9 +34,9 @@ const getBySlug = asyncHandler(
             navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
             productCardData: await Product.find().lean(),
             header: {
-                title: "MSP | SEA Infonet | Leading IT Security Value Added Distributor in India",
-                description: "Explore cybersecurity and managed security solutions for MSPs with SEA Infonet, a leading IT security value-added distributor in India.",
-                canonical: "https://www.seainfonet.com/msp"
+                title: `${event.seoTitle} | SEA Infonet | Leading IT Security Value Added Distributor in India`,
+                description: `Join ${event.seoTitle}, a cybersecurity ${event.eventType} hosted by SEA Infonet. Learn from industry experts, explore the latest security technologies, and gain practical insights into cybersecurity solutions and best practices.`,
+                canonical: `https://www.seainfonet.com/events/${event.slug}`
 
             },
             event,
