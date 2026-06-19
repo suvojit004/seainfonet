@@ -1,6 +1,7 @@
 const talkToExpertForm = document.getElementById("talkToExpertForm");
 const demoForm = document.getElementById("demoForm");
 const contactForm = document.getElementById('contactForm');
+const partnerInquiryForm = document.getElementById('partnerInquiryForm')
 
 /* ═══════════════════════════════════════════
    HAMBURGER
@@ -64,6 +65,12 @@ if (contactForm) {
   });
 }
 
+if(partnerInquiryForm){
+  partnerInquiryForm.addEventListener('submit', async (e)=>{
+    FormSubMition(e,partnerInquiryForm,'/api-partner-inquiry', 'successToast')
+  })
+}
+
 async function FormSubMition(event, form, submitUrl, tostId, modalId = null) {
   if ((typeof submitUrl === 'string') && (typeof tostId === 'string')) {
     event.preventDefault();
@@ -90,8 +97,6 @@ async function FormSubMition(event, form, submitUrl, tostId, modalId = null) {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log("Response:", data);
         setTimeout(() => {
           toast.show();
           form.reset();

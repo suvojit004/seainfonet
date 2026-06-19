@@ -2,157 +2,47 @@ const router = require("express").Router();
 const ProductPage = require("../models/productPage.model");
 const Product = require("../models/product.model");
 const Event = require('../models/event.model');
-
-router.get('/', async (req, res) => {
-
-  res.render('index', {
-   
-    productCardData: await Product.find().lean(),
-    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-    header: {
-      title: "SEA Infonet PVT. LTD. - Leading IT Security Value Added Distributor in India",
-      description: "SEA Infonet Pvt. Ltd. is a leading cybersecurity and IT security value-added distributor in India.",
-      canonical: "https://www.seainfonet.com"
-    }
-  });
+const eventPageController = require("../controllers/pages/event.controller");
+const indexPageController = require("../controllers/pages/index.controller");
+const aboutPageController = require("../controllers/pages/about.controller");
+const contactPageController = require("../controllers/pages/contact.controller");
+const demoPageController = require ("../controllers/pages/demo.controller");
+const privacyandTermsPageController = require ("../controllers/pages/privacy.terms.controller");
+const partnerPageController = require ("../controllers/pages/partner.controller");
+const productPageController = require ("../controllers/pages/product.controller");
+const partnerProgramController = require ("../controllers/pages/partner.program.controller");
 
 
-});
 
-router.get('/about', async (req, res) => {
-  res.render('about',
-    {
-      navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-      productCardData: await Product.find().lean(),
-      header: {
-        title: "About | SEA Infonet | Leading IT Security Value Added Distributor in India",
-        description: "Learn about SEA Infonet Pvt. Ltd., a leading cybersecurity value-added distributor in India.",
-        canonical: "https://www.seainfonet.com/about"
-      }
-    })
-});
+router.get('/',indexPageController.getIndex);
+
+router.get('/about', aboutPageController.getAbout);
 
 router.get('/partner', async (req, res) => {
-  res.redirect('/contact');
+  res.redirect('/partner-with-us');
 });
 
-router.get('/contact', async (req, res) => {
-  res.render('contact', {
-    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-    productCardData: await Product.find().lean(),
-    header: {
-      title: "Contact | SEA Infonet | Leading IT Security Value Added Distributor in India",
-      description: "Contact SEA Infonet Pvt. Ltd., a leading IT security and cybersecurity value-added distributor in India for partnerships, product inquiries, and business support.",
-      canonical: "https://www.seainfonet.com/contact"
-    }
-  })
-});
+router.get('/contact', contactPageController.getContact);
 
-router.get('/demo', async (req, res) => {
-  res.render('demo', {
-    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-    productCardData: await Product.find().lean(),
-    header: {
-      title: "Demo | SEA Infonet | Leading IT Security Value Added Distributor in India",
-      description: "Request a cybersecurity product demo from SEA Infonet and explore enterprise IT security solutions for businesses, partners, and MSPs.",
-      canonical: "https://www.seainfonet.com/demo"
-    }
-  })
-});
+router.get('/demo', demoPageController.getDemo);
 
-router.get('/product', async (req,res,next)=>{
-   try {
-    const data = await ProductPage.find({ status: "published" }).select('hero productKey -_id').lean();
+router.get('/product', productPageController.getAllProduct)
 
-    res.render('product', {
-      data: data, navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-      productCardData: await Product.find().lean(),
-      header: {
-        title: `Product | SEA Infonet | Leading IT Security Value Added Distributor in India`,
-        description: "Explore cybersecurity and IT security products distributed by SEA Infonet including endpoint security, backup, email security, and enterprise protection solutions.",
-        canonical: `https://www.seainfonet.com/product`
-      }
-    });
-
-  } catch (err) {
-    
-    next(err)
-  }
-})
-
-router.get('/product/:productKey', async (req, res, next) => {
-  try {
-    const key = req.params.productKey.toLowerCase();
-    const item = await ProductPage.findOne({ productKey: key });
-    if (!item) {
-      return res.status(404).render('404');
-    }
-    res.render('productPage', {
-      data: item, navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-      productCardData: await Product.find().lean(),
-      header: {
-        title: `${key} | SEA Infonet | Leading IT Security Value Added Distributor in India`,
-        description: "Explore cybersecurity and IT security products distributed by SEA Infonet including endpoint security, backup, email security, and enterprise protection solutions.",
-        canonical: `https://www.seainfonet.com/product/${key}`
-      }
-    })
-  } catch (err) {
-    next(err);
-  }
-
-});
+router.get('/product/:productKey', productPageController.getProductPageByKey);
 
 
 
 
 
-router.get('/events', async (req, res) => {
-  const events = await Event.find({ status: { $ne: 'draft' } })
-    .sort({ eventDate: -1 })
-    .lean();
+router.get('/events', eventPageController.getAll);
 
-  res.render('events', { 
-    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-    productCardData: await Product.find().lean(),
-    header: {
-      title: "MSP | SEA Infonet | Leading IT Security Value Added Distributor in India",
-      description: "Explore cybersecurity and managed security solutions for MSPs with SEA Infonet, a leading IT security value-added distributor in India.",
-      canonical: "https://www.seainfonet.com/msp"
+router.get('/events/:slug', eventPageController.getBySlug);
 
-    },
-    events }); // render inside your layout as usual
-});
+router.get('/partner-with-us', partnerPageController.getPartner);
+router.get ('/partner-program', partnerProgramController.getProgram)
 
-// Detail
-router.get('/events/:slug', async (req, res) => {
-  const event = await Event.findOne({ slug: req.params.slug }).lean();
-  if (!event) return res.status(404).send('Event not found');
-
-  const relatedEvents = await Event.find({
-    _id: { $ne: event._id },
-    eventType: event.eventType,
-    status: { $ne: 'draft' }
-  }).limit(3).lean();
-
-  res.render('event-detail', {
-    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-    productCardData: await Product.find().lean(),
-    header: {
-      title: "MSP | SEA Infonet | Leading IT Security Value Added Distributor in India",
-      description: "Explore cybersecurity and managed security solutions for MSPs with SEA Infonet, a leading IT security value-added distributor in India.",
-      canonical: "https://www.seainfonet.com/msp"
-
-    },
-    event,
-    relatedEvents,
-    currentUrl: `${req.protocol}://${req.get('host')}${req.originalUrl}`
-  });
-});
-
-
-
-
-
+router.get('/privacy-policy', privacyandTermsPageController.getPrivacy)
+router.get('/terms-conditions', privacyandTermsPageController.getTerms)
 
 
 
@@ -183,28 +73,6 @@ router.get('/resource', async (req, res) => {
     }
   })
 });
-router.get('/privacy-policy', async (req, res) => {
-  res.render('privacy-policy', {
-    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-    productCardData: await Product.find().lean(),
-    header: {
-      title: "Privacy Policy | SEA Infonet | Leading IT Security Value Added Distributor in India",
-      description: "Read the Privacy Policy of SEA Infonet Pvt. Ltd. to understand how we collect, use, and protect user and business partner information.",
-      canonical: "https://www.seainfonet.com/privacy-policy"
-    }
-  })
-})
-router.get('/terms-conditions', async (req, res) => {
-  res.render('terms-conditions', {
-    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-    productCardData: await Product.find().lean(),
-    header: {
-      title: "Terms & Conditions | SEA Infonet | Leading IT Security Value Added Distributor in India",
-      description: "Read the Terms & Conditions governing the use of the SEA Infonet website, services, and business interactions.",
-      canonical: "https://www.seainfonet.com/terms-conditions"
-    }
-  })
-})
 
 
 

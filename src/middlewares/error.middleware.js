@@ -41,10 +41,12 @@ const errorHandler =async (err, req, res, next) => {
       }
     })
   } else{
-  res.status(statusCode).json({
+    res.status(statusCode).json({
     success: false,
     message,
-  }); }
+  }); 
+    }
+  
 };
 
 module.exports = errorHandler;

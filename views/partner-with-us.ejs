@@ -1,0 +1,151 @@
+
+
+<%- include('header', {data: header}) %>
+<%- include('navbar', {data: navData}) %>
+<%- include('successToast') %>
+<!-- ══ HERO ══ -->
+<section class="partner-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="container inner">
+    <div class="hero-eyebrow"><div class="dot"></div> Channel Partner Program</div>
+    <h1 class="hero-h1" style="font-size:clamp(32px,4.5vw,52px)">Grow Your Security Business <span class="accent">With SEA Infonet</span></h1>
+    <p class="hero-sub">Join a reseller network built on two decades of trust, backed by genuine licences, dedicated channel support, and margins that reward growth — not just volume.</p>
+    <div class="hero-actions">
+      <a href="#partner-form" class="btn-primary">Apply to Partner →</a>
+      <a href="tel:18002586800" class="btn-secondary">📞 Talk to Our Team</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">2000+</div><div class="lbl">Active Resellers</div></div>
+      <div class="hero-stat"><div class="num">24+</div><div class="lbl">Years of Trust</div></div>
+      <div class="hero-stat"><div class="num">70+</div><div class="lbl">Channel & Tech Staff</div></div>
+      <div class="hero-stat"><div class="num">10+</div><div class="lbl">Vendor Brands</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RESELLER BENEFITS ══ -->
+<section class="rb-section">
+  <div class="rb-inner">
+    <div class="rb-head">
+      <span class="rb-eyebrow">Why Partner With Us</span>
+      <h2 class="rb-title">Built for Partners Who Want to Grow</h2>
+      <div class="rb-divider"></div>
+    </div>
+    <div class="rb-grid">
+      <div class="rb-col">
+        <div class="rb-col-head"><h3 class="rb-col-head-title">Sales &amp; Growth</h3></div>
+        <ul class="rb-list">
+          <li class="rb-list-item">Deal registration with protected, partner-only pricing</li>
+          <li class="rb-list-item">Volume-based incentive and rebate programs</li>
+          <li class="rb-list-item">Early access to new product launches and beta programs</li>
+         
+        </ul>
+      </div>
+      <div class="rb-col">
+        <div class="rb-col-head"><h3 class="rb-col-head-title">Enablement &amp; Support</h3></div>
+        <ul class="rb-list">
+          <li class="rb-list-item">Free certified product training for your sales &amp; technical teams</li>
+          <li class="rb-list-item">Pre-sales support and hands-on proof-of-concept assistance</li>
+          <li class="rb-list-item">Toll-free technical helpline — 1800 258 6800</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARTNER ENQUIRY FORM ══ -->
+<section class="partner-enquiry-wrap" id="partner-form">
+  <div class="container">
+    <div class="demo-card">
+      <div class="demo-left">
+        <div class="demo-orbit-wrap">
+          <div class="demo-orbit-ring"><div class="demo-orbit-dot"></div></div>
+          <div class="demo-orbit-ring"><div class="demo-orbit-dot"></div></div>
+          <div class="demo-orbit-ring"><div class="demo-orbit-dot"></div></div>
+        </div>
+        <div class="demo-left-content">
+          <span class="demo-eyebrow">Become a Partner</span>
+          <h2 class="demo-headline">Let's build your <span>security practice</span> together</h2>
+          <div class="demo-divider"></div>
+          <p class="demo-sub">Tell us a little about your business and what you'd like to sell, and our channel team will set up a short onboarding call to get you started.</p>
+          <div class="demo-book-tag">⚡ Most applications reviewed within 24 hours</div>
+        </div>
+      </div>
+
+      <div class="demo-right">
+        <h3 class="demo-form-title">Partnership Inquiry</h3>
+        <p class="demo-form-sub">Fields marked * are required.</p>
+        <form class="demo-form-grid" method="POST" action="/api-partner-inquiry" id="partnerInquiryForm">
+          <div style="display:none;">
+                <input type="text" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+              <input type="hidden" name="formLoadedAt" id="formLoadedAt" />
+          <div class="demo-field">
+            <label for="pw-fullName">Full Name *</label>
+            <input id="pw-fullName" type="text" name="fullName" placeholder="Rajan Kumar" required>
+          </div>
+          <div class="demo-field">
+            <label for="pw-companyName">Company Name *</label>
+            <input id="pw-companyName" type="text" name="companyName" placeholder="Acme IT Solutions" required>
+          </div>
+          <div class="demo-field">
+            <label for="pw-email">Business Email *</label>
+            <input id="pw-email" type="email" name="email" placeholder="you@company.com" required>
+          </div>
+          <div class="demo-field">
+            <label for="pw-phone">Phone Number *</label>
+            <input id="pw-phone" type="tel" name="phone" placeholder="+91 98765 43210" required>
+          </div>
+          <div class="demo-field">
+            <label for="pw-companyType">Company Type</label>
+            <select id="pw-companyType" name="companyType">
+              <option value="">Select one</option>
+              <option value="reseller">Reseller</option>
+              <option value="system-integrator">System Integrator</option>
+              <option value="msp">Managed Service Provider</option>
+              <option value="distributor">Distributor</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="demo-field">
+            <label for="pw-interest">Primary Interest</label>
+            <select id="pw-interest" name="interest">
+              <option value="">Select a product area</option>
+              <option value="kaspersky">Kaspersky</option>
+              <option value="bytescreen">ByteScreen</option>
+              <option value="safetica">Safetica DLP &amp; IRM</option>
+              <option value="acronis">Acronis </option>
+              <option value="teramind">Teramind</option>
+              <option value="godmarc">GoDMARC</option>
+              <option value="multiple">Multiple / Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="demo-field full">
+            <label for="pw-message">Tell Us About Your Business</label>
+            <textarea id="pw-message" name="message" placeholder="Current customer base, target industries, regions you cover, etc."></textarea>
+          </div>
+          <button type="submit" class="demo-submit">Submit Partnership Inquiry →</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CLOSING CTA ══ -->
+<section class="rb-cta">
+  <div class="rb-cta-inner">
+    <span class="rb-cta-label">Ready When You Are</span>
+    <h2 class="rb-cta-title">Join 2000+ Partners Already Growing With Us</h2>
+    <div class="rb-cta-divider"></div>
+    <p class="rb-cta-desc">Whether you're just getting started or looking to deepen an existing practice, our channel team is ready to help you find the right fit.</p>
+    <a href="#partner-form" class="rb-cta-btn">Apply to Partner →</a>
+  </div>
+   <script>
+      document.getElementById("formLoadedAt").value = Date.now();
+    </script>
+</section>
+
+<%- include('footer', {data: productCardData}) %>
