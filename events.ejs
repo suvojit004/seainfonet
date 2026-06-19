@@ -1,0 +1,272 @@
+<%# ════════════════════════════════════════════════════════════
+    VIEW: views/events.ejs
+    CONTENT FRAGMENT ONLY — no <head>, <nav>, or <footer>.
+    Drop this inside your existing layout's <body>, between your
+    own header/nav and footer includes.
+
+    Route example (controller), now with optional ?type= filtering
+    so links like /events?type=training,webinar pre-filter the page
+    (used by the partner program page's "Browse Trainings & Webinars"
+    button):
+
+      const Event = require('../models/event.model');
+
+      router.get('/events', async (req, res) => {
+        var typeFilter = null;
+        var typeFilterLabel = null;
+
+        if (req.query.type) {
+          typeFilter = String(req.query.type)
+            .split(',')
+            .map(function (t) { return t.trim().toLowerCase(); })
+            .filter(Boolean);
+
+          // human-readable label for the "Filtered: ..." banner, e.g. "Trainings & Webinars"
+          typeFilterLabel = typeFilter
+            .map(function (t) { return t.charAt(0).toUpperCase() + t.slice(1) + 's'; })
+            .join(' & ');
+        }
+
+        var query = { status: { $ne: 'draft' } };
+        if (typeFilter && typeFilter.length) {
+          query.eventType = { $in: typeFilter }; // filter at the DB level
+        }
+
+        const events = await Event.find(query).sort({ eventDate: -1 }).lean();
+
+        res.render('events', {
+          pageTitle: 'Events & Webinars — SEA Infonet',
+          events,
+          typeFilter,       // e.g. ['training', 'webinar'] or null
+          typeFilterLabel   // e.g. 'Trainings & Webinars' or null
+        });
+      });
+
+    EXPECTED LOCALS
+    ───────────────
+    pageTitle        (optional string)  -> not used here since there's no <title>;
+                                            set it in your own layout if needed
+    events           (required array)   -> array of Event documents (.lean() recommended),
+                                            each shaped per event.model.js
+    typeFilter       (optional array)   -> lowercase eventType values to restrict to,
+                                            e.g. ['training','webinar']. The template
+                                            re-filters defensively even if your DB query
+                                            already filtered, so this works either way.
+    typeFilterLabel  (optional string)  -> display label for the filter banner; falls
+                                            back to typeFilter.join(', ') if omitted
+
+    CSS DEPENDENCY
+    ──────────────
+    This fragment uses classes like .ev-page-hero, .ev-featured-card,
+    .ev-tabs, .ev-grid, .ev-card, .pill, .section-eyebrow, .section-title,
+    .btn-primary/.btn-secondary, and .reveal. Make sure those rules
+    (from the previously-provided public/css/style.css) are available
+    globally — either keep linking that file from your layout, or merge
+    the component-specific rules into your own stylesheet.
+═══════════════════════════════════════════════════════════ %>
+<%
+  // ---- local helpers (scoped to this render only) -----------------------
+  function escapeHtml(str) {
+    if (str === undefined || str === null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+  function formatDate(date, opts) {
+    if (!date) return '';
+    return new Date(date).toLocaleDateString('en-IN', opts || { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+  function formatTime(date) {
+    if (!date) return '';
+    return new Date(date).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+  }
+  function statusMeta(status) {
+    var map = {
+      upcoming:  { label: 'Upcoming',  cls: 'st-upcoming'  },
+      completed: { label: 'Completed', cls: 'st-completed' },
+      cancelled: { label: 'Cancelled', cls: 'st-cancelled'  }
+    };
+    return map[status] || { label: status, cls: 'st-draft' };
+  }
+  function typeIcon(type) {
+    var map = { webinar: '🎥', workshop: '🛠️', training: '🎓', conference: '🏛️' };
+    return map[type] || '📅';
+  }
+
+  function renderEventCard(ev) {
+    var st = statusMeta(ev.status);
+    var media = ev.bannerImage
+      ? '<img src="' + escapeHtml(ev.bannerImage) + '" alt="' + escapeHtml(ev.title) + '" loading="lazy">'
+      : '<div class="ev-card-fallback">' + typeIcon(ev.eventType) + '</div>';
+    var speakerCount = (ev.speakers && ev.speakers.length) || 0;
+    var slug = encodeURIComponent(ev.slug || '');
+
+    return '' +
+    '<a href="/events/' + slug + '" class="ev-card reveal" data-status="' + escapeHtml(ev.status) + '">' +
+      '<div class="ev-card-media">' +
+        media +
+        (ev.isFeatured ? '<span class="ev-badge-featured">★ Featured</span>' : '') +
+        '<span class="ev-badge-status pill ' + st.cls + '">' + st.label + '</span>' +
+      '</div>' +
+      '<div class="ev-card-body">' +
+        '<span class="ev-card-type">' + typeIcon(ev.eventType) + ' ' + escapeHtml(ev.eventType) + '</span>' +
+        '<h3>' + escapeHtml(ev.title) + '</h3>' +
+        '<p>' + escapeHtml(ev.shortDescription || '') + '</p>' +
+        '<div class="ev-card-meta">' +
+          '<span>📅 ' + formatDate(ev.eventDate) + '</span>' +
+          (speakerCount ? '<span>🎤 ' + speakerCount + ' Speaker' + (speakerCount > 1 ? 's' : '') + '</span>' : '') +
+        '</div>' +
+      '</div>' +
+      '<div class="ev-card-cta">View Details →</div>' +
+    '</a>';
+  }
+
+  // ---- derive page data ---------------------------------------------------
+  var allEvents = (typeof events !== 'undefined' && Array.isArray(events)) ? events : [];
+  var visibleEvents = allEvents.filter(function (e) { return e.status !== 'draft'; });
+
+  // optional ?type= filter (e.g. /events?type=training,webinar) — see top
+  // comment for the route that supplies this. Re-filtered here defensively
+  // even if the DB query already filtered, so this works either way.
+  var activeTypeFilter = (typeof typeFilter !== 'undefined' && Array.isArray(typeFilter) && typeFilter.length)
+    ? typeFilter.map(function (t) { return String(t).toLowerCase(); })
+    : null;
+  if (activeTypeFilter) {
+    visibleEvents = visibleEvents.filter(function (e) {
+      return activeTypeFilter.indexOf(String(e.eventType || '').toLowerCase()) !== -1;
+    });
+  }
+  var activeTypeFilterLabel = (typeof typeFilterLabel !== 'undefined' && typeFilterLabel)
+    ? typeFilterLabel
+    : (activeTypeFilter ? activeTypeFilter.join(', ') : null);
+
+  var counts = { upcoming: 0, completed: 0, cancelled: 0 };
+  visibleEvents.forEach(function (e) { if (counts[e.status] !== undefined) counts[e.status]++; });
+
+  var featured = visibleEvents.find(function (e) { return e.isFeatured && e.status === 'upcoming'; });
+  var initialTab = counts.upcoming > 0 ? 'upcoming' : 'all';
+%>
+
+<!-- ══ PAGE HERO ══ -->
+<section class="ev-page-hero">
+  <div class="container inner">
+    <div class="section-eyebrow on-dark"><%= activeTypeFilter ? 'Partner Program' : "What's Happening" %></div>
+    <h1>Events &amp; Webinars</h1>
+    <% if (activeTypeFilter) { %>
+      <p>Showing <%= activeTypeFilterLabel.toLowerCase() %> relevant to the SEA Infonet partner training program — pick a session that fits your team's schedule.</p>
+    <% } else { %>
+      <p>Live training sessions, product launches, and cybersecurity awareness webinars — built to keep your team ahead of the threat landscape.</p>
+    <% } %>
+    <div class="ev-hero-stats">
+      <div><div class="num"><%= counts.upcoming %></div><div class="lbl">Upcoming</div></div>
+      <div><div class="num"><%= counts.completed %></div><div class="lbl">Completed</div></div>
+      <div><div class="num"><%= visibleEvents.length %></div><div class="lbl">Total Events</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURED EVENT ══ -->
+<% if (featured) { %>
+<section id="featured">
+  <div class="container">
+    <div class="ev-featured-card reveal">
+      <div class="ev-featured-media">
+        <% if (featured.bannerImage) { %>
+          <img src="<%= featured.bannerImage %>" alt="<%= featured.title %>">
+        <% } else { %>
+          <div class="fallback"><%= typeIcon(featured.eventType) %></div>
+        <% } %>
+      </div>
+      <div class="ev-featured-body">
+        <span class="ev-featured-tag">★ Featured <%= featured.eventType %></span>
+        <h2><%= featured.title %></h2>
+        <p><%= featured.shortDescription %></p>
+        <div class="ev-featured-meta">
+          <span>📅 <%= formatDate(featured.eventDate) %></span>
+          <span>🕒 <%= formatTime(featured.eventDate) %> <%= featured.timezone %></span>
+          <% if (featured.speakers && featured.speakers.length) { %>
+            <span>🎤 <%= featured.speakers.length %> Speaker<%= featured.speakers.length > 1 ? 's' : '' %></span>
+          <% } %>
+        </div>
+        <div class="ev-featured-actions">
+          <% if (featured.registrationLink) { %>
+            <a href="<%= featured.registrationLink %>" target="_blank" rel="noopener" class="btn-primary">Register Now →</a>
+          <% } %>
+          <a href="/events/<%= encodeURIComponent(featured.slug) %>" class="btn-secondary" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#fff">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<!-- ══ TABS + GRID ══ -->
+<section id="listing">
+  <div class="container">
+    <% if (activeTypeFilter) { %>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:24px">
+        <span class="pill st-upcoming">Filtered: <%= activeTypeFilterLabel %></span>
+        <a href="/events" style="font-size:13px;font-weight:700;color:var(--green)">View All Events →</a>
+      </div>
+    <% } %>
+    <% if (visibleEvents.length === 0) { %>
+      <div class="ev-empty">
+        <% if (activeTypeFilter) { %>
+          No <%= activeTypeFilterLabel.toLowerCase() %> are scheduled right now — check back soon, or <a href="/events" style="color:var(--green);font-weight:700">view all events</a>.
+        <% } else { %>
+          No events have been published yet — check back soon!
+        <% } %>
+      </div>
+    <% } else { %>
+      <div class="ev-tabs">
+        <button class="ev-tab <%= initialTab === 'all' ? 'active' : '' %>" data-target="all">All (<%= visibleEvents.length %>)</button>
+        <button class="ev-tab <%= initialTab === 'upcoming' ? 'active' : '' %>" data-target="upcoming">Upcoming (<%= counts.upcoming %>)</button>
+        <button class="ev-tab" data-target="completed">Completed (<%= counts.completed %>)</button>
+        <% if (counts.cancelled > 0) { %>
+          <button class="ev-tab" data-target="cancelled">Cancelled (<%= counts.cancelled %>)</button>
+        <% } %>
+      </div>
+      <div class="ev-grid" id="ev-grid">
+        <% visibleEvents.forEach(function (ev) { %>
+          <%- renderEventCard(ev) %>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<script>
+  // Tab filtering — purely client-side, no reload needed
+  (function () {
+    var tabs = document.querySelectorAll('.ev-tab');
+    var cards = document.querySelectorAll('.ev-card');
+    function applyFilter(status) {
+      cards.forEach(function (c) {
+        c.style.display = (status === 'all' || c.dataset.status === status) ? '' : 'none';
+      });
+    }
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        applyFilter(tab.dataset.target);
+      });
+    });
+    var initial = document.querySelector('.ev-tab.active');
+    if (initial) applyFilter(initial.dataset.target);
+  })();
+
+  // Scroll-reveal for .reveal elements — include once per page is fine,
+  // remove this block if your layout already runs an equivalent observer.
+  (function () {
+    var reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(function (el) { observer.observe(el); });
+  })();
+</script>
