@@ -39,7 +39,7 @@ router.get('/events', eventPageController.getAll);
 router.get('/events/:slug', eventPageController.getBySlug);
 
 router.get('/partner-with-us', partnerPageController.getPartner);
-router.get ('/partner-program', partnerProgramController.getProgram)
+router.get ('/partner-education', partnerProgramController.getProgram)
 
 router.get('/privacy-policy', privacyandTermsPageController.getPrivacy)
 router.get('/terms-conditions', privacyandTermsPageController.getTerms)
