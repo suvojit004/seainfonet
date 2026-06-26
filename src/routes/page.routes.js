@@ -46,7 +46,6 @@ router.get('/terms-conditions', privacyandTermsPageController.getTerms)
 
 
 
-
 router.get('/msp', async (req, res) => {
   res.render('msp', {
     navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
