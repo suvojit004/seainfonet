@@ -18,6 +18,7 @@ const leadRoutes = require("./routes/lead.routes");
 const pageRoutes = require("./routes/page.routes");
 const eventRoutes = require("./routes/event.route")
 const partnerInquiryRoutes = require("./routes/partnerInquiry.route")
+const sitemapRoutes = require("./routes/sitemap.route")
 
 const notFound = require(
   "./middlewares/notFound.middleware"
@@ -55,7 +56,7 @@ app.use("/users", userRoutes);
 app.use("/leads", leadRoutes);
 app.use("/api-events",eventRoutes)
 app.use("/api-partner-inquiry", partnerInquiryRoutes)
-
+app.use("/sitemap.xml", sitemapRoutes)
 
 app.use(notFound);
 app.use(errorHandler);
