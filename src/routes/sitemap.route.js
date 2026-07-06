@@ -86,7 +86,7 @@ router.get("/", async (req, res) => {
     const events = await Event.find({
       status: { $ne: "draft" }
     }).select("slug updatedAt");
-
+    
     events.forEach(event => {
       smStream.write({
         url: `/events/${event.slug}`,

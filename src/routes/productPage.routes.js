@@ -8,14 +8,7 @@ const authorize =
 const {createProductPageSchema,updateProductPageSchema} = require('../utils/productPage.validation')
 const  productPageController = require("../controllers/productPage.controller")
 
-router.post("/",
-  protect,
-  authorize(
-    "super_admin",
-    "admin"
-  ),
-  validate(createProductPageSchema),
- productPageController.createProduct)
+
 
 router.get("/",
   productPageController.getAllProduct,
@@ -25,6 +18,16 @@ router.get(
   "/:productKey",
   productPageController.getProductByKey
 );
+
+router.post("/",
+  protect,
+  authorize(
+    "super_admin",
+    "admin"
+  ),
+  validate(createProductPageSchema),
+ productPageController.createProduct);
+
 
 router.patch(
   "/:productKey",

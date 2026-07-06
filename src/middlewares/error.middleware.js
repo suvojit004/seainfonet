@@ -1,9 +1,9 @@
 const { ZodError } = require("zod");
 const ProductPage = require("../models/productPage.model")
 const Product = require("../models/product.model");
+const AppError = require("../utils/AppError")
 
-const errorHandler =async (err, req, res, next) => {
-
+const errorHandler = async (err, req, res, next) => {
   if (err instanceof ZodError) {
     return res.status(400).json({
       success: false,
@@ -19,6 +19,7 @@ const errorHandler =async (err, req, res, next) => {
   const statusCode = err.statusCode || 500;
 
   const message = err.message || "Internal Server Error";
+
   if (statusCode === 404) {
     res.status(statusCode).render('404', {
       productCardData: await Product.find().lean(),
@@ -40,13 +41,13 @@ const errorHandler =async (err, req, res, next) => {
         robots: "noindex, follow"
       }
     })
-  } else{
+  } else {
     res.status(statusCode).json({
-    success: false,
-    message,
-  }); 
-    }
-  
+      success: false,
+      message,
+    });
+  }
+
 };
 
 module.exports = errorHandler;
