@@ -1,7 +1,7 @@
 const asyncHandler = require("../../utils/asyncHandler")
 const ProductPage = require("../../models/productPage.model");
 const Product = require("../../models/product.model");
-
+const AppError = require("../../utils/AppError");
 
 const getAllProduct = asyncHandler(
     async (req, res, next) => {
@@ -31,7 +31,7 @@ const getProductPageByKey = asyncHandler(
         const key = req.params.productKey.toLowerCase();
         const item = await ProductPage.findOne({ productKey: key });
         if (!item) {
-          return res.status(404).render('404');
+          throw new AppError("Product page not found", 404);
         }
         res.render('productPage', {
           data: item, navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),

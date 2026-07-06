@@ -2,6 +2,7 @@ const eventService = require("../../services/event.service");
 const asyncHandler = require("../../utils/asyncHandler")
 const ProductPage = require("../../models/productPage.model");
 const Product = require("../../models/product.model");
+const AppError = require("../../utils/AppError");
 
 
 
@@ -27,7 +28,7 @@ const getBySlug = asyncHandler(
     async (req, res, next) => {
         try {
             const event = await eventService.getBySlug(req.params.slug);
-            if (!event) return res.status(404).send('Event not found');
+            if (!event) throw new AppError("Product page not found", 404);
             const relatedEvents = await eventService.getAll({
                 eventType: event.eventType
             })
