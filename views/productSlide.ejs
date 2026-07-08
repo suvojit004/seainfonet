@@ -8,24 +8,35 @@
         backup, email security, and network visibility.</p>
     </div>
     <div class="products-grid">
-      <%data.forEach(element=> {%>
+      <%data.forEach((element, index)=> {%>
         <div class="product-card reveal">
           <div class="product-icon">
             <img src="<%= element.imageLink %>">
           </div>
           <div>
-            <h3><%= element.title %></h3>
-            <p><%= element.description %></p>
+            <h3>
+              <%= element.title %>
+            </h3>
+            <p>
+              <%= element.description %>
+            </p>
           </div>
           <div class="product-tags">
-            <%element.tags.forEach(element => {%>
-              <span class="tag"><%= element %></span>
-            <%});%>
+            <%element.tags.forEach(element=> {%>
+              <span class="tag">
+                <%= element %>
+              </span>
+              <%});%>
           </div>
-          <a href="<%= element.button.link %>" class="product-link"><%= element.button.text %></a>
+          <a href="<%= element.button.link %>" class="product-link">
+            <%= element.button.text %>
+          </a>
+          <% if (index === data.length - 1) { %>
+            <a href="/product" class="product-link"> View All Product </a>
+            <% } %>
         </div>
         <%});%>
     </div>
-    
+
   </div>
 </section>

@@ -1,0 +1,193 @@
+<%# ════════════════════════════════════════════════════════════
+    VIEW: views/resources.ejs
+    CONTENT FRAGMENT ONLY — no <head>, <nav>, or <footer>.
+
+    ZERO NEW CSS — uses only the .res-section / .res-inner /
+    .res-head / .res-eyebrow / .res-title / .res-divider /
+    .res-grid / .res-card / .res-card-num / .res-card-title-wrap /
+    .res-card-title / .res-card-sep / .res-card-btn components
+    that already exist in your stylesheet, plus #why (dark hero
+    background) and your shared .hero-eyebrow / .hero-h1 /
+    .hero-sub / .btn-primary / .btn-secondary classes.
+
+    HOW CARDS OPEN URLS
+    ───────────────────
+    Every .res-card is a plain <a> tag with target="_blank"
+    and rel="noopener" — clicking the whole card opens the URL
+    in a new tab. The .res-card-btn inside is a visual affordance
+    only (pointer-events: none so it doesn't double-fire), styled
+    exactly as your existing stylesheet expects.
+
+    ADDING MORE RESOURCES
+    ─────────────────────
+    Each category is a separate .res-section block. To add a new
+    resource entry, copy any .res-card block and update:
+      - href     → the URL to open
+      - emoji    → a fitting icon
+      - title    → the resource name
+      - btn text → "View", "Download", "Watch", etc.
+    The card count badge (01, 02 …) is cosmetic only — renumber
+    or remove as you like.
+
+    EXPECTED LOCALS (all optional)
+    ────────────────────────────────
+    None required. This is static content. If you later want to
+    drive this from a database (title, url, category, type per
+    row), the EJS loops map directly onto the markup structure.
+═══════════════════════════════════════════════════════════ %>
+
+<!-- ══ PAGE HERO ══ -->
+<section id="why">
+  <div class="container">
+    <div class="hero-eyebrow"><div class="dot"></div> Knowledge Centre</div>
+    <h1 class="hero-h1" style="font-size:clamp(30px,4vw,46px)">Resources</h1>
+    <p class="hero-sub">Everything you need to evaluate, deploy, and get the most out of the solutions we distribute — events, datasheets, case studies, guides, and more.</p>
+    <div class="hero-stats" style="margin-bottom:32px">
+      <div class="hero-stat"><div class="num">1</div><div class="lbl">Category live now</div></div>
+      <div class="hero-stat"><div class="num">More</div><div class="lbl">Coming soon</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CATEGORY: EVENTS & WEBINARS ══ -->
+<section class="res-section" id="events-webinars">
+  <div class="res-inner">
+    <div class="res-head">
+      <span class="res-eyebrow">Live &amp; On-Demand</span>
+      <h2 class="res-title">Events &amp; Webinars</h2>
+      <div class="res-divider"></div>
+    </div>
+    <div class="res-grid">
+
+      <a class="res-card" href="/events" target="_self" rel="noopener">
+        <div class="res-card-num">01</div>
+        <div class="res-card-title-wrap">
+          <span style="font-size:28px">📅</span>
+          <p class="res-card-title">Upcoming Events &amp; Webinars</p>
+          <div class="res-card-sep"></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6">Browse all live and upcoming sessions — trainings, product webinars, conferences, and partner workshops.</p>
+        </div>
+        <span class="res-card-btn" style="pointer-events:none">
+          Browse All
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a class="res-card" href="/events?type=training" target="_self" rel="noopener">
+        <div class="res-card-num">02</div>
+        <div class="res-card-title-wrap">
+          <span style="font-size:28px">🎓</span>
+          <p class="res-card-title">Partner Training Sessions</p>
+          <div class="res-card-sep"></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6">Hands-on product training and OEM certification sessions designed for resellers and system integrators.</p>
+        </div>
+        <span class="res-card-btn" style="pointer-events:none">
+          View Trainings
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a class="res-card" href="/events?type=webinar" target="_self" rel="noopener">
+        <div class="res-card-num">03</div>
+        <div class="res-card-title-wrap">
+          <span style="font-size:28px">🎥</span>
+          <p class="res-card-title">Cybersecurity Webinars</p>
+          <div class="res-card-sep"></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6">Expert-led sessions on threat landscape, product deep-dives, and security best practices — live and recorded.</p>
+        </div>
+        <span class="res-card-btn" style="pointer-events:none">
+          View Webinars
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a class="res-card" href="/events?type=workshop" target="_self" rel="noopener">
+        <div class="res-card-num">04</div>
+        <div class="res-card-title-wrap">
+          <span style="font-size:28px">🛠️</span>
+          <p class="res-card-title">Workshops</p>
+          <div class="res-card-sep"></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6">Technical lab workshops covering product deployment, configuration, and incident-response drills.</p>
+        </div>
+        <span class="res-card-btn" style="pointer-events:none">
+          View Workshops
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMING SOON CATEGORIES ══ -->
+<%# Remove this entire section and the .res-coming-* styles once you
+    populate real resources for each category. You can also just
+    remove individual soon-cards as each category goes live. %>
+<section class="res-section" id="coming-soon" style="background:var(--offwhite);border-top:1px solid rgba(27,127,103,.1)">
+  <div class="res-inner">
+    <div class="res-head">
+      <span class="res-eyebrow">More Coming</span>
+      <h2 class="res-title">What's Next</h2>
+      <div class="res-divider"></div>
+    </div>
+    <div class="res-grid">
+
+      <div class="res-card" style="opacity:.55;cursor:not-allowed">
+        <div class="res-card-num">01</div>
+        <div class="res-card-title-wrap">
+          <span style="font-size:28px">📄</span>
+          <p class="res-card-title">Datasheets &amp; Brochures</p>
+          <div class="res-card-sep"></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6">Official product datasheets and one-pagers for every solution in our portfolio.</p>
+        </div>
+        <span class="res-card-btn" style="pointer-events:none;opacity:.5">
+          Coming Soon
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 8v4l2 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </span>
+      </div>
+
+      <div class="res-card" style="opacity:.55;cursor:not-allowed">
+        <div class="res-card-num">02</div>
+        <div class="res-card-title-wrap">
+          <span style="font-size:28px">📊</span>
+          <p class="res-card-title">Case Studies</p>
+          <div class="res-card-sep"></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6">Real-world deployment stories from enterprises and SMBs who use our solutions.</p>
+        </div>
+        <span class="res-card-btn" style="pointer-events:none;opacity:.5">
+          Coming Soon
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 8v4l2 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </span>
+      </div>
+
+      <div class="res-card" style="opacity:.55;cursor:not-allowed">
+        <div class="res-card-num">03</div>
+        <div class="res-card-title-wrap">
+          <span style="font-size:28px">📰</span>
+          <p class="res-card-title">Whitepapers &amp; Reports</p>
+          <div class="res-card-sep"></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6">In-depth research and threat intelligence reports for IT decision-makers.</p>
+        </div>
+        <span class="res-card-btn" style="pointer-events:none;opacity:.5">
+          Coming Soon
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 8v4l2 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </span>
+      </div>
+
+      <div class="res-card" style="opacity:.55;cursor:not-allowed">
+        <div class="res-card-num">04</div>
+        <div class="res-card-title-wrap">
+          <span style="font-size:28px">🎓</span>
+          <p class="res-card-title">Partner Enablement Guides</p>
+          <div class="res-card-sep"></div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.6">Battle cards, objection-handling guides, and sales enablement kits for resellers.</p>
+        </div>
+        <span class="res-card-btn" style="pointer-events:none;opacity:.5">
+          Coming Soon
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 8v4l2 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </span>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -11,6 +11,7 @@ const privacyandTermsPageController = require ("../controllers/pages/privacy.ter
 const partnerPageController = require ("../controllers/pages/partner.controller");
 const productPageController = require ("../controllers/pages/product.controller");
 const partnerProgramController = require ("../controllers/pages/partner.program.controller");
+const resourcePageController = require("../controllers/pages/resource.controller")
 
 
 
@@ -46,32 +47,7 @@ router.get('/terms-conditions', privacyandTermsPageController.getTerms)
 
 
 
-router.get('/msp', async (req, res) => {
-  res.render('msp', {
-    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-    productCardData: await Product.find().lean(),
-    header: {
-      title: "MSP | SEA Infonet | Leading IT Security Value Added Distributor in India",
-      description: "Explore cybersecurity and managed security solutions for MSPs with SEA Infonet, a leading IT security value-added distributor in India.",
-      canonical: "https://www.seainfonet.com/msp"
-
-    }
-  })
-
-});
-
-router.get('/resource', async (req, res) => {
-  res.render('resource', {
-    navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
-    productCardData: await Product.find().lean(),
-    header: {
-      title: "Resources | SEA Infonet | Leading IT Security Value Added Distributor in India",
-      description: "Access cybersecurity resources, product documents, solution guides, datasheets, and industry insights from SEA Infonet.",
-      canonical: "https://www.seainfonet.com/resource",
-
-    }
-  })
-});
+router.get('/resource', resourcePageController.getResource);
 
 
 
