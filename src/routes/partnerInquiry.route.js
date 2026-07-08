@@ -30,6 +30,7 @@ const {
   getPartnerInquiries,
   getPartnerInquiry,
   updateStatus,
+  removePartnerInquiry
 } = require(
   "../controllers/partnerInquiry.controller"
 );
@@ -64,6 +65,16 @@ router.get(
   ),
   getPartnerInquiry
 );
+
+router.delete(
+  "/:id",
+  protect,
+  authorize(
+    "super_admin",
+    "admin"
+  ),
+  removePartnerInquiry,
+)
 
 router.patch(
   "/:id/status",

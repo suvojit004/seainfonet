@@ -7,6 +7,7 @@ const {
   updateLead,
   addNoteToLead,
   assignLead,
+  removeLead
 } = require(
   "../controllers/lead.controller"
 );
@@ -86,6 +87,17 @@ router.post(
   ),
   addNoteToLead
 );
+
+router.delete(
+  "/:id",
+  protect,
+  authorize(
+    "super_admin",
+    "admin"
+  ),
+  removeLead,
+)
+
 router.patch(
   "/:id/assign",
   protect,

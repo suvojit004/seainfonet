@@ -106,6 +106,15 @@ const assignLead =
     }
   );
 
+const removeLead = asyncHandler(async (req,res) =>{
+  const result = await leadService.removeLead(req.params.id);
+  res.status(200).json({
+    success: true,
+    message: "Lead Deleted",
+    data: result,
+  })
+} )
+
 module.exports = {
   createLead,
   getLeads,
@@ -113,4 +122,5 @@ module.exports = {
   updateLead,
   addNoteToLead,
   assignLead,
+  removeLead,
 };

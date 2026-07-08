@@ -196,6 +196,15 @@ const assignLead = async (
 
     return lead;
 };
+const removeLead = async (id) => {
+  const inquiry = await Lead.findOneAndDelete({_id: id});
+
+  if (!inquiry) {
+    throw new AppError("Lead not found", 404);
+  }
+
+  return inquiry;
+};
 
 module.exports = {
     createLead,
@@ -204,4 +213,5 @@ module.exports = {
     updateLead,
     addNoteToLead,
     assignLead,
+    removeLead,
 };

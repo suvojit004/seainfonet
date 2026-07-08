@@ -31,10 +31,6 @@ router.get('/product', productPageController.getAllProduct)
 
 router.get('/product/:productKey', productPageController.getProductPageByKey);
 
-
-
-
-
 router.get('/events', eventPageController.getAll);
 
 router.get('/events/:slug', eventPageController.getBySlug);
@@ -44,8 +40,6 @@ router.get ('/partner-education', partnerProgramController.getProgram)
 
 router.get('/privacy-policy', privacyandTermsPageController.getPrivacy)
 router.get('/terms-conditions', privacyandTermsPageController.getTerms)
-
-
 
 router.get('/resource', resourcePageController.getResource);
 

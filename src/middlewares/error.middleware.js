@@ -31,7 +31,7 @@ const errorHandler = async (err, req, res, next) => {
       }
     })
   }
-  else if (statusCode => 500) {
+ else if (statusCode => 500) {
     res.status(statusCode).render('5xx', {
       productCardData: await Product.find().lean(),
       navData: await ProductPage.find({ status: "published" }).select("productKey -_id").lean(),
