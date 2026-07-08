@@ -37,10 +37,20 @@ const updateInquiryStatus = async (
     }
   );
 };
+const removeEnquiry = async (id) => {
+  const inquiry = await PartnerInquiry.findOneAndDelete({_id: id});
+
+  if (!inquiry) {
+    throw new AppError("PartnerInquiry not found", 404);
+  }
+
+  return inquiry;
+};
 
 module.exports = {
   createInquiry,
   getAllInquiries,
   getInquiryById,
   updateInquiryStatus,
+  removeEnquiry
 };

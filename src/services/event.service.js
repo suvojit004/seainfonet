@@ -146,6 +146,7 @@ const update = async (slug, data) => {
   );
 };
 
+
 const getFeatured = async (limit = 3) => {
   return Event.find({
     isFeatured: true,

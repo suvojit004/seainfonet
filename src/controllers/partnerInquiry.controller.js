@@ -9,6 +9,7 @@ const {
   getAllInquiries,
   getInquiryById,
   updateInquiryStatus,
+  removeEnquiry
 } = require("../services/partnerInquiry.service");
 
 const createPartnerInquiry =
@@ -73,9 +74,19 @@ const updateStatus =
     });
   });
 
+const removePartnerInquiry = asyncHandler(async (req,res) =>{
+  const result = await removeEnquiry(req.params.id);
+  res.status(200).json({
+    success: true,
+    message: "Enquiry Deleted",
+    data: result,
+  })
+} )
+
 module.exports = {
   createPartnerInquiry,
   getPartnerInquiries,
   getPartnerInquiry,
   updateStatus,
+  removePartnerInquiry
 };
