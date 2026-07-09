@@ -36,6 +36,11 @@ const staticPages = [
     priority: 0.8,
   },
   {
+    url: "/resource",
+    changefreq: "monthly",
+    priority: 0.8,
+  },
+  {
     url: "/demo",
     changefreq: "monthly",
     priority: 0.7,
