@@ -8,7 +8,9 @@ const PRODUCT = {
     TACITINE :  "Tacitine",
     QUANTUM :  "Quantum",
     CYBERNEXA :  "Cybernexa",
-    EVERESTIMS :  "EverestIMS"
+    EVERESTIMS :  "EverestIMS",
+    GTBTECHNOLOGY: "GTB Technologies",
+    OTHER: "Other"
 }
 
 module.exports = PRODUCT;
