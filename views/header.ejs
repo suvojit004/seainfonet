@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title><%= data.title %></title>
+    <title>
+        <%= data.title %>
+    </title>
 
     <meta name="description" content="<%= data.description %>">
     <meta name="robots" content="index,follow">
     <link rel="canonical" href="<%= data.canonical %>">
 
-     <!-- Open Graph -->
+    <!-- Open Graph -->
     <meta property="og:title" content="<%= data.title %>">
     <meta property="og:description" content="<%= data.description %>">
     <meta property="og:image" content="/Images/Icons/sea.ico">
@@ -29,8 +32,39 @@
     <link rel="preload" href="/Style/bootstrap.min.css" as="style">
     <link rel="stylesheet" href="/Style/bootstrap.min.css">
     <link rel="stylesheet" href="/Style/style.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-    
+
+    <script type="application/ld+json">
+        {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Sea Infonet Private Limited",
+  "image": "https://www.seainfonet.com/Images/Companylogo/SEAInfonetLogo.png",
+  "@id": "https://www.seainfonet.com/",
+  "url": "https://www.seainfonet.com/",
+  "telephone": "+913340061144",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "P-17, Mission Row Extension, (1, Ganesh Chandra Avenue)",
+    "addressLocality": "Kolkata",
+    "addressRegion": "West Bengal",
+    "postalCode": "700013",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 22.5676,
+    "longitude": 88.3551
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/sea-infonet-pvt-ltd/"
+  ]
+    }
+</script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
 </head>
+
 <body>
